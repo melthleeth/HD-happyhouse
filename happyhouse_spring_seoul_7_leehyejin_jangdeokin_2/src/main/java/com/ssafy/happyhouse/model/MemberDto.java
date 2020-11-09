@@ -1,4 +1,4 @@
-package com.ssafy.happyhouse.model.dto;
+package com.ssafy.happyhouse.model;
 
 public class MemberDto {
 	private int memberno;

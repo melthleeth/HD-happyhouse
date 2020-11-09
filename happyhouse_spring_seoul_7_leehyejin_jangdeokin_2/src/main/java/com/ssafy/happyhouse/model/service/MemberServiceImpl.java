@@ -5,8 +5,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.ssafy.happyhouse.model.MemberDto;
 import com.ssafy.happyhouse.model.dao.MemberDao;
-import com.ssafy.happyhouse.model.dto.MemberDto;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -14,17 +15,14 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDao dao;
 	
-//	public MemberServiceImpl() {
-//		MemberDao = new MemberDaoImpl();
-//	}
 	@Override
 	public List<MemberDto> getMemberList() throws Exception {
 		return dao.getMemberList();
 	}
 
 	@Override
-	public int updateMember(int memberno, MemberDto member) throws Exception {
-		return dao.updateMember(memberno, member);
+	public void updateMember(MemberDto member) throws Exception {
+		dao.updateMember(member);
 	}
 
 	@Override
@@ -33,8 +31,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int deleteMember(int memberno) throws Exception {
-		return dao.deleteMember(memberno);
+	public void deleteMember(int memberno) throws Exception {
+		dao.deleteMember(memberno);
 	}
 
 	@Override
