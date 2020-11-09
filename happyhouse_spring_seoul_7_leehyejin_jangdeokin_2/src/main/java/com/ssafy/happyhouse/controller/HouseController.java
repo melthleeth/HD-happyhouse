@@ -27,4 +27,9 @@ public class HouseController {
 	@Autowired
 	private HouseMapService houseMapService;
 	
+	@GetMapping(value="/info", headers = {"Content-type=application/json" })
+	public List<MemberDto> getMemberList() throws Exception {
+		return memberService.getMemberList();
+	}
+	
 }
