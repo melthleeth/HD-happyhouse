@@ -4,7 +4,7 @@
 
 <mapper namespace="com.ssafy.happyhouse.model.dao.HouseMapDao">
 
-	<insert id="writeArticle" parameterType="GuestBookDto">
+	<insert id="getSido" parameterType="GuestBookDto">
 		insert into guestbook
 		(userid, subject, content, regtime)
 		values (#{userid}, #{subject},

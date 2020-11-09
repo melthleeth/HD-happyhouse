@@ -1,9 +1,10 @@
 package com.ssafy.happyhouse.model.dao;
 
 import java.util.*;
-
+import org.apache.ibatis.annotations.Mapper;
 import com.ssafy.happyhouse.model.*;
 
+@Mapper
 public interface HouseMapDao {
 
 	List<SidoGugunCodeDto> getSido() throws Exception;
