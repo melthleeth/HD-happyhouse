@@ -4,19 +4,48 @@
 
 <mapper namespace="com.ssafy.happyhouse.model.dao.HouseMapDao">
 
-	<insert id="getSido" parameterType="GuestBookDto">
-		insert into guestbook
-		(userid, subject, content, regtime)
-		values (#{userid}, #{subject},
-		#{content}, now())
-	</insert>
-
-	<select id="getArticle" parameterType="int"
-		resultType="GuestBookDto">
-		select articleno, userid, subject, content, regtime
-		from
-		guestbook
-		where articleno = #{articleno}
+	<select id="getSido" resultType="SidoGugunCodeDto">
+		SELECT		left(sido_code,2) sido_code, sido_name 
+		FROM		sidocode
+		ORDER BY	sido_code
 	</select>
 
+	<select id="getGugunInSido" parameterType="String"
+		resultType="SidoGugunCodeDto">
+		SELECT		left(gugun_code,5) gugun_code, gugun_name 
+		FROM		guguncode
+		WHERE		left(gugun_code,2) = #{gugun_code}
+		ORDER BY	gugun_code
+	</select>
+
+	<select id="getDongInfo" parameterType="String"
+		resultType="HouseDealDto">
+		SELECT		no, dong, AptName, code, jibun, dealAmount
+		FROM		housedeal
+		WHERE		dong like concat('%', #{detailedSearch}, '%')
+	</select>
+	
+	<select id="getAptInfo" parameterType="String"
+		resultType="HouseDealDto">
+		SELECT		no, dong, AptName, code, jibun
+		FROM		houseinfo
+		where		AptName like concat('%', #{detailedSearch}, '%')
+	</select>
+	
+	<select id="getDongInGugun" parameterType="String"
+		resultType="HouseDealDto">
+		SELECT		distinct dong, code
+		FROM		housedeal
+		WHERE		code = #{gugun}
+		ORDER BY	dong
+	</select>
+	
+	<select id="getAptInDong" parameterType="String"
+		resultType="HouseDealDto">
+		SELECT		no, dong, AptName, code, jibun, dealAmount
+		FROM		housedeal
+		WHERE		dong = #{dong}
+		ORDER BY	AptName
+	</select>
+	
 </mapper>
