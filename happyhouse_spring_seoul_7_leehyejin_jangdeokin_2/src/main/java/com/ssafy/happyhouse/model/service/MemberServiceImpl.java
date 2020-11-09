@@ -1,49 +1,59 @@
 package com.ssafy.happyhouse.model.service;
 
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import com.ssafy.happyhouse.model.dao.MemberDao;
-import com.ssafy.happyhouse.model.dao.MemberDaoImpl;
 import com.ssafy.happyhouse.model.dto.MemberDto;
 
+@Service
 public class MemberServiceImpl implements MemberService {
 	
-	private MemberDao MemberDao;
+	@Autowired
+	private MemberDao dao;
 	
-	public MemberServiceImpl() {
-		MemberDao = new MemberDaoImpl();
-	}
+//	public MemberServiceImpl() {
+//		MemberDao = new MemberDaoImpl();
+//	}
 	@Override
 	public List<MemberDto> getMemberList() throws Exception {
-		return MemberDao.getMemberList();
+		return dao.getMemberList();
 	}
 
 	@Override
 	public int updateMember(int memberno, MemberDto member) throws Exception {
-		return MemberDao.updateMember(memberno, member);
+		return dao.updateMember(memberno, member);
 	}
 
 	@Override
 	public void createMember(MemberDto member) throws Exception {
-		MemberDao.createMember(member);
+		dao.createMember(member);
 	}
 
 	@Override
 	public int deleteMember(int memberno) throws Exception {
-		return MemberDao.deleteMember(memberno);
+		return dao.deleteMember(memberno);
 	}
 
 	@Override
 	public MemberDto searchMember(String username) throws Exception {
-		return MemberDao.searchMember(username);
+		return dao.searchMember(username);
 	}
 
 	@Override
 	public MemberDto searchMember(int memberno) throws Exception {
-		return MemberDao.searchMember(memberno);
+		return dao.searchMember(memberno);
 	}
 	@Override
 	public String findPassword(String username) throws Exception {
-		return MemberDao.findPassword(username);
+		return dao.findPassword(username);
+	}
+	
+	@Override
+	public MemberDto login(Map<String, String> map) throws Exception{
+		if (map.get("username") == null || map.get("password") == null) return null;
+		return dao.login(map);
 	}
 }
