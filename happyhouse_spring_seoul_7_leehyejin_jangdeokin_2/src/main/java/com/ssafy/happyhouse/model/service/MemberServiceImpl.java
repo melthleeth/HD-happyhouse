@@ -36,8 +36,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberDto searchMember(String username) throws Exception {
-		return dao.searchMember(username);
+	public MemberDto searchbyNameMember(String username) throws Exception {
+		return dao.searchbyNameMember(username);
 	}
 
 	@Override

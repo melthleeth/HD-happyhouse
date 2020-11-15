@@ -94,7 +94,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.jsp">HappyHouse</a>
+			<a class="navbar-brand" href="${root}/">HappyHouse</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
@@ -102,7 +102,7 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="index.jsp" class="nav-link">Home</a></li>
+					<li class="nav-item active"><a href="${root}/" class="nav-link">Home</a></li>
 					<!-- <li class="nav-item"><a href="properties.jsp" class="nav-link">Properties</a></li>
 					<li class="nav-item"><a href="agents.jsp" class="nav-link">Agents</a></li>
 					<li class="nav-item"><a href="blog.jsp" class="nav-link">Blog</a></li> -->

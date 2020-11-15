@@ -14,7 +14,7 @@ public interface MemberDao {
 	public void updateMember(MemberDto member) throws SQLException;
 	public void createMember(MemberDto member) throws SQLException;
 	public void deleteMember(int memberno) throws SQLException;
-	public MemberDto searchMember(String username) throws SQLException;
+	public MemberDto searchbyNameMember(String username) throws SQLException;
 	public MemberDto searchMember(int memberno) throws SQLException;
 	public String findPassword(String username) throws SQLException;
 
