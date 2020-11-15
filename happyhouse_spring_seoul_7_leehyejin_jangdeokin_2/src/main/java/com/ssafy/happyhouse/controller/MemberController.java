@@ -41,7 +41,7 @@ public class MemberController {
 	public String createMember(MemberDto member, Model model, HttpSession session) throws Exception {
 		try {
 			memberService.createMember(member);
-			return "/index";
+			return "index";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("msg", "회원 가입 중 문제가 발생했습니다.");

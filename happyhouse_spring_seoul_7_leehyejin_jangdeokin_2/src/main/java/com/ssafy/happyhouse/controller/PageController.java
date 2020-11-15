@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/page")
+@RequestMapping("/")
 public class PageController {
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String about() {

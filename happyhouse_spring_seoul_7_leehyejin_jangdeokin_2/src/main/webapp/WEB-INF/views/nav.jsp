@@ -94,7 +94,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="${root}/page/index">HappyHouse</a>
+			<a class="navbar-brand" href="${root}/index">HappyHouse</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
@@ -102,13 +102,13 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="${root}/page/index" class="nav-link">Home</a></li>
+					<li class="nav-item active"><a href="${root}/index" class="nav-link">Home</a></li>
 					<!-- <li class="nav-item"><a href="properties.jsp" class="nav-link">Properties</a></li>
 					<li class="nav-item"><a href="agents.jsp" class="nav-link">Agents</a></li>
 					<li class="nav-item"><a href="blog.jsp" class="nav-link">Blog</a></li> -->
-					<li class="nav-item"><a href="${root}/page/about" class="nav-link">About</a></li>
+					<li class="nav-item"><a href="${root}/about" class="nav-link">About</a></li>
 					<!-- <li class="nav-item"><a href="contact.jsp" class="nav-link">Contact</a></li> -->
-					<li class="nav-item"><a href="${root }/page/management" class="nav-link">Manage</a></li>
+					<li class="nav-item"><a href="${root }/management" class="nav-link">Manage</a></li>
 					<c:choose>
 						<c:when test='${empty userinfo}'>
 							<li class="nav-item cta"><a data-toggle="modal" href="#myModal" class="nav-link"><span>Sign
@@ -138,7 +138,7 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form action="${root }/user/login" method="post">
+					<form action="${ root }/user/login" method="post">
 						<div class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -159,7 +159,7 @@
 						<p class="hint-text"><a data-toggle="modal" href="#pwModal" class="nav-link">Forgot Password?</a></p>
 					</form>
 				</div>
-				<div class="modal-footer">Don't have an account? <a href="${root}/page/signup">Create one</a></div>
+				<div class="modal-footer">Don't have an account? <a href="${root}/signup">Create one</a></div>
 			</div>
 		</div>
 	</div>
@@ -198,7 +198,7 @@
 						</div>
 					</form>
 				</div>
-				<div class="modal-footer">Don't have an account? <a href="signup.jsp">Create one</a></div>
+				<div class="modal-footer">Don't have an account? <a href="${ root }/signup">Create one</a></div>
 			</div>
 		</div>
 	</div> 

@@ -107,7 +107,7 @@ body {
 <body>
 <jsp:include page="./nav.jsp"></jsp:include>
 <div class="signup-form">
-    <form action="${root }/main.do?action=createMember" method="post">
+    <form action="${root }/member/create" method="post">
 		<h2>Sign Up</h2>
 		<p>Please fill in this form to create an account!</p>
 		<hr>
@@ -180,7 +180,7 @@ body {
             <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
         </div>
     </form>
-	<div class="text-center">Already have an account? <a href="index.jsp">Login here</a></div>
+	<div class="text-center">Already have an account? <a href="${root}/page/index">Login here</a></div>
 	
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>

@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
 
-  <link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="/resources/static/css/open-iconic-bootstrap.min.css">
   <link rel="stylesheet" href="/css/animate.css">
 
   <link rel="stylesheet" href="/css/owl.carousel.min.css">
@@ -44,7 +44,7 @@
       <div class="row no-gutters slider-text align-items-center justify-content-center">
         <div class="col-md-9 ftco-animate text-center">
           <h1 class="mb-2 bread">About Us</h1>
-          <p class="breadcrumbs"><span class="mr-2"><a href="${root}/page/index">Home <i
+          <p class="breadcrumbs"><span class="mr-2"><a href="${root}/index">Home <i
                   class="ion-ios-arrow-forward"></i></a></span> <span>About us <i
                 class="ion-ios-arrow-forward"></i></span></p>
         </div>
