@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 	<html lang="ko">
-
 <head>
 	<title>HappyHouse_Front_End_서울_7_이혜진_장덕인</title>
 	<meta charset="utf-8">

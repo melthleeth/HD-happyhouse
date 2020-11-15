@@ -13,24 +13,24 @@
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 	
-	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="/css/animate.css">
 
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="/css/magnific-popup.css">
 
-	<link rel="stylesheet" href="css/aos.css">
+	<link rel="stylesheet" href="/css/aos.css">
 
-	<link rel="stylesheet" href="css/ionicons.min.css">
+	<link rel="stylesheet" href="/css/ionicons.min.css">
 
-	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
-	<link rel="stylesheet" href="css/jquery.timepicker.css">
+	<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="/css/jquery.timepicker.css">
 
 
-	<link rel="stylesheet" href="css/flaticon.css">
-	<link rel="stylesheet" href="css/icomoon.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="/css/flaticon.css">
+	<link rel="stylesheet" href="/css/icomoon.css">
+	<link rel="stylesheet" href="/css/style.css">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -94,7 +94,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="${root}/">HappyHouse</a>
+			<a class="navbar-brand" href="${root}/page/index">HappyHouse</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
@@ -102,11 +102,11 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="${root}/" class="nav-link">Home</a></li>
+					<li class="nav-item active"><a href="${root}/page/index" class="nav-link">Home</a></li>
 					<!-- <li class="nav-item"><a href="properties.jsp" class="nav-link">Properties</a></li>
 					<li class="nav-item"><a href="agents.jsp" class="nav-link">Agents</a></li>
 					<li class="nav-item"><a href="blog.jsp" class="nav-link">Blog</a></li> -->
-					<li class="nav-item"><a href="about.jsp" class="nav-link">About</a></li>
+					<li class="nav-item"><a href="${root}/page/about" class="nav-link">About</a></li>
 					<!-- <li class="nav-item"><a href="contact.jsp" class="nav-link">Contact</a></li> -->
 					<li class="nav-item"><a href="${root }/main.do?action=listMember" class="nav-link">Manage</a></li>
 					<c:choose>
