@@ -48,7 +48,7 @@
 			alert("비밀번호를 입력하세요");
 			return;
 		} else {
-			document.getElementById("loginForm").action = "${root}/main.do?action=login";
+			document.getElementById("loginForm").action = "${root}/user/login";
 			document.getElementById("loginForm").submit();
 		}
 	}
@@ -108,7 +108,7 @@
 					<li class="nav-item"><a href="blog.jsp" class="nav-link">Blog</a></li> -->
 					<li class="nav-item"><a href="${root}/page/about" class="nav-link">About</a></li>
 					<!-- <li class="nav-item"><a href="contact.jsp" class="nav-link">Contact</a></li> -->
-					<li class="nav-item"><a href="${root }/main.do?action=listMember" class="nav-link">Manage</a></li>
+					<li class="nav-item"><a href="${root }/page/management" class="nav-link">Manage</a></li>
 					<c:choose>
 						<c:when test='${empty userinfo}'>
 							<li class="nav-item cta"><a data-toggle="modal" href="#myModal" class="nav-link"><span>Sign
@@ -116,10 +116,10 @@
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li class="nav-item cta"><a href="${root }/main.do?action=logout" class="nav-link"><span>
+							<li class="nav-item cta"><a href="${root }/user/logout" class="nav-link"><span>
 								${userinfo.username}님 로그인중</span></a>
 							</li>
-							<li class="nav-item cta"><a href="${root }/main.do?action=logout" class="nav-link"><span>
+							<li class="nav-item cta"><a href="${root }/user/logout" class="nav-link"><span>
 								Logout</span></a>
 							</li>
 						</c:otherwise>
@@ -138,7 +138,7 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form action="${root }/main.do?action=login" method="post">
+					<form action="${root }/user/login" method="post">
 						<div class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -159,7 +159,7 @@
 						<p class="hint-text"><a data-toggle="modal" href="#pwModal" class="nav-link">Forgot Password?</a></p>
 					</form>
 				</div>
-				<div class="modal-footer">Don't have an account? <a href="signup.jsp">Create one</a></div>
+				<div class="modal-footer">Don't have an account? <a href="${root}/page/signup">Create one</a></div>
 			</div>
 		</div>
 	</div>

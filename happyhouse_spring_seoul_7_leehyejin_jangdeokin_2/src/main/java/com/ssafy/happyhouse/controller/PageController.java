@@ -15,4 +15,12 @@ public class PageController {
 	public String index() {
 		return "index";
 	}
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public String signup() {
+		return "signup";
+	}
+	@RequestMapping(value = "/management", method = RequestMethod.GET)
+	public String management() {
+		return "member-management";
+	}
 }
