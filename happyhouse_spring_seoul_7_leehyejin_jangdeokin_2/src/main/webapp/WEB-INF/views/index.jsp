@@ -97,7 +97,7 @@
 																	<div class="icon">
 																		<span class="ion-ios-arrow-down"></span>
 																	</div>
-																	<select name="" id="select1_sido"
+																	<select name="" id="sido"
 																		class="form-control">
 																		<option value="0">선택</option>
 																	</select>
