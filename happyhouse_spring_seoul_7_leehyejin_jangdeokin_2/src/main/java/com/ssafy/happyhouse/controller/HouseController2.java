@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @Api("House Controller API V1")
-@RequestMapping("/trade")
+@RequestMapping("/housedata")
 public class HouseController2 {
 
 	@Autowired
@@ -45,6 +45,13 @@ public class HouseController2 {
 	@GetMapping(value="/apt/{aptName}", headers = {"Content-type=application/json"})
 	public List<HouseDealDto> getAptInfo(String aptName) throws Exception {
 		return houseMapService.getAptInfo(aptName);
+	}
+	
+	// select 옵션 결과에 따라 분기하도록 하기
+	@GetMapping(value="/search", headers = {"Content-type=application/json"})
+	List<HouseDealDto> getSearchResult(String select4) throws Exception {
+		
+		return houseMapService.getDongInGugun(select4);
 	}
 	
 	@GetMapping(value="/dong/{gugun}", headers = {"Content-type=application/json"})
