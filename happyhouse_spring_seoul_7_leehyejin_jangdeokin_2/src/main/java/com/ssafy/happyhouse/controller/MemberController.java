@@ -57,11 +57,12 @@ public class MemberController {
 //		return memberService.searchbyNameMember(username);
 //	}
 //
-//	@ApiOperation(value = "회원정보 검색 - 회원번호로", response = MemberDto.class)
-//	@GetMapping(value = "/info/{memberno}", headers = { "Content-type=application/json" })
-//	public MemberDto searchMember(@PathVariable int memberno) throws Exception {
-//		return memberService.searchMember(memberno);
-//	}
+	@ApiOperation(value = "회원정보 검색 - 회원번호로", response = MemberDto.class)
+	@GetMapping(value = "/search/{memberno}", headers = { "Content-type=application/json" })
+	@ResponseBody public MemberDto searchMember(@PathVariable int memberno) throws Exception {
+		System.out.println(memberService.searchMember(memberno).getUsername());
+		return memberService.searchMember(memberno);
+	}
 //
 //	@ApiOperation(value = "비밀번호 찾기 - 회원이름으로", response = String.class)
 //	@GetMapping(value = "/password/{username}", headers = { "Content-type=application/json" })

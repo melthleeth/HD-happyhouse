@@ -378,6 +378,32 @@ table.table .avatar {
 				}
 			});
 		})
+		
+		$("#search").click(function() {
+			var searchid = $("#searchmemberno").val();
+			console.log(searchid);
+			$.ajax({
+				url:'${root}/member/search/' + searchid,  
+				type:'GET',
+				contentType:'application/json;charset=utf-8',
+				dataType:'json',
+				success:function(users) {
+					if(users != null) {
+						alert("id : " + users.memberno + "\n" +
+								"username : " + users.username	+ "\n" +
+								"email : " + users.email + "\n" + 
+								"phone : " + users.phone + "\n"
+								);
+					} else {
+						alert("없는 회원 번호입니다!");
+					}
+				},
+				error:function(xhr,status,msg){
+					alert("없는 회원 번호입니다!");
+					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+				}
+			});
+		})
 	});
 
 	function setMemberNo(num) {
@@ -434,8 +460,8 @@ table.table .avatar {
 								Manage <b>Users</b>
 							</h2>
 							<form class="form-inline">
-								<input class="form-control mr-sm-2" id="" type="search" placeholder="Search" aria-label="Search">
-								<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+								<input class="form-control mr-sm-2" id="searchmemberno" type="search" placeholder="memberno로 검색" aria-label="Search">
+								<button class="btn btn-outline-info my-2 my-sm-0" id="search" name="search">Search</button>
 							</form>
 						</div>
 					</div>
@@ -466,8 +492,7 @@ table.table .avatar {
 										<td>${member.phone}</td>
 										<td>
 											<a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="setMemberNo(${member.memberno})"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a> 
-											<a href='#deleteEmployeeModal' class="delete" data-toggle="modal" onclick="setDeleteNo(${member.memberno})"><i class="material-icons" data-toggle="tooltip" title="Delete"<%-- onclick="setMemberno(${member.memberno})" --%>>&#xE872;</i></a>
-											<%--< button id="deleteBtn" name="deleteBtn" value="Delete" onclick="deleteMember(${member.memberno})"></button> --%>
+											<a href='#deleteEmployeeModal' class="delete" data-toggle="modal" onclick="setDeleteNo(${member.memberno})"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 										</td>
 									</tr>
 								</c:forEach>
@@ -493,37 +518,7 @@ table.table .avatar {
 			</div>
 		</div>
 	</div>
-	<!-- Edit Modal HTML -->
-	<div id="addEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">
-						<h4 class="modal-title">Add Employee</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Address</label>
-							<textarea class="form-control" required></textarea>
-						</div>
-						<div class="form-group">
-							<label>Phone</label>
-							<input type="text" class="form-control" required>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-success" value="Add">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+	
 	<!-- Edit Modal HTML -->
 	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
