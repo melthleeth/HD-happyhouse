@@ -34,7 +34,7 @@ public class PageController {
 	}
 	@GetMapping(value = "/qna")
 	public String about() {
-		return "qna";
+		return "redirect:/";
 	}
 	@GetMapping(value = "/management")
 	public String management(Model model, HttpSession session, HttpServletResponse response) {
