@@ -190,7 +190,7 @@
 						aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form action="${root }/main.do?action=findPW" method="post"
+					<form action="${root }/member/findPW" method="post"
 						id="findPWForm">
 						<div class="form-group">
 							<div class="input-group">
