@@ -10,6 +10,7 @@ import javax.servlet.http.*;
 
 import org.json.simple.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.ssafy.happyhouse.model.*;
 import com.ssafy.happyhouse.model.service.*;
@@ -19,14 +20,14 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-@RestController
+@Controller
 @Api("House Controller API V1")
 @RequestMapping("/housedata")
 public class HouseController2 {
 
 	@Autowired
 	private HouseMapService houseMapService;
-	
+	@ResponseBody
 	@GetMapping(value="/sido", headers = {"Content-type=application/json"})
 	public List<SidoGugunCodeDto> getSido() throws Exception {
 		return houseMapService.getSido();

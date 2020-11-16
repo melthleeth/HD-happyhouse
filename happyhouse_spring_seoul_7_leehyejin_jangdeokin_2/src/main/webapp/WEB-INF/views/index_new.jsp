@@ -87,7 +87,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="search-wrap-1 ftco-animate p-4 px-5" style="margin-top: 0;">
-											<form action="#">
+											<form action="${root}/housedata/sido">
 												<div class="row">
 													<div class="col-lg align-items-end">
 														<div class="form-group">
@@ -105,6 +105,8 @@
 															</div>
 														</div>
 													</div>
+												</form>
+												<form action="${root}/housedata/sido">
 													<div class="col-lg align-items-end">
 														<div class="form-group">
 															<label for="#">구/군</label>
@@ -113,7 +115,7 @@
 																	<div class="icon">
 																		<span class="ion-ios-arrow-down"></span>
 																	</div>
-																	<select name="" id="gugun"
+																	<select name="" id="select2_gugun"
 																		class="form-control">
 																		<option value="0">선택</option>
 																	</select>
@@ -121,6 +123,8 @@
 															</div>
 														</div>
 													</div>
+												</form>
+												<form action="${root}/housedata/sido">
 													<div class="col-lg align-items-end">
 														<div class="form-group">
 															<label for="#">동</label>
@@ -129,7 +133,7 @@
 																	<div class="icon">
 																		<span class="ion-ios-arrow-down"></span>
 																	</div>
-																	<select name="" id="dong"
+																	<select name="" id="select3_dong"
 																		class="form-control">
 																		<option value="0">선택</option>
 																	</select>
@@ -392,7 +396,7 @@
 						act: "sido"
 					}, function (data, status) {
 						$.each(data, function (index, vo) {
-							$("#sido").append(
+							$("#select1_sido").append(
 								"<option value='" + vo.sido_code + "'>" +
 								vo.sido_name + "</option>");
 						}); //each
