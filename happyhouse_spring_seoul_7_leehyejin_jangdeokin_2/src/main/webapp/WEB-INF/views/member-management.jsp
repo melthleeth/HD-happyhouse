@@ -382,7 +382,7 @@ table.table .avatar {
 				<div class="col-md-9 ftco-animate text-center">
 					<h1 class="mb-2 bread">Manage</h1>
 					<p class="breadcrumbs">
-						<span class="mr-2"><a href="index.jsp">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Manage <i class="ion-ios-arrow-forward"></i></span>
+						<span class="mr-2"><a href="${ root }index">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Manage <i class="ion-ios-arrow-forward"></i></span>
 					</p>
 				</div>
 			</div>

@@ -11,7 +11,7 @@ function login() {
 		alert("비밀번호를 입력하세요");
 		return;
 	} else {
-		document.getElementById("loginform").action = "${root}/login.do";
+		document.getElementById("loginform").action = "${root}/login";
 		document.getElementById("loginform").submit();
 	}
 }
@@ -43,7 +43,7 @@ function login() {
 	</c:when>
 	<c:otherwise>
 		<div class="col-lg-6" align="center">
-			${userinfo.username}님 로그인중  <a href="${root}/logout.do">로그아웃</a>
+			${userinfo.username}님 로그인중  <a href="${root}/logout">로그아웃</a>
 		</div>
 	</c:otherwise>
 </c:choose>
