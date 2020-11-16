@@ -339,20 +339,55 @@ table.table .avatar {
 		});
 
 		$("#update").click(function() {
-			//event.preventDefault();
-			//getContextPath()
-			var url = getContextPath() + '/main.do?action=update&memberno=' + $('#updatememberno').val() + "&email=" + $('#updateEmail').val() + "&address=" + $('#updateAddress').val() + "&phone=" + $('#updatePhone').val();
-			//url.replace("&", "%26");
-			//url = replace(url);
-			//alert(url);
-			location.href = url;
-			//$("#updateForm").attr("action", url).submit();
+			let modifyinfo = JSON.stringify({
+				"memberno" : $('#updatememberno').val(),
+				"email" : $('#updateEmail').val(), 
+				"address" : $('#updateAddress').val(), 
+				"phone" : $('#updatePhone').val()
+			   });
+			console.log($('#updatememberno').val());
+			$.ajax({
+				url:'${root}/member/update',  
+				type:'PUT',
+				contentType:'application/json;charset=utf-8',
+				dataType:'json',
+				data: modifyinfo,
+				success:function(users) {
+					console.log("sss");
+					location.href = "${root}/management";
+				},
+				error:function(xhr,status,msg){
+					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+				}
+			});
 		});
+		
+		$("#delete").click(function() {
+			var delid = $("#deletememberno").val();
+			console.log(delid);
+			$.ajax({
+				url:'${root}/member/delete/' + delid,  
+				type:'DELETE',
+				contentType:'application/json;charset=utf-8',
+				dataType:'json',
+				success:function(users) {
+					location.href = "${root}/management";
+				},
+				error:function(xhr,status,msg){
+					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+				}
+			});
+		})
 	});
 
 	function setMemberNo(num) {
 		$("#updatememberno").val(num);
 	}
+	
+	function setDeleteNo(num) {
+		$("#deletememberno").val(num);
+	}
+	
 
 	function getContextPath() {
 		var hostIndex = location.href.indexOf(location.host) + location.host.length;
@@ -382,45 +417,12 @@ table.table .avatar {
 				<div class="col-md-9 ftco-animate text-center">
 					<h1 class="mb-2 bread">Manage</h1>
 					<p class="breadcrumbs">
-						<span class="mr-2"><a href="${ root }index">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Manage <i class="ion-ios-arrow-forward"></i></span>
+						<span class="mr-2"><a href="${ root }/index">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Manage <i class="ion-ios-arrow-forward"></i></span>
 					</p>
 				</div>
 			</div>
 		</div>
 	</section>
-
-	<!-- <section class="ftco-section contact-section">
-        <div class="container">
-            <div class="row d-flex contact-info">
-                <div class="col-md-3 d-flex">
-                    <div class="bg-light align-self-stretch box p-4 text-center">
-                        <h3 class="mb-4">Address</h3>
-                        <p>198 West 21th Street, Suite 721 New York NY 10016</p>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex">
-                    <div class="bg-light align-self-stretch box p-4 text-center">
-                        <h3 class="mb-4">Contact Number</h3>
-                        <p><a href="tel://1234567920">+ 1235 2355 98</a></p>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex">
-                    <div class="bg-light align-self-stretch box p-4 text-center">
-                        <h3 class="mb-4">Email Address</h3>
-                        <p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex">
-                    <div class="bg-light align-self-stretch box p-4 text-center">
-                        <h3 class="mb-4">Website</h3>
-                        <p><a href="#">yoursite.com</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-
 
 	<div class="container-xl">
 		<div class="table-responsive">
@@ -436,12 +438,6 @@ table.table .avatar {
 								<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 							</form>
 						</div>
-						<!-- <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
-                                    class="material-icons">&#xE147;</i> <span>Add New User</span></a>
-                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i
-                                    class="material-icons">&#xE15C;</i> <span>Delete</span></a>
-                        </div> -->
 					</div>
 				</div>
 				<table class="table table-striped table-hover">
@@ -470,103 +466,13 @@ table.table .avatar {
 										<td>${member.phone}</td>
 										<td>
 											<a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="setMemberNo(${member.memberno})"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a> 
-											<a href='${root}/main.do?action=delete&memberno=${member.memberno}' class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete"<%-- onclick="setMemberno(${member.memberno})" --%>>&#xE872;</i></a>
+											<a href='#deleteEmployeeModal' class="delete" data-toggle="modal" onclick="setDeleteNo(${member.memberno})"><i class="material-icons" data-toggle="tooltip" title="Delete"<%-- onclick="setMemberno(${member.memberno})" --%>>&#xE872;</i></a>
 											<%--< button id="deleteBtn" name="deleteBtn" value="Delete" onclick="deleteMember(${member.memberno})"></button> --%>
 										</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
-						<!-- <tr>
-                            <td>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                    <label for="checkbox1"></label>
-                                </span>
-                            </td>
-                            <td>Thomas Hardy</td>
-                            <td>thomashardy@mail.com</td>
-                            <td>89 Chiaroscuro Rd, Portland, USA</td>
-                            <td>(171) 555-2222</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                    <label for="checkbox2"></label>
-                                </span>
-                            </td>
-                            <td>Dominique Perrier</td>
-                            <td>dominiqueperrier@mail.com</td>
-                            <td>Obere Str. 57, Berlin, Germany</td>
-                            <td>(313) 555-5735</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                    <label for="checkbox3"></label>
-                                </span>
-                            </td>
-                            <td>Maria Anders</td>
-                            <td>mariaanders@mail.com</td>
-                            <td>25, rue Lauriston, Paris, France</td>
-                            <td>(503) 555-9931</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox4" name="options[]" value="1">
-                                    <label for="checkbox4"></label>
-                                </span>
-                            </td>
-                            <td>Fran Wilson</td>
-                            <td>franwilson@mail.com</td>
-                            <td>C/ Araquil, 67, Madrid, Spain</td>
-                            <td>(204) 619-5731</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                                    <label for="checkbox5"></label>
-                                </span>
-                            </td>
-                            <td>Martin Blank</td>
-                            <td>martinblank@mail.com</td>
-                            <td>Via Monte Bianco 34, Turin, Italy</td>
-                            <td>(480) 631-2097</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr> -->
 					</tbody>
 				</table>
 

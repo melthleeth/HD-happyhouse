@@ -59,7 +59,7 @@
 			alert("비밀번호를 입력하세요");
 			return;
 		} else {
-			document.getElementById("loginForm").action = "${root}/user/login";
+			document.getElementById("loginForm").action = "${root}/login";
 			document.getElementById("loginForm").submit();
 		}
 	}
@@ -127,9 +127,9 @@
 						</c:when>
 						<c:otherwise>
 							<li class="nav-item"><a href="${root}/management" class="nav-link">Manage</a></li>
-							<li class="nav-item cta"><a href="${root}/user/logout"
+							<li class="nav-item cta"><a href="${root}/logout"
 								class="nav-link"><span> ${userinfo.username}님 로그인중</span></a></li>
-							<li class="nav-item cta"><a href="${root}/user/logout"
+							<li class="nav-item cta"><a href="${root}/logout"
 								class="nav-link"><span> Logout</span></a></li>
 						</c:otherwise>
 					</c:choose>
@@ -148,7 +148,7 @@
 						aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form action="${ root}/user/login" method="post">
+					<form action="${ root}/login" method="post">
 						<div class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user"></i></span>
