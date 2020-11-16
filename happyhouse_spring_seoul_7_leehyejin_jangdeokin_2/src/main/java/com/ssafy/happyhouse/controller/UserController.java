@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import com.ssafy.happyhouse.model.MemberDto;
 import com.ssafy.happyhouse.model.service.MemberService;
 
+import io.swagger.annotations.ApiOperation;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -19,11 +21,13 @@ public class UserController {
 	@Autowired
 	private MemberService userService;
 	
+	@ApiOperation(value = "로그인 default", response = String.class)
 	@GetMapping(value = "/login")
 	public String login() {
 		return "user/login";
 	}
 	
+	@ApiOperation(value = "로그인 - map에 들어온 회원정보로", response = String.class)
 	@PostMapping(value = "/login")
 	public String login(@RequestParam Map<String, String> map, Model model, HttpSession session, HttpServletResponse response) {
 		try {
@@ -42,6 +46,7 @@ public class UserController {
 		return "index";
 	}
 	
+	@ApiOperation(value = "로그아웃 (= 세션 만료)", response = String.class)
 	@GetMapping(value = "/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

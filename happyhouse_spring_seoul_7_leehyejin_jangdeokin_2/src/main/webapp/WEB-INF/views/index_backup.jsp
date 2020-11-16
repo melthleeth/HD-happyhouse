@@ -2,9 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 	<html lang="ko">
-
 <head>
-	<title>HappyHouse_Front_End_서울_7_이혜진_최낙훈</title>
+	<title>HappyHouse_Front_End_서울_7_이혜진_장덕인</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -12,24 +11,24 @@
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 
-	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="/css/animate.css">
 
-	<link rel="stylesheet" href="css/owl.carousel.min.css">1
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="/css/magnific-popup.css">
 
-	<link rel="stylesheet" href="css/aos.css">
+	<link rel="stylesheet" href="/css/aos.css">
 
-	<link rel="stylesheet" href="css/ionicons.min.css">
+	<link rel="stylesheet" href="/css/ionicons.min.css">
 
-	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
-	<link rel="stylesheet" href="css/jquery.timepicker.css">
+	<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="/css/jquery.timepicker.css">
 
 
-	<link rel="stylesheet" href="css/flaticon.css">
-	<link rel="stylesheet" href="css/icomoon.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="/css/flaticon.css">
+	<link rel="stylesheet" href="/css/icomoon.css">
+	<link rel="stylesheet" href="/css/style.css">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -53,244 +52,7 @@
 
 <body>
 	<jsp:include page="./nav.jsp"></jsp:include>
-	
-	<!-- END nav -->
 
-
-	
-	<!-- <div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-
-			//Modal content
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Login</h4>
-				</div>
-				<div class="modal-body">
-					<p>Some text in the modal.</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	<!-- Sign In modal end -->
-
-
-	<!-- **** Welcome Maps Area Start **** -->
-	<!-- <div class="welcome-area wow fadeInUp" data-wow-delay="200ms">
-        <div class="google-maps">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17107.2892861271!2d-74.01626372475907!3d40.714272545051664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbd!4v1551762805743" allowfullscreen></iframe>
-        </div>
-	</div> -->
-	<!-- <section>
-        <div class="slider-item p-3" style="height: 1200px;" align="center">
-            <div class="container">
-                <iframe src="./map.html" style="width: 80%; height: 600px;"></iframe>
-            </div>
-        </div>
-
-    </section> -->
-	<!-- **** Welcome Maps Area End **** -->
-
-	<!-- <section class="home-slider owl-carousel">
-		<div class="slider-item">
-			<div class="overlay"></div>
-			<div class="container d-md-block d-none">
-				<div class="row d-md-flex slider-text align-items-center justify-content-end"
-					data-scrollax-parent="true">
-					<div class="col-md-7 d-flex align-items-center ftco-animate"
-						data-scrollax=" properties: { translateY: '70%' }">
-						<div class="text pb-4 pt-5">
-							<h1 class="mb-4">Taylor Plan, Orchard House</h1>
-							<div class="desc">
-								<p>A small river named Duden flows by their place and supplies it with the necessary
-									regelialia. It is a paradisematic country.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="img" style="background-image:url(images/bg_2.jpg);">
-				<div class="container">
-					<div class="row d-flex justify-content-start">
-						<div class="col-md-6 col-lg-4">
-							<div class="details p-5">
-								<span class="cat d-block mb-4">House</span>
-								<h3 class="mb-3">Taylor Plan, Orchard House</h3>
-								<p class="loc"><span class="icon-my_location mr-2"></span> Melbourne, Vic 3004, NC USA
-								</p>
-								<ul class="mb-4">
-									<li><span>Area:</span> <span>250sqft</span></li>
-									<li><span>Bedroom</span> <span>3</span></li>
-									<li><span>Bathroom:</span> <span>3</span></li>
-									<li><span>Garage:</span> <span>1</span></li>
-								</ul>
-								<p><a href="#" class="btn btn-black btn-outline-black py-3">View Properties</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="slider-item">
-			<div class="overlay"></div>
-			<div class="container d-md-block d-none">
-				<div class="row d-md-flex slider-text align-items-center justify-content-end"
-					data-scrollax-parent="true">
-					<div class="col-md-7 d-flex align-items-center ftco-animate"
-						data-scrollax=" properties: { translateY: '70%' }">
-						<div class="text pb-4 pt-5">
-							<h1 class="mb-4">Rose Villa, USA</h1>
-							<div class="desc">
-								<p>A small river named Duden flows by their place and supplies it with the necessary
-									regelialia. It is a paradisematic country.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="img" style="background-image:url(images/bg_1.jpg);">
-				<div class="container">
-					<div class="row d-flex justify-content-start">
-						<div class="col-md-6 col-lg-4">
-							<div class="details p-5">
-								<span class="cat d-block mb-4">House</span>
-								<h3 class="mb-3">Rose Villa, USA</h3>
-								<p class="loc"><span class="icon-my_location mr-2"></span> Melbourne, Vic 3004, NC USA
-								</p>
-								<ul class="mb-4">
-									<li><span>Area:</span> <span>250sqft</span></li>
-									<li><span>Bedroom</span> <span>3</span></li>
-									<li><span>Bathroom:</span> <span>3</span></li>
-									<li><span>Garage:</span> <span>1</span></li>
-								</ul>
-								<p><a href="#" class="btn btn-black btn-outline-black py-3">View Properties</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> -->
-
-	<!-- option selection start -->
-
-	<!-- <section class="ftco-section ftco-no-pb ftco-no-pt">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="search-wrap-1 ftco-animate p-4 px-5" style="margin-top:0;">
-						<form action="#" class="search-property-1">
-							<div class="row">
-								<div class="col-lg align-items-end">
-									<div class="form-group">
-										<label for="#">Location</label>
-										<div class="form-field">
-											<div class="icon"><span class="ion-ios-search"></span></div>
-											<input type="text" class="form-control" placeholder="City/Locality Name">
-										</div>
-									</div>
-								</div>
-								<div class="col-lg align-items-end">
-									<div class="form-group">
-										<label for="#">도/광역시</label>
-										<div class="form-field">
-											<div class="select-wrap">
-												<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-												<select name="" id="" class="form-control">
-													<optgroup label="광역시">
-														<option value="">서울특별시</option>
-														<option value="">부산광역시</option>
-														<option value="">대구광역시</option>
-														<option value="">인천광역시</option>
-														<option value="">광주광역시</option>
-														<option value="">대전광역시</option>
-														<option value="">울산광역시</option>
-														<option value="">세종특별자치시</option>
-													</optgroup>
-													<optgroup>
-														<option value="">경기도</option>
-														<option value="">강원도</option>
-														<option value="">충청북도</option>
-														<option value="">충청남도</option>
-														<option value="">전라북도</option>
-														<option value="">전라남도</option>
-														<option value="">경상북도</option>
-														<option value="">경상남도</option>
-														<option value="">제주특별자치도</option>
-													</optgroup>
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg align-items-end">
-									<div class="form-group">
-										<label for="#">구/군</label>
-										<div class="form-field">
-											<div class="select-wrap">
-												<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-												<select name="" id="" class="form-control">
-													<option value="">서초구</option>
-													<option value="">동작구</option>
-													<option value="">강남구</option>
-													<option value="">송파구</option>
-
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg align-items-end">
-									<div class="form-group">
-										<label for="#">동</label>
-										<div class="form-field">
-											<div class="select-wrap">
-												<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-												<select name="" id="" class="form-control">
-													<option value="">역삼동</option>
-													<option value="">일원동</option>
-													<option value="">논현동</option>
-													<option value="">삼성동</option>
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg align-items-end">
-									<div class="form-group">
-										<label for="#">상세검색</label>
-										<div class="form-field">
-											<div class="select-wrap">
-												<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-												<select name="" id="" class="form-control">
-													<option value="">아파트</option>
-													<option value="">동</option>
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg align-self-end">
-									<div class="form-group">
-										<div class="form-field">
-											<input type="submit" value="Search" class="form-control btn btn-primary">
-										</div>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> -->
-
-	<!--  option selection end  -->
 	<section id="section-map">
 		<div class="container">
 
@@ -361,7 +123,7 @@
 					});//change
 					
 					// map은 HouseMapController의 annotation
-					/* $("#detailSearch_apt_dong").change(function() {
+					$("#detailSearch_apt_dong").change(function() {
 						$.get("${pageContext.request.contextPath}/map"
 								,{act:"apt", detailSearch_apt_dong:$("#detailSearch_apt_dong").val()}
 								,function(data, status){
@@ -384,30 +146,31 @@
 						);//get
 					});//change
 					
-				});//ready */
+					$("#btn_detailedSearch").on("click", function() {
+						$.get("${pageContext.request.contextPath}/map"
+								,{"act":"searchByKeyword", "searchType":$("#detailSearch_apt_dong").val()
+								,"detailedSearch" : $("#detailedSearch").val()}
+								,function(data, status){
+									$("#searchResult").empty();
+									$.each(data, function(index, vo) {
+										let str = "<tr class="+colorArr[index%2]+">"
+										+ "<td>" + vo.no + "</td>"
+										+ "<td>" + vo.dong + "</td>"
+										+ "<td>" + vo.aptName + "</td>"
+										+ "<td>" + vo.jibun + "</td>"
+										+ "<td>" + vo.dealAmount + "</td>"
+										+"<td id='lat_"+index+"'></td><td id='lng_"+index+"'></td></tr>";
+										$("tbody").append(str);
+										$("#searchResult").append(vo.dong+" "+vo.aptName+" "+vo.jibun+"<br>");
+									});//each
+									geocode(data);
+								}//function
+								, "json"
+						);//get
+					}); // onclick: search
+					
+				});//ready
 				
-				
-				$("#btn_detailedSearch").on("click", function() {
-					$.get("${pageContext.request.contextPath}/map"
-							,{act:"searchByKeyword", searchType:$("#detailSearch_apt_dong").val()}
-							,function(data, status){
-								$("#searchResult").empty();
-								$.each(data, function(index, vo) {
-									let str = "<tr class="+colorArr[index%2]+">"
-									+ "<td>" + vo.no + "</td>"
-									+ "<td>" + vo.dong + "</td>"
-									+ "<td>" + vo.aptName + "</td>"
-									+ "<td>" + vo.jibun + "</td>"
-									+ "<td>" + vo.dealAmount + "</td>"
-									+"<td id='lat_"+index+"'></td><td id='lng_"+index+"'></td></tr>";
-									$("tbody").append(str);
-									$("#searchResult").append(vo.dong+" "+vo.aptName+" "+vo.jibun+"<br>");
-								});//each
-								geocode(data);
-							}//function
-							, "json"
-					);//get
-				}); // onclick: search
 				
 				function geocode(jsonData) {
 					let idx = 0;
@@ -471,6 +234,7 @@
 										</div>
 									</div>
 								</div> -->
+								
 								<div class="col-lg align-items-end">
 									<div class="form-group">
 										<label for="#">도/광역시</label>
@@ -484,6 +248,7 @@
 										</div>
 									</div>
 								</div>
+								
 								<div class="col-lg align-items-end">
 									<div class="form-group">
 										<label for="#">구/군</label>
@@ -516,7 +281,7 @@
 										<div class="form-field">
 											<div class="select-wrap">
 												<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-												<select name="" id="" class="form-control">
+												<select name="detailSearch_apt_dong" id="detailSearch_apt_dong" class="form-control">
 													<option value="apt">아파트</option>
 													<option value="dong">동</option>
 												</select>
@@ -528,7 +293,8 @@
 								<div class="col-lg align-self-end">
 									<div class="form-group">
 										<div class="form-field">
-											<input id="btn_detailedSearch" type="button" value="Search" class="form-control btn btn-primary">
+											<button id="btn_detailedSearch" class="btn btn-primary">Search</button>
+											<!-- <input type="submit" value="Search" class="form-control btn btn-primary"> -->
 										</div>
 									</div>
 								</div>
@@ -588,7 +354,7 @@
 						<div class="item">
 							<div class="project">
 								<div class="img">
-									<img src="images/work-1.jpg" class="img-fluid" alt="Colorlib Template">
+									<img src="./images/work-1.jpg" class="img-fluid" alt="Colorlib Template">
 									<div class="text">
 										<span>Sale</span>
 										<h3><a href="properties.jsp">Fatima <br> Subdivision</a></h3>
@@ -670,277 +436,6 @@
 			</div>
 			</div>
 	</section>
-
-
-
-	<!-- <section class="ftco-section ftco-no-pb">
-		<div class="container">
-			<div class="row no-gutters">
-				<div class="col-md-5 p-md-5 img img-2" style="background-image: url(images/About.jpg);">
-				</div>
-				<div class="col-md-7 wrap-about pb-md-5 ftco-animate">
-					<div class="heading-section mb-4 ml-md-4 pl-md-5">
-						<h2 class="mb-4">We can help you to find luxurious and beautiful properties in your local area
-						</h2>
-					</div>
-					<div class="pl-md-5 ml-md-4 mb-5">
-						<p>When she reached the first hills of the Italic Mountains, she had a last view back on the
-							skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of
-							her own road, the Line Lane.</p>
-						<div class="row my-5 pt-2">
-							<div class="col-lg-6">
-								<div class="services-2 px-4 text-center">
-									<div class="icon d-flex justify-content-center align-items-center"><span
-											class="flaticon-pin"></span></div>
-									<div class="text">
-										<h3>Find Places Anywhere In The World</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="services-2 px-4 text-center">
-									<div class="icon d-flex justify-content-center align-items-center"><span
-											class="flaticon-detective"></span></div>
-									<div class="text">
-										<h3>We Have Agents With Experience</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="services-2 px-4 text-center">
-									<div class="icon d-flex justify-content-center align-items-center"><span
-											class="flaticon-house"></span></div>
-									<div class="text">
-										<h3>Buy &amp; Rent Modern Properties</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="services-2 px-4 text-center">
-									<div class="icon d-flex justify-content-center align-items-center"><span
-											class="flaticon-purse"></span></div>
-									<div class="text">
-										<h3>Making Money</h3>
-									</div>
-								</div>
-							</div>
-						</div>
-						<p><a href="#" class="btn-custom">Learn More <span
-									class="ml-2 ion-ios-arrow-forward"></span></a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<div class="heading-section mb-5 ftco-animate">
-						<h2 class="mb-4">Welcome to Hamlet A Real Estate Agency</h2>
-						<p>Far far away, behind the word mountains, far from the countries</p>
-					</div>
-					<div class="about-img img p-5 d-flex align-items-center"
-						style="background-image: url(images/bg_1.jpg);">
-						<div class="about-div">
-							<h4 style="color:white;">Buying A Properties the all-powerful Pointing has no control about
-								the blind texts it is an almost unorthographic life.</h4>
-							<p class="mb-0"><a href="#" class="btn-custom-2">Read more <span
-										class="ml-2 icon-long-arrow-right"></span></a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 d-flex">
-					<div class="img img-3 p-5 d-flex align-self-stretch border"
-						style="background-image: url(images/about-3.jpg);">
-						<div class="about-div bg-darken about-wrap">
-							<h4 style="color:white;">Renting A Properties Pointing has no control about the blind texts
-								it is an almost unorthographic life.</h4>
-							<p class="mb-0"><a href="#" class="btn-custom-2">Read more <span
-										class="ml-2 icon-long-arrow-right"></span></a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<section class="ftco-section ftco-no-pt testimony-section">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3">
-				<div class="col-md-8 text-center heading-section ftco-animate">
-					<h2 class="mb-4">Our satisfied customer says</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-				</div>
-			</div>
-			<div class="row ftco-animate">
-				<div class="col-md-12">
-					<div class="carousel-testimony owl-carousel">
-						<div class="item">
-							<div class="testimony-wrap p-4 pb-5">
-								<div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
-								</div>
-								<div class="text">
-									<span class="quote d-flex align-items-center justify-content-center">
-										<i class="icon-quote-left"></i>
-									</span>
-									<p class="mb-4 line">Far far away, behind the word mountains, far from the countries
-										Vokalia and Consonantia, there live the blind texts.</p>
-									<div class="mb-4">
-										<p class="name">Gary Smith</p>
-										<span class="position">Buyer</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimony-wrap p-4 pb-5">
-								<div class="user-img mb-4" style="background-image: url(images/person_2.jpg)">
-								</div>
-								<div class="text">
-									<span class="quote d-flex align-items-center justify-content-center">
-										<i class="icon-quote-left"></i>
-									</span>
-									<p class="mb-4 line">Far far away, behind the word mountains, far from the countries
-										Vokalia and Consonantia, there live the blind texts.</p>
-									<div class="mb-4">
-										<p class="name">Ronald Dock</p>
-										<span class="position">Buyer</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimony-wrap p-4 pb-5">
-								<div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
-								</div>
-								<div class="text">
-									<span class="quote d-flex align-items-center justify-content-center">
-										<i class="icon-quote-left"></i>
-									</span>
-									<p class="mb-4 line">Far far away, behind the word mountains, far from the countries
-										Vokalia and Consonantia, there live the blind texts.</p>
-									<div class="mb-4">
-										<p class="name">Donald Simon</p>
-										<span class="position">Buyer</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimony-wrap p-4 pb-5">
-								<div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
-								</div>
-								<div class="text">
-									<span class="quote d-flex align-items-center justify-content-center">
-										<i class="icon-quote-left"></i>
-									</span>
-									<p class="mb-4 line">Far far away, behind the word mountains, far from the countries
-										Vokalia and Consonantia, there live the blind texts.</p>
-									<div class="mb-4">
-										<p class="name">Henry Smith</p>
-										<span class="position">Broker</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimony-wrap p-4 pb-5">
-								<div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
-								</div>
-								<div class="text">
-									<span class="quote d-flex align-items-center justify-content-center">
-										<i class="icon-quote-left"></i>
-									</span>
-									<p class="mb-4 line">Far far away, behind the word mountains, far from the countries
-										Vokalia and Consonantia, there live the blind texts.</p>
-									<div class="mb-4">
-										<p class="name">John Buff</p>
-										<span class="position">Agent</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-section ftco-no-pt">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 mb-5 heading-section ftco-animate">
-					<h2 class="mb-4">Press Releases</h2>
-					<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and
-						Consonantia.</p>
-					<p><a href="#" class="btn-custom">Read our blog <span class="ml-2 ion-ios-arrow-forward"></span></a>
-					</p>
-				</div>
-				<div class="col-md-9">
-					<div class="row">
-						<div class="col-md-4 ftco-animate">
-							<div class="blog-entry">
-								<a href="blog-single.html" class="block-20"
-									style="background-image: url('images/image_1.jpg');">
-								</a>
-								<div class="text py-4">
-									<div class="meta mb-2">
-										<div><a href="#">Jan. 20, 2019</a></div>
-										<div><a href="#">Admin</a></div>
-										<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-									</div>
-									<div class="desc">
-										<h3 class="heading"><a href="#">Pointing has no control about the blind
-												texts</a></h3>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 ftco-animate">
-							<div class="blog-entry" data-aos-delay="100">
-								<a href="blog-single.html" class="block-20"
-									style="background-image: url('images/image_2.jpg');">
-								</a>
-								<div class="text py-4">
-									<div class="meta mb-2">
-										<div><a href="#">Jan. 20, 2019</a></div>
-										<div><a href="#">Admin</a></div>
-										<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-									</div>
-									<div class="desc">
-										<h3 class="heading"><a href="#">Pointing has no control about the blind
-												texts</a></h3>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 ftco-animate">
-							<div class="blog-entry" data-aos-delay="200">
-								<a href="blog-single.html" class="block-20"
-									style="background-image: url('images/image_3.jpg');">
-								</a>
-								<div class="text py-4">
-									<div class="meta mb-2">
-										<div><a href="#">Jan. 20, 2019</a></div>
-										<div><a href="#">Admin</a></div>
-										<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-									</div>
-									<div class="desc">
-										<h3 class="heading"><a href="#">Pointing has no control about the blind
-												texts</a></h3>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> -->
 
 	<section class="ftco-section ftco-no-pb ftco-no-pt ftco-counter img ftco-animate" id="section-counter">
 		<div class="container">

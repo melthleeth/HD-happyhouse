@@ -1,26 +1,32 @@
 package com.ssafy.happyhouse.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/")
 public class PageController {
-	@RequestMapping(value = "/about", method = RequestMethod.GET)
-	public String about() {
-		return "about";
-	}
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	
+	@GetMapping(value = "/index")
 	public String index() {
 		return "index";
 	}
-	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public String signup() {
-		return "signup";
+	@GetMapping(value = "/board")
+	public String board() {
+		return "board";
 	}
-	@RequestMapping(value = "/management", method = RequestMethod.GET)
+	@GetMapping(value = "/qna")
+	public String about() {
+		return "qna";
+	}
+	@GetMapping(value = "/management")
 	public String management() {
 		return "member-management";
+	}
+	@GetMapping(value = "/signup")
+	public String signup() {
+		return "signup";
 	}
 }

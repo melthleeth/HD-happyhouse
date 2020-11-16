@@ -13,6 +13,5 @@ public interface MemberService {
 	public MemberDto searchbyNameMember(String username) throws Exception;
 	public MemberDto searchMember(int memberno) throws Exception;
 	public String findPassword(String username) throws Exception;
-	
 	public MemberDto login(Map<String, String> map) throws Exception;
 }
