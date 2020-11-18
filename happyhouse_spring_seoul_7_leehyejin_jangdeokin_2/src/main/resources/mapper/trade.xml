@@ -5,17 +5,25 @@
 <mapper namespace="com.ssafy.happyhouse.model.dao.HouseMapDao">
 
 	<select id="getSido" resultType="SidoGugunCodeDto">
-		SELECT		left(sido_code,2), sido_code as sidoCode, sido_name as sidoName
+		SELECT		left(sido_code,2) as sidoCode, sido_code, sido_name as sidoName
 		FROM		sidocode
 		ORDER BY	sido_code
 	</select>
 
 	<select id="getGugunInSido" parameterType="String"
 		resultType="SidoGugunCodeDto">
-		SELECT		left(gugun_code,5), gugun_code as gugunCode, gugun_name as gugunName
+		SELECT		left(gugun_code,5) as gugunCode, gugun_code, gugun_name as gugunName
 		FROM		guguncode
-		WHERE		left(gugun_code,2) = #{gugun_code}
+		WHERE		left(gugun_code,2) = #{sido}
 		ORDER BY	gugun_code
+	</select>
+	
+	<select id="getDongInGugun" parameterType="String"
+		resultType="HouseDealDto">
+		SELECT		distinct dong, code
+		FROM		housedeal
+		WHERE		code = left(#{gugun},2)
+		ORDER BY	dong
 	</select>
 
 	<select id="getDongInfo" parameterType="String"
@@ -32,13 +40,7 @@
 		where		AptName like concat('%', #{detailedSearch}, '%')
 	</select>
 	
-	<select id="getDongInGugun" parameterType="String"
-		resultType="HouseDealDto">
-		SELECT		distinct dong, code
-		FROM		housedeal
-		WHERE		code = #{gugun}
-		ORDER BY	dong
-	</select>
+	
 	
 	<select id="getAptInDong" parameterType="String"
 		resultType="HouseDealDto">

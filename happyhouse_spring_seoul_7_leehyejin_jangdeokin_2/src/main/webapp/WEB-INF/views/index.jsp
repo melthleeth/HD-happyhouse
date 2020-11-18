@@ -108,7 +108,7 @@
 										}); //change
 										$("#gugun").change(function() {
 											$.ajax({
-												url : "${pageContext.request.contextPath}/dong/" + $("#gugun").val(),
+												url : "${pageContext.request.contextPath}/housedata/dong/" + $("#gugun").val(),
 												type : 'GET',
 												contentType : 'application/json;charset=utf-8',
 												dataType : 'json',
@@ -140,7 +140,7 @@
 													} //function
 													, "json"); //get */
 													$.ajax({
-														url : "${pageContext.request.contextPath}/donginfo/" + $("#dong").val(),
+														url : "${pageContext.request.contextPath}/housedata/donginfo/" + $("#dong").val(),
 														type : 'GET',
 														contentType : 'application/json;charset=utf-8',
 														dataType : 'json',
@@ -162,7 +162,7 @@
 										// map은 HouseMapController의 annotation
 										$("#detailSearch_apt_dong").change(
 												function() {
-													$.get("${pageContext.request.contextPath}/map", {
+													$.get("${pageContext.request.contextPath}/housedata/map", {
 														act : "apt",
 														detailSearch_apt_dong : $("#detailSearch_apt_dong").val()
 													}, function(data, status) {
@@ -183,7 +183,7 @@
 										$("#btn_detailedSearch").on(
 												"click",
 												function() {
-													$.get("${pageContext.request.contextPath}/map", {
+													$.get("${pageContext.request.contextPath}/housedata/map", {
 														"act" : "searchByKeyword",
 														"searchType" : $("#detailSearch_apt_dong").val(),
 														"detailedSearch" : $("#detailedSearch").val()
