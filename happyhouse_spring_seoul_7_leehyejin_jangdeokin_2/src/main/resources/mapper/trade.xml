@@ -22,7 +22,7 @@
 		resultType="HouseDealDto">
 		SELECT		distinct dong, code
 		FROM		housedeal
-		WHERE		code = left(#{gugun},2)
+		WHERE		code = #{gugun}
 		ORDER BY	dong
 	</select>
 

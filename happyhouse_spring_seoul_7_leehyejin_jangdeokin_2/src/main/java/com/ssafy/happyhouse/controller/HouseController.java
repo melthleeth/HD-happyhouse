@@ -44,7 +44,7 @@ public class HouseController {
 
 	@GetMapping(value="/dong/{gugun}", headers = {"Content-type=application/json"})
 	List<HouseDealDto> getDongInGugun(@PathVariable String gugun) throws Exception {
-		System.out.println("get dong okay, g" + houseMapService.getDongInGugun(gugun).toString());
+		System.out.println("get dong okay, gugun: " + gugun + ", " + houseMapService.getDongInGugun(gugun).toString());
 		return houseMapService.getDongInGugun(gugun);
 	}
 
