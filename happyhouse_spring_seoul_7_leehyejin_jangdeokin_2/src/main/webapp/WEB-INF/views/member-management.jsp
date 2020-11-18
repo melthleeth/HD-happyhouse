@@ -371,10 +371,12 @@ table.table .avatar {
 				contentType:'application/json;charset=utf-8',
 				dataType:'json',
 				success:function(users) {
-					location.href = "${root}/management";
+					console.log("ccccc");
+					/* setInterval(500); */
+					location.href = "${root}/management"; 
 				},
 				error:function(xhr,status,msg){
-					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+					alert("상태값 : " + status + " Http에러메시지 : "+msg);
 				}
 			});
 		})
@@ -570,7 +572,7 @@ table.table .avatar {
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-danger" id="delete" value="Delete">
+						<input type="submit" class="btn btn-danger" data-dismiss="modal" id="delete" value="Delete">
 					</div>
 				</form>
 			</div>
