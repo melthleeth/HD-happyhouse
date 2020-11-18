@@ -52,11 +52,23 @@
 #detailedSearch {
 	float: left;
 	padding: 5px 16px;
-	width: 10vw;
+	width: 7vw;
 	border-radius: 50px;
 	margin-top: 5px;
 	font-size: 17px;
 }
+
+#btn_detailedSearch {
+	width: 8vw;
+	height: 10vh;
+	font-size: 20pt;
+}
+
+#index_section > div > div > section > div > div > div > div > form > div > div:nth-child(4) {
+	border-left: 2px solid white;
+	padding-left: 5vw;
+}
+
 </style>
 </head>
 
@@ -113,6 +125,8 @@
 												contentType : 'application/json;charset=utf-8',
 												dataType : 'json',
 												success : function(data, status) {
+													console.log("동 불러와지냐?");
+													console.log(data);
 													$("#dong").empty();
 													$("#dong").append('<option value="0">선택</option>');
 													$.each(data, function(index, vo) {
@@ -123,22 +137,6 @@
 										}); //change
 										$("#dong").change(
 												function() {
-													/* $.get("${pageContext.request.contextPath}/map", {
-														act : "apt",
-														dong : $("#dong").val()
-													}, function(data, status) {
-														$("#searchResult").empty();
-														$.each(data, function(index, vo) {
-															let str = "<tr class=" + colorArr[index % 2] + ">" + "<td>" + vo.no + "</td>" + "<td>" + vo.dong + "</td>" + "<td>" + vo.aptName + "</td>"
-																	+ "<td>" + vo.jibun + "</td>" + "<td>" + vo.code + "</td>" + "<td>" + vo.dealAmount + "</td>"
-																	+ "<td id='lat_" + index + "'></td><td id='lng_" + index +
-											"'></td></tr>";
-															$("tbody").append(str);
-															$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
-														}); //each
-														geocode(data);
-													} //function
-													, "json"); //get */
 													$.ajax({
 														url : "${pageContext.request.contextPath}/housedata/donginfo/" + $("#dong").val(),
 														type : 'GET',
@@ -162,44 +160,54 @@
 										// map은 HouseMapController의 annotation
 										$("#detailSearch_apt_dong").change(
 												function() {
-													$.get("${pageContext.request.contextPath}/housedata/map", {
-														act : "apt",
-														detailSearch_apt_dong : $("#detailSearch_apt_dong").val()
-													}, function(data, status) {
-														$("#searchResult").empty();
-														$.each(data, function(index, vo) {
-															let str = "<tr class=" + colorArr[index % 2] + ">" + "<td>" + vo.no + "</td>" + "<td>" + vo.dong + "</td>" + "<td>" + vo.aptName + "</td>"
-																	+ "<td>" + vo.jibun + "</td>" + "<td>" + vo.code + "</td>" + "<td>" + vo.dealAmount + "</td>"
-																	+ "<td id='lat_" + index + "'></td><td id='lng_" + index +
-													"'></td></tr>";
-															$("tbody").append(str);
-															$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
-														}); //each
-														geocode(data);
-													} //function
-													, "json"); //get
+													$.ajax({
+														url: "${pageContext.request.contextPath}/housedata",
+														type: 'GET',
+														contentType: 'application/json;charset=utf-8',
+														dataType: 'json',
+														success: function(data, status) {
+															$("#searchResult").empty();
+															$.each(data, function(index, vo) {
+																let str = "<tr class=" + colorArr[index % 2] + ">" + "<td>" + vo.no + "</td>" + "<td>" + vo.dong + "</td>" + "<td>" + vo.aptName + "</td>"
+																		+ "<td>" + vo.jibun + "</td>" + "<td>" + vo.code + "</td>" + "<td>" + vo.dealAmount + "</td>"
+																		+ "<td id='lat_" + index + "'></td><td id='lng_" + index +
+														"'></td></tr>";
+																$("tbody").append(str);
+																$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
+															}); //each
+															geocode(data);
+														} //function
+													}) //ajax
 												}); //change
 
 										$("#btn_detailedSearch").on(
 												"click",
 												function() {
-													$.get("${pageContext.request.contextPath}/housedata/map", {
+													/* $.get("${pageContext.request.contextPath}/housedata/map", {
 														"act" : "searchByKeyword",
 														"searchType" : $("#detailSearch_apt_dong").val(),
 														"detailedSearch" : $("#detailedSearch").val()
-													}, function(data, status) {
-														$("#searchResult").empty();
-														$.each(data, function(index, vo) {
-															let str = "<tr class=" + colorArr[index % 2] + ">" + "<td>" + vo.no + "</td>" + "<td>" + vo.dong + "</td>" + "<td>" + vo.aptName + "</td>"
-																	+ "<td>" + vo.jibun + "</td>" + "<td>" + vo.dealAmount + "</td>"
-																	+ "<td id='lat_" + index + "'></td><td id='lng_" + index +
-													"'></td></tr>";
-															$("tbody").append(str);
-															$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
-														}); //each
-														geocode(data);
-													} //function
-													, "json"); //get
+													},  */
+													var option;
+													if ($("#detailSearch_apt_dong").val() === )
+													$.ajax({
+														url: "${pageContext.request.contextPath}/housedata",
+														type: 'GET',
+														contentType: 'application/json;charset=utf-8',
+														dataType: 'json',
+														success: function(data, status) {
+															$("#searchResult").empty();
+															$.each(data, function(index, vo) {
+																let str = "<tr class=" + colorArr[index % 2] + ">" + "<td>" + vo.no + "</td>" + "<td>" + vo.dong + "</td>" + "<td>" + vo.aptName + "</td>"
+																		+ "<td>" + vo.jibun + "</td>" + "<td>" + vo.dealAmount + "</td>"
+																		+ "<td id='lat_" + index + "'></td><td id='lng_" + index +
+														"'></td></tr>";
+																$("tbody").append(str);
+																$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
+															}); //each
+															geocode(data);
+														} //function
+												}) // jax
 												}); // onclick: search
 
 									}); //ready
