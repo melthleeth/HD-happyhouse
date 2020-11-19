@@ -25,29 +25,42 @@
 		WHERE		code = #{gugun}
 		ORDER BY	dong
 	</select>
-
+	
+	<select id="getAptInDong" parameterType="String"
+		resultType="HouseDealDto">
+		SELECT		no, dong, AptName, code, jibun, dealAmount, buildYear, dealYear, dealMonth, dealDay, area, floor, jibun, type
+		FROM		housedeal
+		WHERE		dong = #{dong}
+		ORDER BY	dealAmount desc
+	</select>
+	
+	<!-- tradingdata DB test -->
+<!-- 	<select id="getAptInDong" parameterType="String"
+		resultType="HouseDealDto">
+		SELECT		no, dong, name, regionCode, dealAmount, rentAmount, buildYear, dealYear, dealMonth, dealDay, area, floor, jibun, type
+		FROM		tradingdata
+		WHERE		dong like concat('%', #{dong}, '%')
+		ORDER BY	dealAmount desc
+	</select> -->
+	
+	
+	
+	
+	<!-- 상세검색 파트 -->
 	<select id="getDongInfo" parameterType="String"
 		resultType="HouseDealDto">
 		SELECT		no, dong, AptName, code, jibun, dealAmount
 		FROM		housedeal
-		WHERE		dong like concat('%', #{detailedSearch}, '%')
+		WHERE		dong like concat('%', #{value}, '%')
+		ORDER BY	dealAmount desc
 	</select>
 	
 	<select id="getAptInfo" parameterType="String"
 		resultType="HouseDealDto">
-		SELECT		no, dong, AptName, code, jibun
-		FROM		houseinfo
-		where		AptName like concat('%', #{detailedSearch}, '%')
-	</select>
-	
-	
-	
-	<select id="getAptInDong" parameterType="String"
-		resultType="HouseDealDto">
 		SELECT		no, dong, AptName, code, jibun, dealAmount
 		FROM		housedeal
-		WHERE		dong = #{dong}
-		ORDER BY	AptName
+		where		AptName like concat('%', #{value}, '%')
+		ORDER BY	dealAmount desc
 	</select>
 	
 </mapper>
