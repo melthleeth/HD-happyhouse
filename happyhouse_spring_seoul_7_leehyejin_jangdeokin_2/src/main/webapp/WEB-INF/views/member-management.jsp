@@ -210,7 +210,7 @@ table.table .avatar {
 }
 
 /* Custom checkbox */
-.custom-checkbox {
+/* .custom-checkbox {
 	position: relative;
 }
 
@@ -266,7 +266,7 @@ table.table .avatar {
 	cursor: auto;
 	box-shadow: none;
 	background: #ddd;
-}
+} */
 
 /* Modal styles */
 .modal .modal-dialog {
@@ -316,7 +316,7 @@ table.table .avatar {
 </style>
 <script>
 	$(document).ready(function() {
-		// Activate tooltip
+		/* // Activate tooltip
 		$('[data-toggle="tooltip"]').tooltip();
 
 		// Select/Deselect checkboxes
@@ -336,7 +336,7 @@ table.table .avatar {
 			if (!this.checked) {
 				$("#selectAll").prop("checked", false);
 			}
-		});
+		}); */
 
 		$("#update").click(function() {
 			let modifyinfo = JSON.stringify({
@@ -379,26 +379,35 @@ table.table .avatar {
 		})
 		
 		$("#search").click(function() {
-			var searchid = $("#searchmemberno").val();
-			console.log(searchid);
+			var searchname = $("#searchbyname").val();
+			console.log(searchname);
 			$.ajax({
-				url:'${root}/member/search/' + searchid,  
+				url:'${root}/member/search/' + searchname,  
 				type:'GET',
 				contentType:'application/json;charset=utf-8',
 				dataType:'json',
 				success:function(users) {
 					if(users != null) {
-						alert("id : " + users.memberno + "\n" +
-								"username : " + users.username	+ "\n" +
-								"email : " + users.email + "\n" + 
-								"phone : " + users.phone + "\n"
-								);
+						$("#searchResult").empty();
+						$.each(users, function(index, user) {
+							let str = "<tr>" + 
+							"<td>" + user.username + "</td>" + 
+							"<td>" + user.email + "</td>" +
+							"<td>" + user.address + "</td>" + 
+							"<td>" + user.phone + "</td>" + 	
+							"<td>" + "<a href='#editEmployeeModal' class='edit' data-toggle='modal' onclick='setMemberNo(${member.memberno})'>" + 
+							"<i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>" + 
+							"<a href='#deleteEmployeeModal' class='delete' data-toggle='modal' onclick='setDeleteNo(${member.memberno})'>" + 
+							"<i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a></td>" +
+							"</tr>";
+							$("#searchResult").append(str);
+						});
 					} else {
-						alert("없는 회원 번호입니다!");
+						alert("없는 회원입니다!");
 					}
 				},
 				error:function(xhr,status,msg){
-					alert("없는 회원 번호입니다!");
+					alert("없는 회원입니다!");
 					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
 				}
 			});
@@ -412,21 +421,11 @@ table.table .avatar {
 	function setDeleteNo(num) {
 		$("#deletememberno").val(num);
 	}
-	
 
 	function getContextPath() {
 		var hostIndex = location.href.indexOf(location.host) + location.host.length;
 		return location.href.substring(hostIndex, location.href.indexOf('/', hostIndex + 1));
 	}
-
-	// 팝업오픈하여 폼데이터 Post 전송
-    /* function updatePost(){
-        var frmData = document.updateForm;
-        frmData.target = pop_title ;
-        frmData.action = getContextPath() + "/main.do?action=updateMember" ;
-         
-        frmData.submit() ;
-    } */
 </script>
 </head>
 
@@ -459,8 +458,8 @@ table.table .avatar {
 								Manage <b>Users</b>
 							</h2>
 							<form class="form-inline">
-								<input class="form-control mr-sm-2" id="searchmemberno" type="search" placeholder="memberno로 검색" aria-label="Search">
-								<button class="btn btn-outline-info my-2 my-sm-0" id="search" name="search">Search</button>
+								<input class="form-control mr-sm-2" id="searchbyname" type="search" placeholder="" aria-label="Search">
+								<button type= "button" class="btn btn-outline-info my-2 my-sm-0" id="search" name="search">Search</button>
 							</form>
 						</div>
 					</div>
@@ -475,7 +474,7 @@ table.table .avatar {
 							<th>Actions</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="searchResult">
 						<c:choose>
 							<c:when test='${empty memberlist}'>
 								<tr>
@@ -484,6 +483,7 @@ table.table .avatar {
 							</c:when>
 							<c:otherwise>
 								<c:forEach var='member' items="${memberlist}">
+									<c:if test="${member.username != 'admin' }">
 									<tr>
 										<td>${member.username}</td>
 										<td>${member.email}</td>
@@ -494,6 +494,7 @@ table.table .avatar {
 											<a href='#deleteEmployeeModal' class="delete" data-toggle="modal" onclick="setDeleteNo(${member.memberno})"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 										</td>
 									</tr>
+									</c:if>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
@@ -544,13 +545,13 @@ table.table .avatar {
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<!-- <input type="submit" class="btn btn-info" value="Save"> -->
 						<input type="button" class="btn btn-info" data-dismiss="modal" value="Save" id="update" name="update">
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
+	
 	<!-- Delete Modal HTML -->
 	<div id="deleteEmployeeModal" class="modal fade">
 		<div class="modal-dialog">

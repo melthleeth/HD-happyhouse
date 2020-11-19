@@ -24,17 +24,11 @@
 		where memberno = #{memberno}
 	</delete>
 	
-	<select id="searchbyNameMembe" parameterType="String" resultType="MemberDto">
+	<select id="searchbyName" parameterType="String" resultType="MemberDto">
 		select memberno, username, password, email, phone, address
 		from member
-		where username = #{username}
+		where username like concat('%', #{username}, '%')
 	</select>
-	
-	 <select id="searchMember" parameterType="Integer" resultType="MemberDto">
-		select memberno, username, password, email, phone, address
-		from member
-		where memberno = #{memberno}
-	</select> 
 	
 	<select id="findPassword" parameterType="String" resultType="String">
 		select password

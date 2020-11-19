@@ -63,33 +63,10 @@
 		}
 	};
 	
-	/* function testtest() {
-		let username = JSON.stringify({
-			"username" : $('#fpusername').val();
-		});
-		console.log("소영이 짱~");
-		$.ajax({
-			url:'${root}/member/password/' + username,  
-			type:'GET',
-			contentType:'application/json;charset=utf-8',
-			dataType:'json',
-			success:function(pw) {
-				alert("YourPassword : " + pw);
-			},
-			error:function(xhr,status,msg){
-				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
-			}
-		}
-	}; */
-	
 	$(document).ready(function() {
 		$("#findpw").on('click', function() {
 			let username = $('#fpusername').val();
 			console.log("username => ", username);
-			/* let username = JSON.stringify("{
-				"username" : 
-			}");  */
-			console.log("!!!!!!~");
 			$.ajax({
 				url:'${root}/member/password/' + username,  
 				type:'GET',
@@ -138,7 +115,14 @@
 								href="#myModal" class="nav-link"><span>Sign Up</span></a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="nav-item"><a href="${root}/management" class="nav-link">Manage</a></li>
+							<c:choose>
+								<c:when test='${userinfo.username == "admin" }'>
+								<li class="nav-item"><a href="${root}/management" class="nav-link">Manage</a></li>
+								</c:when>
+								<c:otherwise>
+								<li class="nav-item"><a href="${root}/index" class="nav-link">MyPage</a></li>
+								</c:otherwise>
+							</c:choose>
 							<li class="nav-item cta"><a href="${root}/logout"
 								class="nav-link"><span> ${userinfo.username}님 로그인중</span></a></li>
 							<li class="nav-item cta"><a href="${root}/logout"

@@ -44,41 +44,28 @@ public class MemberController {
 		}
 
 	}
-	@ApiOperation(value = "전체 회원정보 가져오기", response = String.class)
-	@GetMapping(value = "/info")
-	public String getMemberList() throws Exception {
-		
-		return "member";
-	}
-	
-//	@ApiOperation(value = "회원정보 검색 - 회원이름으로", response = MemberDto.class)
-//	@GetMapping(value = "/search/{username}", headers = { "Content-type=application/json" })
-//	public MemberDto searchMember(@PathVariable String username) throws Exception {
-//		return memberService.searchbyNameMember(username);
+//	@ApiOperation(value = "전체 회원정보 가져오기", response = String.class)
+//	@GetMapping(value = "/info")
+//	public String getMemberList() throws Exception {
+//		
+//		return "member";
 //	}
-//
-	@ApiOperation(value = "회원정보 검색 - 회원번호로", response = MemberDto.class)
-	@GetMapping(value = "/search/{memberno}", headers = { "Content-type=application/json" })
-	@ResponseBody public MemberDto searchMember(@PathVariable int memberno) throws Exception {
-		System.out.println(memberService.searchMember(memberno).getUsername());
-		return memberService.searchMember(memberno);
+	
+	@ApiOperation(value = "회원정보 검색 - 회원이름으로", response = MemberDto.class)
+	@GetMapping(value = "/search/{username}", headers = { "Content-type=application/json" })
+	@ResponseBody public List<MemberDto> searchbyName(@PathVariable String username) throws Exception {
+		return memberService.searchbyName(username);
 	}
 
 	@ApiOperation(value = "비밀번호 찾기 - 회원이름으로", response = String.class)
 	@GetMapping(value = "/password/{username}", headers = { "Content-type=application/json" })
 	@ResponseBody public String findPassword(@PathVariable String username) throws Exception {
-		System.out.println("현재 작업중 !!");
-		System.out.println("username => "+username);
-		
-		String result = memberService.findPassword(username);
-	
-		return result;
+		return memberService.findPassword(username);
 	}
 
 	@ApiOperation(value = "회원정보 업데이트", response = MemberDto.class)
 	@PutMapping(value = "/update", headers = { "Content-type=application/json" })
 	@ResponseBody public List<MemberDto> updateMember(@RequestBody MemberDto member) throws Exception {
-		System.out.println(member.getMemberno());
 		memberService.updateMember(member);
 		return memberService.getMemberList();
 	}
