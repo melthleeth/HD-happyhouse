@@ -27,7 +27,6 @@
 <link rel="stylesheet" href="/css/magnific-popup.css">
 
 <link rel="stylesheet" href="/css/aos.css">
-
 <link rel="stylesheet" href="/css/ionicons.min.css">
 
 <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
@@ -62,38 +61,51 @@
 			document.getElementById("loginForm").action = "${root}/login";
 			document.getElementById("loginForm").submit();
 		}
-	}
+	};
+	
+	/* function testtest() {
+		let username = JSON.stringify({
+			"username" : $('#fpusername').val();
+		});
+		console.log("소영이 짱~");
+		$.ajax({
+			url:'${root}/member/password/' + username,  
+			type:'GET',
+			contentType:'application/json;charset=utf-8',
+			dataType:'json',
+			success:function(pw) {
+				alert("YourPassword : " + pw);
+			},
+			error:function(xhr,status,msg){
+				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+			}
+		}
+	}; */
+	
 	$(document).ready(function() {
-		$("#fpSubmitBtn").click(function() {
+		$("#findpw").on('click', function() {
+			let username = $('#fpusername').val();
+			console.log("username => ", username);
+			/* let username = JSON.stringify("{
+				"username" : 
+			}");  */
+			console.log("!!!!!!~");
 			$.ajax({
-				url : "${root}/main.do?action=findPW",
-				type : "POST",
-				data : {
-					"username" : $('#fpusername').val()
+				url:'${root}/member/password/' + username,  
+				type:'GET',
+				contentType:'application/json;charset=utf-8',
+				success:function(pw) {
+					console.log("data return => ", pw);
+					alert("YourPassword : " + pw);
 				},
-				success : function(data) {
-					//window.open("",data);
-					alert("해당 아이디의 비밀번호는 " + data + "입니다.");
-					location.href = "index.jsp";
-				},
-				error : function(request, error) {
-					alert("message:" + request.responseText);
+				error:function(xhr,status,msg){
+					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
 				}
 			});
-		});
+		})
 	});
-
-	/*  function findPW() {
-		if(document.getElementById("fpusername").value == "") {
-			alert("아이디를 입력하세요");
-			return;
-		} else {
-			document.getElementById("findPWForm").action = "${root}/main.do?action=findPW";
-			document.getElementById("findPWForm").submit();
-			alert($('password'));
-		}
-	}  */
-
+	
+	
 	function getContextPath() {
 		var hostIndex = location.href.indexOf(location.host)
 				+ location.host.length;
@@ -148,7 +160,7 @@
 						aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form action="${ root}/login" method="post">
+					<form action="${root}/login" method="post">
 						<div class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -180,7 +192,7 @@
 		</div>
 	</div>
 
-	<!-- Sign In Modal Start -->
+	<!-- Find Password Modal Start -->
 	<div id="pwModal" class="modal fade">
 		<div class="modal-dialog modal-login">
 			<div class="modal-content">
@@ -190,51 +202,24 @@
 						aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form action="${root }/member/findPW" method="post"
-						id="findPWForm">
+					<form id="findPWForm" name="findPWForm">
 						<div class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user"></i></span>
 								<input type="text" class="form-control" id="fpusername"
-									name="username" placeholder="Input Your Username."
+									name="fpusername" placeholder="Input Your Username."
 									required="required">
 							</div>
 						</div>
-						<!-- <div class="form-group">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-								<input type="password" class="form-control" id="password" name="password" placeholder="Password"
-									required="required">
-							</div>
-						</div> -->
 						<div>
-							<div id="fppassword"></div>
-						</div>
-						<div class="form-group">
-							<!--  -->
-							<!-- onclick="findPW()" -->
-							<button id="fpSubmitBtn" class="btn btn-primary btn-block btn-lg">Find
-								P/W</button>
+							<button id = "findpw" name = "findpw" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">
+							Find P/W
+							</button>
 						</div>
 					</form>
 				</div>
 				<div class="modal-footer">
 					Don't have an account? <a href="${ root }/signup">Create one</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="showpwModal" class="modal fade">
-		<div class="modal-dialog modal-login">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Show My Password</h4>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<div id="showpw"></div>
 				</div>
 			</div>
 		</div>

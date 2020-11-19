@@ -353,7 +353,6 @@ table.table .avatar {
 				dataType:'json',
 				data: modifyinfo,
 				success:function(users) {
-					console.log("sss");
 					location.href = "${root}/management";
 				},
 				error:function(xhr,status,msg){
@@ -371,8 +370,6 @@ table.table .avatar {
 				contentType:'application/json;charset=utf-8',
 				dataType:'json',
 				success:function(users) {
-					console.log("ccccc");
-					/* setInterval(500); */
 					location.href = "${root}/management"; 
 				},
 				error:function(xhr,status,msg){
