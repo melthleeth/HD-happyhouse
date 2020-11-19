@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -85,12 +86,12 @@
 							let colorArr = [ '', '' ];
 							$(document).ready(function() {
 								$.ajax({
-									url : '${pageContext.request.contextPath}/housedata/sido',
+									url : '${root}/housedata/step1',
 									type : 'GET',
 									contentType : 'application/json;charset=utf-8',
 									dataType : 'json',
 									success : function(data, status) {
-										console.log("시도 불러와지냐?");
+										console.log("시도 불러오기 성공");
 										console.log(data);
 										$.each(data, function(index, vo) {
 											//console.log(vo.sidoCode + " " + vo.sidoName);
@@ -103,12 +104,12 @@
 									function() {
 										$("#sido").change(function() {
 											$.ajax({
-												url : '${pageContext.request.contextPath}/housedata/sido/' + $("#sido").val(),
+												url : '${root}/housedata/step2/' + $("#sido").val(),
 												type : 'GET',
 												contentType : 'application/json;charset=utf-8',
 												dataType : 'json',
 												success : function(data, status) {
-													console.log("구군 불러와지냐?");
+													console.log("구군 불러오기 성공");
 													console.log(data);
 													$("#gugun").empty();
 													$("#gugun").append('<option value="0">선택</option>');
@@ -119,13 +120,14 @@
 											}) // ajax
 										}); //change
 										$("#gugun").change(function() {
+											console.log("path: ${root}/housedata/step3/" + $("#gugun").val());
 											$.ajax({
-												url : "${pageContext.request.contextPath}/housedata/dong/" + $("#gugun").val(),
+												url : "${root}/housedata/step3/" + $("#gugun").val(),
 												type : 'GET',
 												contentType : 'application/json;charset=utf-8',
 												dataType : 'json',
 												success : function(data, status) {
-													console.log("동 불러와지냐?");
+													console.log("동 불러오기 성공");
 													console.log(data);
 													$("#dong").empty();
 													$("#dong").append('<option value="0">선택</option>');
@@ -137,77 +139,69 @@
 										}); //change
 										$("#dong").change(
 												function() {
+													console.log("path: ${root}/housedata/step4/" + $("#dong").val());
 													$.ajax({
-														url : "${pageContext.request.contextPath}/housedata/donginfo/" + $("#dong").val(),
+														url : "${root}/housedata/step4/" + $("#dong").val(),
 														type : 'GET',
 														contentType : 'application/json;charset=utf-8',
 														dataType : 'json',
 														success : function(data, status) {
+															console.log("아파트정보 불러오기 성공");
 															$("#searchResult").empty();
-															$.each(data, function(index, vo) {
-																let str = "<tr class=" + colorArr[index % 2] + ">" + "<td>" + vo.no + "</td>" + "<td>" + vo.dong + "</td>" + "<td>" + vo.aptName
-																		+ "</td>" + "<td>" + vo.jibun + "</td>" + "<td>" + vo.code + "</td>" + "<td>" + vo.dealAmount + "</td>"
-																		+ "<td id='lat_" + index + "'></td><td id='lng_" + index +
-												"'></td></tr>";
+															$.each(data, function(index, item) {
+																let str = "<tr class=" + colorArr[index % 2] + ">" + 
+																"<td>" + item.no + "</td>" + 
+																"<td>" + item.dong + "</td>" +
+																"<td>" + item.aptName + "</td>" + 
+																"<td>" + item.jibun + "</td>" + 
+																//"<td>" + item.code + "</td>" + 			
+																"<td>" + item.dealAmount + "만원</td>" + 															
+																//"<td id='lat_" + index + "'></td>" +
+																//"<td id='lng_" + index + "'></td>" +
+																"</tr>";
 																$("tbody").append(str);
-																$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
+																//$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
 															}); //each
 															geocode(data);
 														} // success
 													}) //ajax
 												}); //change
 
-										// map은 HouseMapController의 annotation
+										// 상세검색부분의 옵션 선택시 console에 	
 										$("#detailSearch_apt_dong").change(
 												function() {
-													$.ajax({
-														url: "${pageContext.request.contextPath}/housedata",
-														type: 'GET',
-														contentType: 'application/json;charset=utf-8',
-														dataType: 'json',
-														success: function(data, status) {
-															$("#searchResult").empty();
-															$.each(data, function(index, vo) {
-																let str = "<tr class=" + colorArr[index % 2] + ">" + "<td>" + vo.no + "</td>" + "<td>" + vo.dong + "</td>" + "<td>" + vo.aptName + "</td>"
-																		+ "<td>" + vo.jibun + "</td>" + "<td>" + vo.code + "</td>" + "<td>" + vo.dealAmount + "</td>"
-																		+ "<td id='lat_" + index + "'></td><td id='lng_" + index +
-														"'></td></tr>";
-																$("tbody").append(str);
-																$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
-															}); //each
-															geocode(data);
-														} //function
-													}) //ajax
+													console.log("선택값: " + $("#detailSearch_apt_dong").val());
 												}); //change
 
 										$("#btn_detailedSearch").on(
 												"click",
 												function() {
-													/* $.get("${pageContext.request.contextPath}/housedata/map", {
-														"act" : "searchByKeyword",
-														"searchType" : $("#detailSearch_apt_dong").val(),
-														"detailedSearch" : $("#detailedSearch").val()
-													},  */
-													var option;
-													if ($("#detailSearch_apt_dong").val() === )
+													console.log("path: ${root}/housedata/search/"+ $("#detailSearch_apt_dong").val() +"/" + $("#detailedSearch").val());
 													$.ajax({
-														url: "${pageContext.request.contextPath}/housedata",
+														url: "${root}/housedata/search/"+ $("#detailSearch_apt_dong").val().trim() +"/" + $("#detailedSearch").val(),
 														type: 'GET',
 														contentType: 'application/json;charset=utf-8',
 														dataType: 'json',
 														success: function(data, status) {
+															console.log("상세검색 성공 - 옵션: " + $("#detailSearch_apt_dong").val() + ", 검색값: " + $("#detailedSearch").val());
 															$("#searchResult").empty();
-															$.each(data, function(index, vo) {
-																let str = "<tr class=" + colorArr[index % 2] + ">" + "<td>" + vo.no + "</td>" + "<td>" + vo.dong + "</td>" + "<td>" + vo.aptName + "</td>"
-																		+ "<td>" + vo.jibun + "</td>" + "<td>" + vo.dealAmount + "</td>"
-																		+ "<td id='lat_" + index + "'></td><td id='lng_" + index +
-														"'></td></tr>";
+															$.each(data, function(index, item) {
+																let str = "<tr class=" + colorArr[index % 2] + ">" + 
+																"<td>" + item.no + "</td>" + 
+																"<td>" + item.dong + "</td>" +
+																"<td>" + item.aptName + "</td>" + 
+																"<td>" + item.jibun + "</td>" + 
+																//"<td>" + item.code + "</td>" + 			
+																"<td>" + item.dealAmount + "만원</td>" + 															
+																//"<td id='lat_" + index + "'></td>" +
+																//"<td id='lng_" + index + "'></td>" +
+																"</tr>";
 																$("tbody").append(str);
-																$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
+																//$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
 															}); //each
 															geocode(data);
 														} //function
-												}) // jax
+													}) // ajax
 												}); // onclick: search
 
 									}); //ready
@@ -341,7 +335,7 @@
 													<div class="col-lg align-self-end">
 														<div class="form-group">
 															<div class="form-field">
-																<button id="btn_detailedSearch" class="btn btn-primary">Search</button>
+																<a id="btn_detailedSearch" class="btn btn-primary">Search</a>
 																<!-- <input type="submit" value="Search" class="form-control btn btn-primary"> -->
 															</div>
 														</div>
@@ -369,10 +363,10 @@
 									<th>법정동</th>
 									<th>아파트이름</th>
 									<th>지번</th>
-									<th>지역코드</th>
+									<!-- <th>지역코드</th> -->
 									<th>실거래가</th>
-									<th>위도</th>
-									<th>경도</th>
+									<!-- <th>위도</th> -->
+									<!-- <th>경도</th> -->
 								</tr>
 							</thead>
 							<tbody id="searchResult">
