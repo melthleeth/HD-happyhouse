@@ -74,4 +74,10 @@ public class HouseController {
 	}
 	
 	
+	// 매물 상세정보 모달창과 연결
+	@GetMapping(value="/modal/{no}", headers = {"Content-type=application/json"})
+	public HouseDealDto getHouseInfo(@PathVariable int no) throws Exception {
+		return houseMapService.getHouseInfo(no);
+	}
+	
 }

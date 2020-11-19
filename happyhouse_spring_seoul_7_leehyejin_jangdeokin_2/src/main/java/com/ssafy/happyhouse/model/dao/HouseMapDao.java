@@ -13,4 +13,5 @@ public interface HouseMapDao {
 	List<HouseDealDto> getAptInfo(String aptName) throws Exception;
 	List<HouseDealDto> getDongInGugun(String gugun) throws Exception;
 	List<HouseDealDto> getAptInDong(String dong) throws Exception;
+	HouseDealDto getHouseInfo(int no) throws Exception;
 }

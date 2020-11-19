@@ -83,6 +83,7 @@
 				<div class="card col-sm-12 mt-1" style="min-height: 850px;">
 					<div class="card-body">
 						<script>
+							// ####### 시/도 - 구/군 - 동 option 선택 동작 부분 #######
 							let colorArr = [ '', '' ];
 							$(document).ready(function() {
 								$.ajax({
@@ -100,111 +101,135 @@
 									} // success
 								}) // ajax
 							}); //ready
-							$(document).ready(
-									function() {
-										$("#sido").change(function() {
-											$.ajax({
-												url : '${root}/housedata/step2/' + $("#sido").val(),
-												type : 'GET',
-												contentType : 'application/json;charset=utf-8',
-												dataType : 'json',
-												success : function(data, status) {
-													console.log("구군 불러오기 성공");
-													console.log(data);
-													$("#gugun").empty();
-													$("#gugun").append('<option value="0">선택</option>');
-													$.each(data, function(index, vo) {
-														$("#gugun").append("<option value='"+vo.gugunCode+"'>" + vo.gugunName + "</option>");
-													});//each
-												} // success
-											}) // ajax
-										}); //change
-										$("#gugun").change(function() {
-											console.log("path: ${root}/housedata/step3/" + $("#gugun").val());
-											$.ajax({
-												url : "${root}/housedata/step3/" + $("#gugun").val(),
-												type : 'GET',
-												contentType : 'application/json;charset=utf-8',
-												dataType : 'json',
-												success : function(data, status) {
-													console.log("동 불러오기 성공");
-													console.log(data);
-													$("#dong").empty();
-													$("#dong").append('<option value="0">선택</option>');
-													$.each(data, function(index, vo) {
-														$("#dong").append("<option value='" + vo.dong + "'>" + vo.dong + "</option>");
-													}); //each
-												} // success
-											}) //ajax
-										}); //change
-										$("#dong").change(
-												function() {
-													console.log("path: ${root}/housedata/step4/" + $("#dong").val());
-													$.ajax({
-														url : "${root}/housedata/step4/" + $("#dong").val(),
-														type : 'GET',
-														contentType : 'application/json;charset=utf-8',
-														dataType : 'json',
-														success : function(data, status) {
-															console.log("아파트정보 불러오기 성공");
-															$("#searchResult").empty();
-															$.each(data, function(index, item) {
-																let str = "<tr class=" + colorArr[index % 2] + ">" + 
-																"<td>" + item.no + "</td>" + 
-																"<td>" + item.dong + "</td>" +
-																"<td>" + item.aptName + "</td>" + 
-																"<td>" + item.jibun + "</td>" + 
-																//"<td>" + item.code + "</td>" + 			
-																"<td>" + item.dealAmount + "만원</td>" + 															
-																//"<td id='lat_" + index + "'></td>" +
-																//"<td id='lng_" + index + "'></td>" +
-																"</tr>";
-																$("tbody").append(str);
-																//$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
-															}); //each
-															geocode(data);
-														} // success
-													}) //ajax
-												}); //change
+							
+							$(document).ready(function() {
+								$("#sido").change(function() {
+									$.ajax({
+										url : '${root}/housedata/step2/' + $("#sido").val(),
+										type : 'GET',
+										contentType : 'application/json;charset=utf-8',
+										dataType : 'json',
+										success : function(data, status) {
+											console.log("구군 불러오기 성공");
+											console.log(data);
+											$("#gugun").empty();
+											$("#gugun").append('<option value="0">선택</option>');
+											$.each(data, function(index, vo) {
+												$("#gugun").append("<option value='"+vo.gugunCode+"'>" + vo.gugunName + "</option>");
+											});//each
+										} // success
+									}) // ajax
+								}); //change
+								$("#gugun").change(function() {
+									console.log("path: ${root}/housedata/step3/" + $("#gugun").val());
+									$.ajax({
+										url : "${root}/housedata/step3/" + $("#gugun").val(),
+										type : 'GET',
+										contentType : 'application/json;charset=utf-8',
+										dataType : 'json',
+										success : function(data, status) {
+											console.log("동 불러오기 성공");
+											console.log(data);
+											$("#dong").empty();
+											$("#dong").append('<option value="0">선택</option>');
+											$.each(data, function(index, vo) {
+												$("#dong").append("<option value='" + vo.dong + "'>" + vo.dong + "</option>");
+											}); //each
+										} // success
+									}) //ajax
+								}); //change
+								$("#dong").change(function() {
+									console.log("path: ${root}/housedata/step4/" + $("#dong").val());
+									$.ajax({
+										url : "${root}/housedata/step4/" + $("#dong").val(),
+										type : 'GET',
+										contentType : 'application/json;charset=utf-8',
+										dataType : 'json',
+										success : function(data, status) {
+											console.log("아파트정보 불러오기 성공");
+											console.log(data);
+											$("#searchResult").empty();
+											$.each(data, function(index, item) {
+												let str = "<tr house_no=\"" + item.no + "\" class=\"view\">" +
+												//"<td>" + item.no + "</td>" + 
+												"<td>" + item.aptName + "</td>" + 
+												"<td>" + item.dong + "</td>" + 
+												"<td>" + item.jibun + "</td>" +
+												//"<td>" + item.code + "</td>" + 			
+												"<td>" + item.dealAmount + "만원</td>" +
+												//"<td id='lat_" + index + "'></td>" +
+												//"<td id='lng_" + index + "'></td>" +
+												"</tr>";
+												$("#searchResult").append(str);
+												//$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
+											}); //each
+											geocode(data);
+										} // success
+									}) //ajax
+								}); //change
 
-										// 상세검색부분의 옵션 선택시 console에 	
-										$("#detailSearch_apt_dong").change(
-												function() {
-													console.log("선택값: " + $("#detailSearch_apt_dong").val());
-												}); //change
+								// 상세검색부분의 옵션 선택시 console창에 값을 출력
+								$("#detailSearch_apt_dong").change(function() {
+									console.log("선택값: " + $("#detailSearch_apt_dong").val());
+								}); //change
 
-										$("#btn_detailedSearch").on(
-												"click",
-												function() {
-													console.log("path: ${root}/housedata/search/"+ $("#detailSearch_apt_dong").val() +"/" + $("#detailedSearch").val());
-													$.ajax({
-														url: "${root}/housedata/search/"+ $("#detailSearch_apt_dong").val().trim() +"/" + $("#detailedSearch").val(),
-														type: 'GET',
-														contentType: 'application/json;charset=utf-8',
-														dataType: 'json',
-														success: function(data, status) {
-															console.log("상세검색 성공 - 옵션: " + $("#detailSearch_apt_dong").val() + ", 검색값: " + $("#detailedSearch").val());
-															$("#searchResult").empty();
-															$.each(data, function(index, item) {
-																let str = "<tr class=" + colorArr[index % 2] + ">" + 
-																"<td>" + item.no + "</td>" + 
-																"<td>" + item.dong + "</td>" +
-																"<td>" + item.aptName + "</td>" + 
-																"<td>" + item.jibun + "</td>" + 
-																//"<td>" + item.code + "</td>" + 			
-																"<td>" + item.dealAmount + "만원</td>" + 															
-																//"<td id='lat_" + index + "'></td>" +
-																//"<td id='lng_" + index + "'></td>" +
-																"</tr>";
-																$("tbody").append(str);
-																//$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
-															}); //each
-															geocode(data);
-														} //function
-													}) // ajax
-												}); // onclick: search
+								$("#btn_detailedSearch").on("click", function() {
+									console.log("path: ${root}/housedata/search/" + $("#detailSearch_apt_dong").val() + "/" + $("#detailedSearch").val());
+									$.ajax({
+										url : "${root}/housedata/search/" + $("#detailSearch_apt_dong").val().trim() + "/" + $("#detailedSearch").val(),
+										type : 'GET',
+										contentType : 'application/json;charset=utf-8',
+										dataType : 'json',
+										success : function(data, status) {
+											console.log("상세검색 성공 - 옵션: " + $("#detailSearch_apt_dong").val() + ", 검색값: " + $("#detailedSearch").val());
+											$("#searchResult").empty();
+											$.each(data, function(index, item) {
+												let str = "<tr house_no=\"" + item.no + "\" class=\"view\">" +
+												//"<td>" + item.no + "</td>" + 
+												"<td>" + item.aptName + "</td>" + "<td>" + item.dong + "</td>" + "<td>" + item.jibun + "</td>" +
+												//"<td>" + item.code + "</td>" + 			
+												"<td>" + item.dealAmount + "만원</td>" +
+												//"<td id='lat_" + index + "'></td>" +
+												//"<td id='lng_" + index + "'></td>" +
+												"</tr>";
+												$("#searchResult").append(str);
+												//$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
+											}); //each
+											geocode(data);
+										} //function
+									}) // ajax
+								}); // onclick: search
 
-									}); //ready
+								// ####### 아파트 td 클릭시 modal창으로 상세정보 표시 동작 #######
+								/*
+								tr에 attr를 추가하고 no값을 줘서 불러오자
+								 */
+
+								$(document).on("click", "tr.view", function() {
+									let no = $(this).attr("house_no");
+									console.log("매물 번호: " + no)
+									$.ajax({
+										url : '${root}/housedata/modal/' + no,
+										type : 'GET',
+										contentType : 'application/json;charset=utf-8',
+										success : function(house) {
+											$("#modal_AptName").text(house.aptName);
+											$("#modal_dong_jibun").text(house.dong + " " + house.jibun);
+											$("#modal_buildYear").text(house.buildYear);
+											$("#modal_dealYMD").text(house.dealYear + "." + house.dealMonth + "." + house.dealDay);
+											$("#modal_dealAmount").text(house.dealAmount + "만원");
+											$("#modal_rentMoney").text(house.rentMoney + "만원");
+											$("#modal_area").text(house.area + "㎡");
+											$("#modal_floor").text(house.floor + "층");
+											$("#houseDataModal").modal();
+										},
+										error : function(xhr, status, msg) {
+											console.log("상태값 : " + status + " Http에러메시지 : " + msg);
+										}
+									});
+								}); // click
+
+							}); //ready
 
 							function geocode(jsonData) {
 								let idx = 0;
@@ -347,21 +372,14 @@
 								</div>
 							</div>
 						</section>
-						<!-- 시도 : <select id="sido">
-					<option value="0">선택</option>
-				</select>
-				구군 : <select id="gugun">
-					<option value="0">선택</option>
-				</select>
-				읍면동 : <select id="dong">
-					<option value="0">선택</option>
-				</select> -->
-						<table class="table mt-2 table-hover">
+						
+						<!-- 결과 출력 부분 -->
+						<table class="table mt-2 table-hover my-5">
 							<thead>
 								<tr>
-									<th>번호</th>
-									<th>법정동</th>
+									<!-- <th>번호</th> -->
 									<th>아파트이름</th>
+									<th>법정동</th>
 									<th>지번</th>
 									<!-- <th>지역코드</th> -->
 									<th>실거래가</th>
@@ -372,12 +390,70 @@
 							<tbody id="searchResult">
 							</tbody>
 						</table>
+						
+						<!-- 아파트 상세정보 modal -->
+						<div class="modal" id="houseDataModal">
+							<div class="modal-dialog">
+								<div class="modal-content">
 
+									<!-- Modal Header -->
+									<div class="modal-header">
+										<h4 class="modal-title">매물 정보</h4>
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+									</div>
+
+									<!-- Modal body -->
+									<div class="modal-body">
+										<table class="table table-bordered">
+											<colgroup>
+												<col width="120">
+												<col width="*">
+												<col width="120">
+												<col width="*">
+											</colgroup>
+											<tbody>
+												<tr>
+													<th class="text-center">매물명</th>
+													<td class="text-left" colspan="3" id="modal_AptName"></td>
+												</tr>
+												<tr>
+													<th class="text-center">주소</th>
+													<td class="text-left" colspan="3" id="modal_dong_jibun"></td>
+												</tr>
+												<tr>
+													<th class="text-center">완공년도</th>
+													<td class="text-left" colspan="3" id="modal_buildYear"></td>
+												</tr>
+												<tr>
+													<th class="text-center">최근 거래일</th>
+													<td class="text-left" colspan="3" id="modal_dealYMD"></td>
+												</tr>
+												<tr>
+													<th class="text-center">거래가</th>
+													<td class="text-left" id="modal_dealAmount"></td>
+													<th class="text-center">월세</th>
+													<td class="text-left" id="modal_rentMoney"></td>
+												</tr>
+												<tr>
+													<th class="text-center">전용면적</th>
+													<td class="text-left" id="modal_area"></td>
+													<th class="text-center">층수</th>
+													<td class="text-left" id="modal_floor"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div> <!-- modal 끝 -->
+
+						<!-- google map 표시 -->
 						<div id="map" style="width: 100%; height: 500px; margin: auto;"></div>
 
 					</div>
 				</div>
-			</section>
+				
+			</section> <!-- 시군동 section -->
 		</div>
 	</section>
 
