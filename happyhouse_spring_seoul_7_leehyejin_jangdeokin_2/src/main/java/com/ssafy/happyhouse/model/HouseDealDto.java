@@ -1,7 +1,7 @@
 package com.ssafy.happyhouse.model;
 
 public class HouseDealDto {
-	private String no;
+	private int no;
 	private String dong;
 	private String aptName;
 	private String code;
@@ -16,11 +16,11 @@ public class HouseDealDto {
 	private String type;
 	private String rentMoney;
 
-	public String getNo() {
+	public int getNo() {
 		return no;
 	}
 
-	public void setNo(String no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
 

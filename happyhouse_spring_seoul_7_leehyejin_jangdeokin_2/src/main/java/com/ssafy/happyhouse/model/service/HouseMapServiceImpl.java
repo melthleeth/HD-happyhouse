@@ -44,4 +44,9 @@ public class HouseMapServiceImpl implements HouseMapService {
 		return dao.getAptInfo(aptName);
 	}
 
+	@Override
+	public HouseDealDto getHouseInfo(int no) throws Exception {
+		return dao.getHouseInfo(no);
+	}
+
 }
