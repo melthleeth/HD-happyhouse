@@ -15,6 +15,12 @@ public class HouseDealDto {
 	private String jibun;
 	private String type;
 	private String rentMoney;
+	/*type
+	1 : 아파트 매매
+	2 : 연립 다세세 매매
+	3 : 아파트 전월세
+	4 : 연립 다세세 전월세
+	*/
 
 	public int getNo() {
 		return no;
