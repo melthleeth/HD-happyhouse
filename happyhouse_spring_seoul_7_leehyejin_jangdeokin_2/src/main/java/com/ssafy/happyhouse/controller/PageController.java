@@ -58,6 +58,11 @@ public class PageController {
 		return "user/login";
 	}
 	
+	@GetMapping(value = "/mypage")
+	public String mypage() {
+		return "mypage";
+	}
+	
 	@PostMapping(value = "/login")
 	public String login(@RequestParam Map<String, String> map, Model model, HttpSession session, HttpServletResponse response) {
 		try {

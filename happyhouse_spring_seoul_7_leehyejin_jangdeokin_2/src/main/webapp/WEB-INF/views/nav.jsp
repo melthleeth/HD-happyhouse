@@ -120,7 +120,7 @@
 								<li class="nav-item"><a href="${root}/management" class="nav-link">Manage</a></li>
 								</c:when>
 								<c:otherwise>
-								<li class="nav-item"><a href="${root}/index" class="nav-link">MyPage</a></li>
+								<li class="nav-item"><a href="${root}/mypage" class="nav-link">MyPage</a></li>
 								</c:otherwise>
 							</c:choose>
 							<li class="nav-item cta"><a href="${root}/logout"

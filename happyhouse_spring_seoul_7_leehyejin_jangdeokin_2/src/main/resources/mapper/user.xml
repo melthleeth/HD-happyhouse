@@ -37,7 +37,7 @@
 	</select>
 	
 	<select id="login" parameterType="map" resultType="MemberDto">
-		select username, password
+		select username, password, email, address, phone
 		from member
 		where username = #{username} and password = #{password}
 	</select>
