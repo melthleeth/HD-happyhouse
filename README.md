@@ -8,7 +8,7 @@
 - DB: MyBatis 연동
 - Server: tomcat 9.0
 
-![Project%20Document%20b727de3633f640cbac02eba1eb0a8b97/Untitled.png](Project%20Document%20b727de3633f640cbac02eba1eb0a8b97/Untitled.png)
+![/happyhouse.png)
 
 # Basic Functions
 
