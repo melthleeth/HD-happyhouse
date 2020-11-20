@@ -355,7 +355,13 @@ table.table .avatar {
 					dataType:'json',
 					data: modifyinfo,
 					success:function(users) {
-						location.href = "${root}/management";
+						$("#hi").modal();
+						console.log(users);
+						$.each(users, function(index, item) {
+							if(item.memberno == $("#updatememberno").val()) {
+								$("#sss").append(item.username + "을 확인하세요.");		
+							}
+						})
 					},
 					error:function(xhr,status,msg){
 						console.log("상태값 : " + status + " Http에러메시지 : "+msg);
@@ -537,23 +543,23 @@ table.table .avatar {
 						<input type="hidden" id="updatememberno" name="updatememberno">
 						<div class="form-group">
 							<label>Password</label>
-							<input type="password" class="form-control" id="updatePassword" required>
+							<input type="password" class="form-control" id="updatePassword" required placeholder="New Your Password">
 						</div>
 						<div class="form-group">
 							<label>Confirm Password</label>
-							<input type="password" class="form-control" id="updatePasswordConfirm" required>
+							<input type="password" class="form-control" id="updatePasswordConfirm" required required placeholder="New Your Password Confirm">
 						</div>
 						<div class="form-group">
 							<label>Email</label>
-							<input type="email" class="form-control" id="updateEmail" required>
+							<input type="email" class="form-control" id="updateEmail" required placeholder="${userinfo.email}">
 						</div>
 						<div class="form-group">
 							<label>Address</label>
-							<textarea class="form-control" id="updateAddress" required></textarea>
+							<textarea class="form-control" id="updateAddress" required placeholder="${userinfo.address}"></textarea>
 						</div>
 						<div class="form-group">
 							<label>Phone</label>
-							<input type="text" class="form-control" id="updatePhone" required>
+							<input type="text" class="form-control" id="updatePhone" required placeholder="${userinfo.phone}">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -589,6 +595,35 @@ table.table .avatar {
 			</div>
 		</div>
 	</div>
+	
+	<!-- 비밀번호 modal -->
+	<div class="modal" id="hi" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title"> 회원정보가 변경되었습니다!!</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<table class="table table-bordered">
+						<tbody>
+							<tr>
+								<td class="text-center" id="sss"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='${root}/management'">Close</button>
+		      </div>
+			</div>
+		</div>
+	</div>
+	<!-- modal 끝 -->
 
 	<jsp:include page="./footer.jsp"></jsp:include>
 

@@ -199,15 +199,12 @@
 						</div>
 					</form>
 				</div>
-				<div class="modal-footer">
-					Don't have an account? <a href="${ root }/signup">Create one</a>
-				</div>
 			</div>
 		</div>
 	</div>
 	
 	<!-- 비밀번호 modal -->
-	<div class="modal" id="passwordModal">
+	<div class="modal" id="passwordModal" data-keyboard="false" data-backdrop="static">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
@@ -229,11 +226,13 @@
 						<tbody>
 							<tr>
 								<th class="text-center">비밀번호</th>
-								<td class="text-left" id="modal_password"></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
+				<div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="#myModal">Close</button>
+		      </div>
 			</div>
 		</div>
 	</div>
