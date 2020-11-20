@@ -8,7 +8,7 @@
 - DB: MyBatis 연동
 - Server: tomcat 9.0
 
-![/happyhouse.png)
+![](/happyhouse.png)
 
 # Basic Functions
 
