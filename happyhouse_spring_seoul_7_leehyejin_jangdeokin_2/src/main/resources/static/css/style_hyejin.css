@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#detailedSearch {
+	float: left;
+	padding: 5px 16px;
+	width: 7vw;
+	border-radius: 50px;
+	margin-top: 5px;
+	font-size: 17px;
+}
+
+#btn_detailedSearch {
+	font-family: 'yg-jalnan';
+	width: 8vw;
+	height: 10vh;
+	line-height: 8vh;
+	font-size: 20pt;
+	color: #ffdfdf;
+	border: 3px solid #ffdfdf;
+	border-radius: 20px;
+	padding: 40px 20px;
+	transition: .3s;
+}
+
+#btn_detailedSearch:hover {
+	font-style: bold;
+	color: #2f3035;
+	background-color: #ffdfdf;
+}
+
+#index_section>div>div>section>div>div>div>div>form>div>div:nth-child(4)
+	{
+	border-left: 2px solid white;
+	padding-left: 5vw;
+}
