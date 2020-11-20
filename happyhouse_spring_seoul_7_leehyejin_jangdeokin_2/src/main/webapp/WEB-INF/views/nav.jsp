@@ -19,6 +19,7 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 
+<link rel="stylesheet" href="${root}/css/style_hyejin.css">
 <link rel="stylesheet" href="${root}//css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="${root}//css/animate.css">
 
@@ -97,7 +98,7 @@
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar">
-		<div class="container">
+		<div class="container container-nav">
 			<a class="navbar-brand" href="${root}/index">HappyHouse</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
@@ -228,7 +229,7 @@
 						<tbody>
 							<tr>
 								<th class="text-center">비밀번호</th>
-								<td class="text-left" colspan="3" id="modal_password"></td>
+								<td class="text-left" id="modal_password"></td>
 							</tr>
 						</tbody>
 					</table>
