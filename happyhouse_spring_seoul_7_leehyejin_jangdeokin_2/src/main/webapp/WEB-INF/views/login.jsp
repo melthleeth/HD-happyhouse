@@ -36,7 +36,6 @@ function login() {
 			</div>
 			<div class="form-group" align="center">
 				<button type="button" class="btn btn-warning" onclick="javascript:login();">로그인</button>
-				<!-- <button type="button" class="btn btn-primary" onclick="javascript:moveJoin();">회원가입</button>  -->
 			</div>
 		</form>
 	</div>

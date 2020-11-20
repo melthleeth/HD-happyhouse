@@ -258,26 +258,33 @@ table.table .avatar {
 <script>
 	$(document).ready(function() {
 		$("#update").click(function() {
-			let modifyinfo = JSON.stringify({
-				"memberno" : $('#updatememberno').val(),
-				"email" : $('#updateEmail').val(), 
-				"address" : $('#updateAddress').val(), 
-				"phone" : $('#updatePhone').val()
-			   });
-			console.log($('#updatememberno').val());
-			$.ajax({
-				url:'${root}/member/update',  
-				type:'PUT',
-				contentType:'application/json;charset=utf-8',
-				dataType:'json',
-				data: modifyinfo,
-				success:function(users) {
-					location.href = "${root}/management";
-				},
-				error:function(xhr,status,msg){
-					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
-				}
-			});
+			if($("#updatePassword").val() == $("#updatePasswordConfirm").val()) {
+				let modifyinfo = JSON.stringify({
+					"memberno" : $('#updatememberno').val(),
+					"password" : $('#updatePassword').val(), 
+					"email" : $('#updateEmail').val(), 
+					"address" : $('#updateAddress').val(), 
+					"phone" : $('#updatePhone').val()
+				   });
+				console.log($('#updatememberno').val());
+				$.ajax({
+					url:'${root}/member/update',  
+					type:'PUT',
+					contentType:'application/json;charset=utf-8',
+					dataType:'json',
+					data: modifyinfo,
+					success:function(users) {
+						$("#hi").modal();
+						setInterval(9000);
+						location.href = "${root}/logout";
+					},
+					error:function(xhr,status,msg){
+						console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+					}
+				});
+			} else {
+				alert("비밀번호가 일치하지 않습니다.");
+			}
 		});
 		
 		$("#delete").click(function() {
@@ -361,8 +368,8 @@ table.table .avatar {
 							<td>${userinfo.address}</td>
 							<td>${userinfo.phone}</td>
 							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="setMemberNo(${member.memberno})"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a> 
-								<a href='#deleteEmployeeModal' class="delete" data-toggle="modal" onclick="setDeleteNo(${member.memberno})"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+								<a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="setMemberNo(${userinfo.memberno})"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a> 
+								<a href='#deleteEmployeeModal' class="delete" data-toggle="modal" onclick="setDeleteNo(${userinfo.memberno})"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 							</td>
 						</tr>
 					</tbody>
@@ -377,14 +384,18 @@ table.table .avatar {
 			<div class="modal-content">
 				<form id="updateForm" name="updateForm">
 					<div class="modal-header">
-						<h4 class="modal-title">Edit Member</h4>
+						<h4 class="modal-title">Edit Yours</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
 						<input type="hidden" id="updatememberno" name="updatememberno">
 						<div class="form-group">
 							<label>Password</label>
-							<input type="text" class="form-control" id="updatePassword" required>
+							<input type="password" class="form-control" id="updatePassword" required>
+						</div>
+						<div class="form-group">
+							<label>Confirm Password</label>
+							<input type="password" class="form-control" id="updatePasswordConfirm" required>
 						</div>
 						<div class="form-group">
 							<label>Email</label>
@@ -432,6 +443,32 @@ table.table .avatar {
 			</div>
 		</div>
 	</div>
+	
+	<!-- 비밀번호 modal -->
+	<div class="modal" id="hi">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title"></h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<table class="table table-bordered">
+						<tbody>
+							<tr>
+								<td class="text-center">다시 로그인 해주세요!</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal 끝 -->
 
 	<jsp:include page="./footer.jsp"></jsp:include>
 

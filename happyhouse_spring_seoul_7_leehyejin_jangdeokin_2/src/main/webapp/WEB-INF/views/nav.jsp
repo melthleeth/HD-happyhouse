@@ -73,7 +73,8 @@
 				contentType:'application/json;charset=utf-8',
 				success:function(pw) {
 					console.log("data return => ", pw);
-					alert("YourPassword : " + pw);
+					$("#modal_password").text(pw);
+					$("#passwordModal").modal();
 				},
 				error:function(xhr,status,msg){
 					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
@@ -208,5 +209,38 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- 비밀번호 modal -->
+	<div class="modal" id="passwordModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">비밀 번호</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<table class="table table-bordered">
+						<colgroup>
+							<col width="120">
+							<col width="*">
+							<col width="120">
+							<col width="*">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th class="text-center">비밀번호</th>
+								<td class="text-left" colspan="3" id="modal_password"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal 끝 -->
 </body>
 </html>

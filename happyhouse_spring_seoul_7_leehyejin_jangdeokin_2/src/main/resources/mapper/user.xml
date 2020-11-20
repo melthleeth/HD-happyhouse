@@ -9,9 +9,9 @@
 	</select>
 	
 	<update id="updateMember" parameterType="MemberDto">
-		update member 
-		set email = #{email}, address = #{address}, phone = #{phone}
-		where memberno = #{memberno}
+			update member 
+			set password = #{password}, email = #{email}, address = #{address}, phone = #{phone}
+			where memberno = #{memberno}
 	</update>
 	
 	<insert id="createMember" parameterType="MemberDto">
@@ -37,7 +37,7 @@
 	</select>
 	
 	<select id="login" parameterType="map" resultType="MemberDto">
-		select username, password, email, address, phone
+		select memberno, username, password, email, address, phone
 		from member
 		where username = #{username} and password = #{password}
 	</select>
