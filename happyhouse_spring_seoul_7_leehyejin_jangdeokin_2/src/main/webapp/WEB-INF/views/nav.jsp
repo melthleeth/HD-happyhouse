@@ -98,7 +98,7 @@
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar">
-		<div class="container container-nav">
+		<div class="container">
 			<a class="navbar-brand" href="${root}/index">HappyHouse</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
@@ -108,13 +108,13 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="${root}/index" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="${root}/board" class="nav-link">Board</a></li>
-					<li class="nav-item"><a href="${root}/qna" class="nav-link">QnA</a></li>
+					<li class="nav-item active"><a href="${root}/index" class="nav-link tmoney-round-wind-extrabold">Home</a></li>
+					<li class="nav-item"><a href="${root}/board" class="nav-link tmoney-round-wind-extrabold">Board</a></li>
+					<li class="nav-item"><a href="${root}/qna" class="nav-link tmoney-round-wind-extrabold">QnA</a></li>
 					<c:choose>
 						<c:when test='${empty userinfo}'>
 							<li class="nav-item cta"><a data-toggle="modal"
-								href="#myModal" class="nav-link"><span>Sign Up</span></a></li>
+								href="#myModal" class="nav-link"><span class="tmoney-round-wind-extrabold">Sign Up</span></a></li>
 						</c:when>
 						<c:otherwise>
 							<c:if test='${userinfo.username == "admin" }'>
@@ -123,7 +123,7 @@
 							<li class="nav-item cta"><a href="${root}/mypage"
 								class="nav-link"><span> ${userinfo.username}님 로그인중</span></a></li>
 							<li class="nav-item cta"><a href="${root}/logout"
-								class="nav-link"><span> Logout</span></a></li>
+								class="nav-link"><span class="tmoney-round-wind-extrabold"> Logout</span></a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>
