@@ -195,6 +195,7 @@
 										success : function(house) {
 											console.log("월세: " + house.rentMoney);
 											let rentMoney = (house.rentMoney < 1) ? "없음" : house.rentMoney + "만원";
+											let imgsrc = "https://robohash.org/" + house.no;
 											$("#modal_AptName").text(house.aptName);
 											$("#modal_dong_jibun").text(house.dong + " " + house.jibun);
 											$("#modal_buildYear").text(house.buildYear);
@@ -203,6 +204,7 @@
 											$("#modal_rentMoney").text(rentMoney);
 											$("#modal_area").text(house.area + "㎡");
 											$("#modal_floor").text(house.floor + "층");
+											$("#modal_img").attr("src", imgsrc);
 											$("#houseDataModal").modal();
 										},
 										error : function(xhr, status, msg) {
@@ -356,9 +358,9 @@
 						</section>
 						
 						<!-- 결과 출력 부분 -->
-						<table class="table mt-2 table-hover my-5 text-center">
+						<table class="table mt-2 table-hover my-5 text-center table_searchResult s-coredream-light">
 							<thead>
-								<tr class="text-center">
+								<tr class="text-center table_header">
 									<!-- <th>번호</th> -->
 									<th>매물명</th>
 									<th>법정동</th>
@@ -422,6 +424,9 @@
 													<th class="text-center">층수</th>
 													<td class="text-left" id="modal_floor"></td>
 												</tr>
+												<tr>
+													<td colspan="4" class="text-center"><img id="modal_img"></td>
+												</tr>
 											</tbody>
 										</table>
 									</div>
@@ -468,7 +473,7 @@
 						<div class="item">
 							<div class="project">
 								<div class="img">
-									<img src="./images/work-1.jpg" class="img-fluid"
+									<img src="${root}/images/work-1.jpg" class="img-fluid"
 										alt="Colorlib Template">
 									<div class="text">
 										<span>Sale</span>
@@ -490,7 +495,7 @@
 						<div class="item">
 							<div class="project">
 								<div class="img">
-									<img src="images/work-2.jpg" class="img-fluid"
+									<img src="${root}/images/work-2.jpg" class="img-fluid"
 										alt="Colorlib Template">
 									<div class="text">
 										<span>Sale</span>
@@ -512,7 +517,7 @@
 						<div class="item">
 							<div class="project">
 								<div class="img">
-									<img src="images/work-3.jpg" class="img-fluid"
+									<img src="${root}/images/work-3.jpg" class="img-fluid"
 										alt="Colorlib Template">
 									<div class="text">
 										<span>Sale</span>
@@ -534,7 +539,7 @@
 						<div class="item">
 							<div class="project">
 								<div class="img">
-									<img src="images/work-4.jpg" class="img-fluid"
+									<img src="${root}/images/work-4.jpg" class="img-fluid"
 										alt="Colorlib Template">
 									<div class="text">
 										<span>Sale</span>
@@ -556,7 +561,7 @@
 						<div class="item">
 							<div class="project">
 								<div class="img">
-									<img src="images/work-5.jpg" class="img-fluid"
+									<img src="${root}/images/work-4.jpg" class="img-fluid"
 										alt="Colorlib Template">
 									<div class="text">
 										<span>Sale</span>
