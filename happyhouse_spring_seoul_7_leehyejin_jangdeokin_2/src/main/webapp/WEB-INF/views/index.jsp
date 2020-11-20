@@ -20,57 +20,37 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 
-<link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="${root}/css/style_hyejin.css">
+<link rel="stylesheet" href="${root}/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="${root}/css/animate.css">
 
-<link rel="stylesheet" href="/css/owl.carousel.min.css">
-<link rel="stylesheet" href="/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="/css/magnific-popup.css">
+<link rel="stylesheet" href="${root}/css/owl.carousel.min.css">
+<link rel="stylesheet" href="${root}/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="${root}/css/magnific-popup.css">
 
-<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="${root}/css/aos.css">
 
-<link rel="stylesheet" href="/css/ionicons.min.css">
+<link rel="stylesheet" href="${root}/css/ionicons.min.css">
 
-<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="/css/jquery.timepicker.css">
+<link rel="stylesheet" href="${root}/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="${root}/css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="/css/flaticon.css">
-<link rel="stylesheet" href="/css/icomoon.css">
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="${root}/css/flaticon.css">
+<link rel="stylesheet" href="${root}/css/icomoon.css">
+<link rel="stylesheet" href="${root}/css/style.css">
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<style>
-#detailedSearch {
-	float: left;
-	padding: 5px 16px;
-	width: 7vw;
-	border-radius: 50px;
-	margin-top: 5px;
-	font-size: 17px;
-}
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=833a1d00eb0a2b88924bcd6ff33b7e2a"></script>
 
-#btn_detailedSearch {
-	width: 8vw;
-	height: 10vh;
-	font-size: 20pt;
-}
-
-#index_section > div > div > section > div > div > div > div > form > div > div:nth-child(4) {
-	border-left: 2px solid white;
-	padding-left: 5vw;
-}
-
-</style>
 </head>
 
 <body>
@@ -213,12 +193,14 @@
 										type : 'GET',
 										contentType : 'application/json;charset=utf-8',
 										success : function(house) {
+											console.log("월세: " + house.rentMoney);
+											let rentMoney = (house.rentMoney < 1) ? "없음" : house.rentMoney + "만원";
 											$("#modal_AptName").text(house.aptName);
 											$("#modal_dong_jibun").text(house.dong + " " + house.jibun);
 											$("#modal_buildYear").text(house.buildYear);
 											$("#modal_dealYMD").text(house.dealYear + "." + house.dealMonth + "." + house.dealDay);
 											$("#modal_dealAmount").text(house.dealAmount + "만원");
-											$("#modal_rentMoney").text(house.rentMoney + "만원");
+											$("#modal_rentMoney").text(rentMoney);
 											$("#modal_area").text(house.area + "㎡");
 											$("#modal_floor").text(house.floor + "층");
 											$("#houseDataModal").modal();
@@ -231,7 +213,7 @@
 
 							}); //ready
 
-							function geocode(jsonData) {
+							/* function geocode(jsonData) {
 								let idx = 0;
 								$.each(jsonData, function(index, vo) {
 									let tmpLat;
@@ -282,7 +264,7 @@
 
 							function callHouseDealInfo() {
 								alert("you can call HouseDealInfo");
-							}
+							} */
 						</script>
 
 						<section class="ftco-section ftco-no-pb ftco-no-pt">
@@ -360,7 +342,7 @@
 													<div class="col-lg align-self-end">
 														<div class="form-group">
 															<div class="form-field">
-																<a id="btn_detailedSearch" class="btn btn-primary">Search</a>
+																<a id="btn_detailedSearch">Search</a>
 																<!-- <input type="submit" value="Search" class="form-control btn btn-primary"> -->
 															</div>
 														</div>
@@ -374,11 +356,11 @@
 						</section>
 						
 						<!-- 결과 출력 부분 -->
-						<table class="table mt-2 table-hover my-5">
+						<table class="table mt-2 table-hover my-5 text-center">
 							<thead>
-								<tr>
+								<tr class="text-center">
 									<!-- <th>번호</th> -->
-									<th>아파트이름</th>
+									<th>매물명</th>
 									<th>법정동</th>
 									<th>지번</th>
 									<!-- <th>지역코드</th> -->
@@ -448,7 +430,21 @@
 						</div> <!-- modal 끝 -->
 
 						<!-- google map 표시 -->
-						<div id="map" style="width: 100%; height: 500px; margin: auto;"></div>
+						<!-- <div id="map" style="width: 100%; height: 500px; margin: auto;"></div> -->
+						<div id="map" style="width: 100%; height: 500px;"></div>
+						<script>
+							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+							mapOption = {
+								center : new kakao.maps.LatLng(33.450701,
+										126.570667), // 지도의 중심좌표
+								level : 3
+							// 지도의 확대 레벨
+							};
+
+							// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+							var map = new kakao.maps.Map(mapContainer,
+									mapOption);
+						</script>
 
 					</div>
 				</div>
@@ -647,24 +643,24 @@
 	</div>
 
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
+	<script src="${root}/js/jquery.min.js"></script>
+	<script src="${root}/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="${root}/js/popper.min.js"></script>
+	<script src="${root}/js/bootstrap.min.js"></script>
+	<script src="${root}/js/jquery.easing.1.3.js"></script>
+	<script src="${root}/js/jquery.waypoints.min.js"></script>
+	<script src="${root}/js/jquery.stellar.min.js"></script>
+	<script src="${root}/js/owl.carousel.min.js"></script>
+	<script src="${root}/js/jquery.magnific-popup.min.js"></script>
+	<script src="${root}/js/aos.js"></script>
+	<script src="${root}/js/jquery.animateNumber.min.js"></script>
+	<script src="${root}/js/scrollax.min.js"></script>
 	<!-- <script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-	<script src="js/google-map.js"></script>
-	<script src="js/main.js"></script>
+	<script src="${root}/js/google-map.js"></script>
+	<script src="${root}/js/main.js"></script>
 	<script
 		src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
-	<script defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ-UitoKEtkU-eHluv1CbD2lLkuxMuYXs&callback=initMap"></script>
+	<!-- <script defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ-UitoKEtkU-eHluv1CbD2lLkuxMuYXs&callback=initMap"></script> -->
 </html>
