@@ -49,6 +49,16 @@
 
 /* index.jsp */
 
+.marker_message {
+	padding: 0.1rem 0.5rem;
+	color: #FFF;
+	background-color: #343A40;
+	position:relative;
+	bottom:60px;
+	font-size: 10pt;
+	border-radius:15px;
+}
+
 #modal_img {
 	margin: auto;
 }
@@ -66,12 +76,12 @@
 	font-family: 'TmoneyRoundWindExtraBold';
 	width: 8vw;
 	height: 10vh;
-	line-height: 8vh;
+	line-height: 10vh;
 	font-size: 20pt;
 	color: #ffdfdf;
 	border: 3px solid #ffdfdf;
 	border-radius: 20px;
-	padding: 40px 20px;
+	padding: 2rem 1rem;
 	transition: .3s;
 }
 
