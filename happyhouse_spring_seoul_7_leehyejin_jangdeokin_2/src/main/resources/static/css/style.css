@@ -8150,16 +8150,23 @@ h1, h2, h3, h4, h5,
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
   	font-family: 'TmoneyRoundWindExtraBold';
     font-size: 20px;
-    padding-top: 1.8rem;
-    padding-bottom: 1.8rem;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 1.3rem 15px;
     font-weight: 400;
+    border: 3px solid none;
     color: #000000;
     color: rgba(255, 255, 255, 0.5);
     opacity: 1 !important; }
     .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
       color: #ffdfdf; }
+      
+    .ftco-navbar-light .navbar-nav > .nav-item > .nav-login {
+    	color: #343A40;
+    	border: 3px solid #ffdfdf;
+    }
+    .ftco-navbar-light .navbar-nav > .nav-item > .nav-login:hover {
+    	background-color: #343A40;
+    	color: #ffdfdf;
+    }
     @media (max-width: 991.98px) {
       .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
         padding-left: 0;
@@ -8200,7 +8207,7 @@ h1, h2, h3, h4, h5,
         .ftco-navbar-light .navbar-nav > .nav-item.ftco-seperator:before {
           display: none; } }
   .ftco-navbar-light .navbar-nav > .nav-item.cta > a {
-    color: #000000;
+    color: ##343A40;
     background: #ffdfdf;
     border-radius: 15px;
     }
@@ -8210,7 +8217,7 @@ h1, h2, h3, h4, h5,
         padding-right: 15px; } }
     @media (max-width: 991.98px) {
       .ftco-navbar-light .navbar-nav > .nav-item.cta > a {
-        color: #000000;
+        color: #343A40;
         background: #ffdfdf;
         -webkit-border-radius: 30px;
         -moz-border-radius: 30px;

@@ -49,8 +49,8 @@
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=833a1d00eb0a2b88924bcd6ff33b7e2a"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=833a1d00eb0a2b88924bcd6ff33b7e2a&libraries=services,clusterer,drawing"></script>
 </head>
 
 <body>
@@ -81,7 +81,7 @@
 									} // success
 								}) // ajax
 							}); //ready
-							
+
 							$(document).ready(function() {
 								$("#sido").change(function() {
 									$.ajax({
@@ -132,9 +132,7 @@
 											$.each(data, function(index, item) {
 												let str = "<tr house_no=\"" + item.no + "\" class=\"view\">" +
 												//"<td>" + item.no + "</td>" + 
-												"<td>" + item.aptName + "</td>" + 
-												"<td>" + item.dong + "</td>" + 
-												"<td>" + item.jibun + "</td>" +
+												"<td>" + item.aptName + "</td>" + "<td>" + item.dong + "</td>" + "<td>" + item.jibun + "</td>" +
 												//"<td>" + item.code + "</td>" + 			
 												"<td>" + item.dealAmount + "만원</td>" +
 												//"<td id='lat_" + index + "'></td>" +
@@ -142,8 +140,11 @@
 												"</tr>";
 												$("#searchResult").append(str);
 												//$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
+												
+												setMarker(item.dong + " " + item.jibun + " " + item.aptName, item.aptName);
 											}); //each
-											geocode(data);
+											//geocode(data);
+											
 										} // success
 									}) //ajax
 								}); //change
@@ -175,7 +176,7 @@
 												$("#searchResult").append(str);
 												//$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
 											}); //each
-											geocode(data);
+											//geocode(data);
 										} //function
 									}) // ajax
 								}); // onclick: search
@@ -213,58 +214,6 @@
 							}); //ready
 							
 							
-							/* function geocode(jsonData) {
-								let idx = 0;
-								$.each(jsonData, function(index, vo) {
-									let tmpLat;
-									let tmpLng;
-									$.get("https://maps.googleapis.com/maps/api/geocode/json", {
-										key : 'AIzaSyCZ-UitoKEtkU-eHluv1CbD2lLkuxMuYXs',
-										address : vo.dong + "+" + vo.aptName + "+" + vo.jibun
-									}, function(data, status) {
-										//alert(data.results[0].geometry.location.lat);
-										tmpLat = data.results[0].geometry.location.lat;
-										tmpLng = data.results[0].geometry.location.lng;
-										$("#lat_" + index).text(tmpLat);
-										$("#lng_" + index).text(tmpLng);
-										addMarker(tmpLat, tmpLng, vo.aptName);
-									}, "json"); //get
-								}); //each
-							}
-							var multi = {
-								lat : 37.5665734,
-								lng : 126.978179
-							};
-							var map;
-
-							function initMap() {
-								map = new google.maps.Map(document.getElementById('map'), {
-									center : multi,
-									zoom : 15
-								});
-								var marker = new google.maps.Marker({
-									position : multi,
-									map : map
-								});
-							}
-
-							function addMarker(tmpLat, tmpLng, aptName) {
-								var marker = new google.maps.Marker({
-									position : new google.maps.LatLng(parseFloat(tmpLat), parseFloat(tmpLng)),
-									label : aptName,
-									title : aptName
-								});
-								marker.addListener('click', function() {
-									map.setZoom(17);
-									map.setCenter(marker.getPosition());
-									callHouseDealInfo();
-								});
-								marker.setMap(map);
-							}
-
-							function callHouseDealInfo() {
-								alert("you can call HouseDealInfo");
-							} */
 						</script>
 
 						<section class="ftco-section ftco-no-pb ftco-no-pt">
@@ -354,9 +303,10 @@
 								</div>
 							</div>
 						</section>
-						
+
 						<!-- 결과 출력 부분 -->
-						<table class="table mt-2 table-hover my-5 text-center table_searchResult s-coredream-light">
+						<table
+							class="table mt-2 table-hover my-5 text-center table_searchResult s-coredream-light">
 							<thead>
 								<tr class="text-center table_header">
 									<!-- <th>번호</th> -->
@@ -372,7 +322,7 @@
 							<tbody id="searchResult">
 							</tbody>
 						</table>
-						
+
 						<!-- 아파트 상세정보 modal -->
 						<div class="modal" id="houseDataModal">
 							<div class="modal-dialog">
@@ -422,71 +372,136 @@
 													<th class="text-center">층수</th>
 													<td class="text-left" id="modal_floor"></td>
 												</tr>
+												<!-- <tr>
+													<td colspan="4" class="text-center"><img
+														id="modal_img"></td>
+												</tr> -->
 												<tr>
-													<td colspan="4" class="text-center"><img id="modal_img"></td>
+													<td colspan="4"><div id="roadview" style="height:300px"></div></td>
 												</tr>
 											</tbody>
 										</table>
 									</div>
 								</div>
 							</div>
-						</div> <!-- modal 끝 -->
+						</div>
+						<!-- modal 끝 -->
 
 						<!-- google map 표시 -->
 						<!-- <div id="map" style="width: 100%; height: 500px; margin: auto;"></div> -->
-						
+
 						<!-- kakao map 표시 -->
 						<div id="map" style="width: 100%; height: 500px;"></div>
+						
+						<!-- kakap map script -->
 						<script>
 							/* *******************카카오맵 API ******************** */
 							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 							mapOption = {
-								center : new kakao.maps.LatLng(33.450701,
-										126.570667), // 지도의 중심좌표
+								center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
 								level : 4
 							// 지도의 확대 레벨 
 							};
 
-							var map = new kakao.maps.Map(mapContainer,
-									mapOption); // 지도를 생성합니다
+							var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+							map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);	// 교통정보
+							//map.addOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);	// 로드뷰
+							//map.addOverlayMapTypeId(kakao.maps.MapTypeId.TERRAIN);	// 지형도
+							
+							// -- map control 추가 -- //
+							// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+							var mapTypeControl = new kakao.maps.MapTypeControl();
+
+							// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+							// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+							map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+							
+							// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+							var zoomControl = new kakao.maps.ZoomControl();
+							map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+							// -- map control end -- //
 
 							// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 							if (navigator.geolocation) {
 
 								// GeoLocation을 이용해서 접속 위치를 얻어옵니다
-								navigator.geolocation
-										.getCurrentPosition(function(position) {
+								navigator.geolocation.getCurrentPosition(function(position) {
 
-											var lat = position.coords.latitude, // 위도
-											lon = position.coords.longitude; // 경도
+									var lat = position.coords.latitude, // 위도
+									lon = position.coords.longitude; // 경도
 
-											var locPosition = new kakao.maps.LatLng(
-													lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-											message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+									var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+									message = '<div style="padding:5px;">현위치</div>'; // 인포윈도우에 표시될 내용입니다
 
-											// 마커와 인포윈도우를 표시합니다
-											displayMarker(locPosition, message);
+									// 마커와 인포윈도우를 표시합니다
+									displayMarker(locPosition, message);
 
-										});
+								});
 
 							} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
-								var locPosition = new kakao.maps.LatLng(
-										33.450701, 126.570667), message = 'geolocation을 사용할수 없어요..'
+								var locPosition = new kakao.maps.LatLng(33.450701, 126.570667), message = 'geolocation을 사용할수 없어요..'
 
 								displayMarker(locPosition, message);
 							}
+							
+							
+							// -- 주소로 좌표 검색하며 마커찍기 -- //
+							function setMarker(address, message) {
+								console.log("address: " + address + ", message: " + message);
+								// 주소-좌표 변환 객체를 생성합니다
+								var geocoder = new kakao.maps.services.Geocoder();
+
+								// 주소로 좌표를 검색합니다
+								// 형식: '제주특별자치도 제주시 첨단로 242' 시/도 구/군 동
+								geocoder.addressSearch(address, function(result, status) {
+
+								    // 정상적으로 검색이 완료됐으면 
+								     if (status === kakao.maps.services.Status.OK) {
+
+								        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+								        // 결과값으로 받은 위치를 마커로 표시합니다
+								        displayMarker(coords, message);
+								    } 
+								});   
+							}
+							// -- 주소로 좌표 검색하며 마커찍기 end -- //
+							
+							/* let locPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+							let message = vo.aptName;
+							displayMarker(locPosition, message); */
 
 							// 지도에 마커와 인포윈도우를 표시하는 함수입니다
 							function displayMarker(locPosition, message) {
+								var imageSrc = '${root}/images/heart.png', // 마커이미지의 주소입니다    
+							    imageSize = new kakao.maps.Size(43, 40), // 마커이미지의 크기입니다
+							    imageOption = {offset: new kakao.maps.Point(20, 40)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+								// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+								var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+
 
 								// 마커를 생성합니다
 								var marker = new kakao.maps.Marker({
-									map : map,
+									//map : map,
+									image: markerImage, // marker image 설정
 									position : locPosition
 								});
 
-								var iwContent = message, // 인포윈도우에 표시할 내용
+								marker.setMap(map);
+								
+								let content = "<div class=\"marker_message\">" + message  + "</div>";
+								
+								//var content = message;
+								var customOverlay = new kakao.maps.CustomOverlay({
+									map: map,
+									position: locPosition,
+									content: content
+								});
+								customOverlay.setMap(map);
+								
+								/* var iwContent = message, // 인포윈도우에 표시할 내용
 								iwRemoveable = true;
 
 								// 인포윈도우를 생성합니다
@@ -496,17 +511,83 @@
 								});
 
 								// 인포윈도우를 마커위에 표시합니다 
-								infowindow.open(map, marker);
+								infowindow.open(map, marker); */
 
 								// 지도 중심좌표를 접속위치로 변경합니다
 								map.setCenter(locPosition);
 							}
+
+							/*
+							$.get("https://maps.googleapis.com/maps/api/geocode/json", {
+										key : 'AIzaSyCZ-UitoKEtkU-eHluv1CbD2lLkuxMuYXs',
+										address : vo.dong + "+" + vo.aptName + "+" + vo.jibun
+									},
+							 */
+
+							// 구글맵 위도 경도 불러오기
+							/* function geocode(jsonData) {
+								let idx = 0;
+								$.each(jsonData, function(index, vo) {
+									let tmpLat;
+									let tmpLng;
+									$.ajax({
+										url : 'https://maps.googleapis.com/maps/api/geocode/json',
+										key : 'AIzaSyCZ-UitoKEtkU-eHluv1CbD2lLkuxMuYXs',
+										address : vo.dong + "+" + vo.aptName + "+" + vo.jibun,
+										type : 'GET',
+										contentType : 'application/json;charset=utf-8',
+										success : function(data, status) {
+											//alert(data.results[0].geometry.location.lat);
+											tmpLat = data.results[0].geometry.location.lat;
+											tmpLng = data.results[0].geometry.location.lng;
+											$("#lat_" + index).text(tmpLat);
+											$("#lng_" + index).text(tmpLng);
+											addMarker(tmpLat, tmpLng, vo.aptName);
+										}
+									}); //ajax
+								}); //each
+							}
+							var multi = {
+								lat : 37.5665734,
+								lng : 126.978179
+							};
+							var map;
+
+							function initMap() {
+								map = new google.maps.Map(document.getElementById('map'), {
+									center : multi,
+									zoom : 15
+								});
+								var marker = new google.maps.Marker({
+									position : multi,
+									map : map
+								});
+							}
+
+							function addMarker(tmpLat, tmpLng, aptName) {
+								var marker = new google.maps.Marker({
+									position : new google.maps.LatLng(parseFloat(tmpLat), parseFloat(tmpLng)),
+									label : aptName,
+									title : aptName
+								});
+								marker.addListener('click', function() {
+									map.setZoom(17);
+									map.setCenter(marker.getPosition());
+									callHouseDealInfo();
+								});
+								marker.setMap(map);
+							}
+
+							function callHouseDealInfo() {
+								alert("you can call HouseDealInfo");
+							} */
 						</script>
 
 					</div>
 				</div>
-				
-			</section> <!-- 시군동 section -->
+
+			</section>
+			<!-- 시군동 section -->
 		</div>
 	</section>
 
@@ -712,8 +793,7 @@
 	<script src="${root}/js/aos.js"></script>
 	<script src="${root}/js/jquery.animateNumber.min.js"></script>
 	<script src="${root}/js/scrollax.min.js"></script>
-	<!-- <script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
 	<script src="${root}/js/google-map.js"></script>
 	<script src="${root}/js/main.js"></script>
 	<script
