@@ -97,6 +97,25 @@
 				}
 			});
 		});
+		
+		$("tbody.detailNo").on("click", function() {
+            let no = $(this).attr("nod");
+            $.ajax({
+                url : '${root}/notice/modal/' + no,
+                type : 'GET',
+                contentType : 'application/json;charset=utf-8',
+                success : function(notice) {
+                    $("#modal_userid").text(notice.userid);
+                    $("#modal_regtime").text(notice.regtime);
+                    $("#modal_content").text(notice.content);
+                    $("#modal_subject").text(notice.subject);
+                    $("#detailModal").modal();
+                },
+                error : function(xhr, status, msg) {
+                    console.log("상태값 : " + status + " Http에러메시지 : " + msg);
+                }
+            });
+        });
 	});
 	
 	function setDeleteNo(num) {
@@ -158,7 +177,7 @@
 			<c:if test="${notices.size() != 0}">
 				<c:forEach var="notice" items="${notices}">
 					<table class="table table_style_1">
-						<tbody class="">
+						<tbody class="detailNo" nod="${notice.noticeno}">
 							<tr class="table_border_top">
 								<td colspan="2" class="">
 								<span class="board_title">${notice.subject}</span>
@@ -169,9 +188,6 @@
 									<span class="board_writer">${notice.userid}</span>
 									<span class="board_regtime">${notice.regtime}</span>
 								</td>
-							</tr>
-							<tr class="table_border_bottom">
-								<td colspan="2">${notice.content}</td>
 							</tr>
 							<c:if test="${userinfo.username == 'admin'}">
 								<tr>
@@ -256,6 +272,51 @@
 			</div>
 		</div>
 	</div>
+	
+	    <!-- 게시글 상세정보 modal -->
+    <div class="modal" id="detailModal">
+        <div class="modal-dialog">
+            <div class="modal-content ">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">[공지 사항]</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <colgroup>
+                            <col width="120">
+                            <col width="*">
+                            <col width="120">
+                            <col width="*">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th class="text-center">제목</th>
+                                <td class="text-left" colspan="3" id="modal_subject"></td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">작성자</th>
+                                <td class="text-left" colspan="3" id="modal_userid"></td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">시간</th>
+                                <td class="text-left" colspan="3" id="modal_regtime"></td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">내용</th>
+                                <td class="text-left" colspan="3" id="modal_content"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal 끝 -->
 </body>
 <script src="${root}/js/jquery.min.js"></script>
 <script src="${root}/js/jquery-migrate-3.0.1.min.js"></script>

@@ -75,4 +75,9 @@ public class NoticeController {
 		}
 	}
 	
+	@GetMapping(value="/modal/{no}", headers = { "Content-type=application/json" })
+    @ResponseBody public NoticeDto getNotice(@PathVariable("no") int noticeno) throws Exception {
+        return noticeService.getNotice(noticeno);
+    }
+	
 }
