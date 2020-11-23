@@ -164,8 +164,9 @@
 								<td align="right">작성일 : ${notice.regtime}</td>
 							</tr>
 							<tr>
-								<td colspan="2" class="table-danger"><strong>${notice.noticeno}.
-										${notice.subject}</strong></td>
+								<td colspan="2" class="table-danger">
+								<strong>[공지사항] ${notice.subject}</strong>
+								</td>
 							</tr>
 							<tr>
 								<td colspan="2">${notice.content}</td>

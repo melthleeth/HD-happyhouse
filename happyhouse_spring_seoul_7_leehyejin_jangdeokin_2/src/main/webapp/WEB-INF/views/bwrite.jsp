@@ -54,8 +54,26 @@
 				alert("내용 입력!!!");
 				return;
 			} else {
-				$("#writeform").attr("action", "${root}/notice/write").submit();
-				location.href = "${root}/notice/list?pg=1&key=noticeno&word=";
+				let data = JSON.stringify({
+					'userid': $('#userid').val(),
+					'subject' : $('#subject').val(), 
+					'content' : $('#content').val(), 
+				});
+				console.log(data);
+				
+				$.ajax({
+					url:'${root}/notice/write',  
+					type:'post',
+					data : data,
+					contentType:'application/json;charset=utf-8',
+					success:function() {
+						location.href = "${root}/notice/list?pg=1&key=noticeno&word=";
+					},
+					error:function(xhr,status,msg){
+						console.log();
+						console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+					}
+				});
 			}
 		});
 	  $("#goHome").click(function() {
@@ -71,6 +89,7 @@
 	<div class="col-lg-6" align="center">
 		<h2>공지사항 게시하기</h2>
 		<form id="writeform" method="post" action="">
+			<input type="hidden" id="userid" name="userid" value="admin">
 			<div class="form-group" align="left">
 				<label for="subject">제목:</label>
 				<input type="text" class="form-control" id="subject" name="subject">
@@ -85,6 +104,35 @@
 		<hr>
 		<button type="button" class="btn btn-primary" id="goHome">글목록</button>
 	</div>
+	
+	<!-- 비밀번호 modal -->
+	<div class="modal" id="hi" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title"> 게시글이 등록되었습니다 !!</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<table class="table table-bordered">
+						<tbody>
+							<tr>
+								<td class="text-center">글 목록을 확인해주세요.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick='location.href = "${root}/notice/list?pg=1&key=noticeno&word="'>Close</button>
+		      </div>
+			</div>
+		</div>
+	</div>
+	<!-- modal 끝 -->
 </body>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-migrate-3.0.1.min.js"></script>

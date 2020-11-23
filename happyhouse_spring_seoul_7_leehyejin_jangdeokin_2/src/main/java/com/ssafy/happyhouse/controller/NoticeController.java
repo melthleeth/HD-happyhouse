@@ -23,10 +23,10 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String write(NoticeDto noticeDto, Model model, HttpSession session) {
+	@ResponseBody public String write(@RequestBody NoticeDto noticeDto, Model model) {
 		try {
 			noticeService.writeNotice(noticeDto);
-			return "/board";
+			return "";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("msg", "글작성중 문제가 발생했습니다.");
@@ -37,7 +37,7 @@ public class NoticeController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(@RequestParam Map<String, String> map, Model model) {
 		String spp = map.get("spp");
-		map.put("spp", spp != null ? spp : "10");//sizePerPage
+		map.put("spp", spp != null ? spp : "5");//sizePerPage
 		try {
 			List<NoticeDto> list = noticeService.listNotice(map);
 			PageNavigation pageNavigation = noticeService.makePageNavigation(map);
