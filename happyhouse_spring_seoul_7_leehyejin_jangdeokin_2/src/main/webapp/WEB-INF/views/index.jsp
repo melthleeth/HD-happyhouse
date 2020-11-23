@@ -129,6 +129,7 @@
 											console.log("아파트정보 불러오기 성공");
 											console.log(data);
 											$("#searchResult").empty();
+											hideMarker();
 											$.each(data, function(index, item) {
 												let str = "<tr house_no=\"" + item.no + "\" class=\"view\">" +
 												//"<td>" + item.no + "</td>" + 
@@ -140,8 +141,10 @@
 												"</tr>";
 												$("#searchResult").append(str);
 												//$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
-												
-												setMarker(item.dong + " " + item.jibun + " " + item.aptName, item.aptName);
+												let message =	item.aptName + "<br>" + 
+																item.dealAmount + "만원<br>" +
+																item.area + "㎡";
+												setMarker(item.dong + " " + item.jibun + " " + item.aptName, message);
 											}); //each
 											//geocode(data);
 											
@@ -175,6 +178,11 @@
 												"</tr>";
 												$("#searchResult").append(str);
 												//$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
+												let message =	item.aptName + "<br>" + 
+																item.dealAmount + "만원<br>" +
+																item.area + "㎡";
+												
+												setMarker(item.dong + " " + item.jibun + " " + item.aptName, message);
 											}); //each
 											//geocode(data);
 										} //function
@@ -472,6 +480,8 @@
 							let message = vo.aptName;
 							displayMarker(locPosition, message); */
 
+							var markers = [];
+                            var customOverlays = [];
 							// 지도에 마커와 인포윈도우를 표시하는 함수입니다
 							function displayMarker(locPosition, message) {
 								var imageSrc = '${root}/images/heart.png', // 마커이미지의 주소입니다    
@@ -489,6 +499,7 @@
 									position : locPosition
 								});
 
+								markers.push(marker); //
 								marker.setMap(map);
 								
 								let content = "<div class=\"marker_message\">" + message  + "</div>";
@@ -499,6 +510,8 @@
 									position: locPosition,
 									content: content
 								});
+								
+								customOverlays.push(customOverlay); //
 								customOverlay.setMap(map);
 								
 								/* var iwContent = message, // 인포윈도우에 표시할 내용
@@ -515,6 +528,16 @@
 
 								// 지도 중심좌표를 접속위치로 변경합니다
 								map.setCenter(locPosition);
+							}
+							
+							// 중첩된 마커를 제거합니다.
+							function hideMarker() {
+								for (var i = 0; i < markers.length; i++) {
+									markers[i].setMap(null);
+								}
+								for (var i = 0; i < customOverlays.length; i++) {
+									customOverlays[i].setMap(null);
+								}
 							}
 
 							/*

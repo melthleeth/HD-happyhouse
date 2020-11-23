@@ -120,26 +120,26 @@
 	</form>
 	<div class="container" align="center">
 		<div class="col-lg-8" align="center">
-			<h2>공지사항</h2>
+			<h1 class="page_header">공지사항</h1>
 			<table class="table table-borderless">
 				<tr>
 					<c:if test="${userinfo.username == 'admin' }">
 					<td align="right"><button type="button" id="mvWriteBtn"
-							class="btn btn-link">글쓰기</button></td>
+							class="btn_font btn_spacing btn_register">글쓰기</button></td>
 					</c:if>
 				</tr>
 			</table>
 			<form id="searchform" method="get" class="form-inline" action="">
-				<input type="hidden" name="pg" id="pg" value="1">
+				<input type="hidden" name="pg" id="pg" class="input_style_1" value="1">
 				<table class="table table-borderless">
 					<tr>
-						<td align="right"><select class="form-control" name="key"
+						<td align="right"><select class="select_style_1" name="key"
 							id="skey">
 								<option value="noticeno">글번호</option>
 								<option value="subject">제목</option>
-						</select> <input type="text" class="form-control" placeholder="검색어 입력."
+						</select> <input type="text" class="input_style_1" placeholder="검색어를 입력하세요"
 							name="word" id="sword">
-							<button type="button" id="searchBtn" class="btn btn-primary">검색</button>
+							<button type="button" id="searchBtn" class="btn_font btn_spacing_2 btn_default">검색</button>
 						</td>
 					</tr>
 				</table>
@@ -157,25 +157,27 @@
 	  </table> -->
 			<c:if test="${notices.size() != 0}">
 				<c:forEach var="notice" items="${notices}">
-					<table class="table table-active">
-						<tbody>
-							<tr class="table-info">
-								<td>작성자 : ${notice.userid}</td>
-								<td align="right">작성일 : ${notice.regtime}</td>
-							</tr>
-							<tr>
-								<td colspan="2" class="table-danger">
-								<strong>[공지사항] ${notice.subject}</strong>
+					<table class="table table_style_1">
+						<tbody class="">
+							<tr class="table_border_top">
+								<td colspan="2" class="">
+								<span class="board_title">${notice.subject}</span>
 								</td>
 							</tr>
-							<tr>
+							<tr class="table_border_bottom">
+								<td colspan="2">
+									<span class="board_writer">${notice.userid}</span>
+									<span class="board_regtime">${notice.regtime}</span>
+								</td>
+							</tr>
+							<tr class="table_border_bottom">
 								<td colspan="2">${notice.content}</td>
 							</tr>
 							<c:if test="${userinfo.username == 'admin'}">
 								<tr>
-									<td colspan="2">
-										<a href="#editNoticeModal" class="update" data-toggle="modal" onclick="setUpdateNo(${notice.noticeno})">수정</a>
-										<a href="#deleteNoticeModal" class="delete" data-toggle="modal" onclick="setDeleteNo(${notice.noticeno})">삭제</a>
+									<td colspan="2" align="center">
+										<a href="#editNoticeModal" class="btn_font_small btn_spacing_3 btn_default_small" data-toggle="modal" onclick="setUpdateNo(${notice.noticeno})">수정</a>
+										<a href="#deleteNoticeModal" class="btn_font_small btn_spacing_3 btn_default_small" data-toggle="modal" onclick="setDeleteNo(${notice.noticeno})">삭제</a>
 									</td>
 								</tr>
 							</c:if>
@@ -191,7 +193,7 @@
 			<c:if test="${notices.size() == 0}">
 				<table class="table table-active">
 					<tbody>
-						<tr class="table-info" align="center">
+						<tr class="" align="center">
 							<td>작성된 글이 없습니다.</td>
 						</tr>
 					</tbody>
@@ -221,8 +223,8 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="button" class="btn btn-info" data-dismiss="modal" value="Save" id="update" name="update">
+						<input type="button" class="btn_font btn_spacing_2 btn_confirm" data-dismiss="modal" value="Save" id="update" name="update">
+						<input type="button" class="btn_font btn_spacing_2 btn_default" data-dismiss="modal" value="Cancel">
 					</div>
 				</form>
 			</div>
@@ -246,8 +248,8 @@
 						</p>
 					</div>
 					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="button" class="btn btn-danger" data-dismiss="modal" id="delete" value="Delete">
+						<input type="button" class="btn_font btn_spacing_2 btn_confirm" data-dismiss="modal" id="delete" value="Delete">
+						<input type="button" class="btn_font btn_spacing_2 btn_default" data-dismiss="modal" value="Cancel">
 						
 					</div>
 				</form>
@@ -255,19 +257,19 @@
 		</div>
 	</div>
 </body>
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-migrate-3.0.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/jquery.stellar.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/aos.js"></script>
-<script src="js/jquery.animateNumber.min.js"></script>
-<script src="js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="js/google-map.js"></script>
-<script src="js/main.js"></script>
+<script src="${root}/js/jquery.min.js"></script>
+<script src="${root}/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="${root}/js/popper.min.js"></script>
+<script src="${root}/js/bootstrap.min.js"></script>
+<script src="${root}/js/jquery.easing.1.3.js"></script>
+<script src="${root}/js/jquery.waypoints.min.js"></script>
+<script src="${root}/js/jquery.stellar.min.js"></script>
+<script src="${root}/js/owl.carousel.min.js"></script>
+<script src="${root}/js/jquery.magnific-popup.min.js"></script>
+<script src="${root}/js/aos.js"></script>
+<script src="${root}/js/jquery.animateNumber.min.js"></script>
+<script src="${root}/js/scrollax.min.js"></script>
+<script src="${root}/js/main.js"></script>
+<%-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="${root}/js/google-map.js"></script> --%>
 </html>

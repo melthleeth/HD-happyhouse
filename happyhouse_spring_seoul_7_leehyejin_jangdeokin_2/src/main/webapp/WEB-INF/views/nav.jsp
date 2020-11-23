@@ -18,25 +18,28 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 <link rel="stylesheet" href="${root}/css/style_hyejin.css">
-<link rel="stylesheet" href="${root}//css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="${root}//css/animate.css">
+<link rel="stylesheet" href="${root}/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="${root}/css/animate.css">
 
-<link rel="stylesheet" href="${root}//css/owl.carousel.min.css">
-<link rel="stylesheet" href="${root}//css/owl.theme.default.min.css">
-<link rel="stylesheet" href="${root}//css/magnific-popup.css">
+<link rel="stylesheet" href="${root}/css/owl.carousel.min.css">
+<link rel="stylesheet" href="${root}/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="${root}/css/magnific-popup.css">
 
-<link rel="stylesheet" href="${root}//css/aos.css">
-<link rel="stylesheet" href="${root}//css/ionicons.min.css">
+<link rel="stylesheet" href="${root}/css/aos.css">
+<link rel="stylesheet" href="${root}/css/ionicons.min.css">
 
-<link rel="stylesheet" href="${root}//css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="${root}//css/jquery.timepicker.css">
+<link rel="stylesheet" href="${root}/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="${root}/css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="${root}//css/flaticon.css">
-<link rel="stylesheet" href="${root}//css/icomoon.css">
-<link rel="stylesheet" href="${root}//css/style.css">
+<link rel="stylesheet" href="${root}/css/flaticon.css">
+<link rel="stylesheet" href="${root}/css/icomoon.css">
+<link rel="stylesheet" href="${root}/css/style.css">
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -121,7 +124,7 @@
 							<li class="nav-item"><a href="${root}/management" class="nav-link">Manage</a></li>
 							</c:if>
 							<li class="nav-item cta"><a href="${root}/mypage"
-								class="nav-link"><span> ${userinfo.username}님 로그인중</span></a></li>
+								class="nav-link nav-userinfo"><span> ${userinfo.username}님 로그인중</span></a></li>
 							<li class="nav-item cta"><a href="${root}/logout"
 								class="nav-link nav-login"><span class="tmoney-round-wind-extrabold"> Logout</span></a></li>
 						</c:otherwise>
