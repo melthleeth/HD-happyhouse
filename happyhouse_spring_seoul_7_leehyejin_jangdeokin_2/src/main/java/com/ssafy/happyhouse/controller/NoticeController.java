@@ -52,10 +52,8 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	@ResponseBody public String modify(@RequestBody Map<String, String> info,  Model model) {
+	@ResponseBody public String modify(@RequestBody NoticeDto noticeDto,  Model model) {
 		try {
-			NoticeDto noticeDto = null;
-			System.out.println(info);
 			noticeService.modifyNotice(noticeDto);
 			return "";
 		} catch (Exception e) {

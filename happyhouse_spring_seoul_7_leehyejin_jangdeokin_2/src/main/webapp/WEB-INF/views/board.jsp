@@ -76,20 +76,17 @@
 		})
 		
 		$("#update").click(function() {
-				let data = {
-						'noticeno': $('#updatenoticeno').val(),
-						'subject' : $('#updateSubject').val(), 
-						'content' : $('#updateContext').val(), 
-					};
-				console.log(data);
+			let data = JSON.stringify({
+					'noticeno': $('#updatenoticeno').val(),
+					'subject' : $('#updateSubject').val(), 
+					'content' : $('#updateContext').val(), 
+				});
+			console.log(data);
+			
 			$.ajax({
 				url:'${root}/notice/modify',  
 				type:'post',
-				data : {
-					'noticeno' : $('#updatenoticeno').val(),
-					'subject' : $('#updateSubject').val(), 
-					'content' : $('#updateContext').val(), 
-				},
+				data : data,
 				contentType:'application/json;charset=utf-8',
 				success:function() {
 					location.href = "${root}/notice/list?pg=1&key=noticeno&word=";
