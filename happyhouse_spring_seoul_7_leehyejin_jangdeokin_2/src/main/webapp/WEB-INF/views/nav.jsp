@@ -109,7 +109,7 @@
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active"><a href="${root}/index" class="nav-link tmoney-round-wind-extrabold">Home</a></li>
-					<li class="nav-item"><a href="${root}/board" class="nav-link tmoney-round-wind-extrabold">Board</a></li>
+					<li class="nav-item"><a href="${root}/notice/list?pg=1&key=&word=" class="nav-link tmoney-round-wind-extrabold">Board</a></li>
 					<li class="nav-item"><a href="${root}/qna" class="nav-link tmoney-round-wind-extrabold">QnA</a></li>
 					<c:choose>
 						<c:when test='${empty userinfo}'>
