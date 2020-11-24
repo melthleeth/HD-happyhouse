@@ -1,8 +1,7 @@
 @font-face {
 	font-family: 'yg-jalnan';
 	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff')
-		format('woff');
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -10,24 +9,29 @@
 @font-face {
 	font-family: 'S-CoreDream-3Light';
 	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
-		format('woff');
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
-     font-family: 'S-CoreDream-4Regular';
-     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');
-     font-weight: normal;
-     font-style: normal;
+	font-family: 'S-CoreDream-4Regular';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
 	font-family: 'S-CoreDream-5Medium';
 	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff')
-		format('woff');
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'S-CoreDream-6Bold';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -35,8 +39,7 @@
 @font-face {
 	font-family: 'TmoneyRoundWindRegular';
 	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff')
-		format('woff');
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -44,8 +47,7 @@
 @font-face {
 	font-family: 'TmoneyRoundWindExtraBold';
 	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff')
-		format('woff');
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -53,8 +55,7 @@
 @font-face {
 	font-family: 'Cafe24Dangdanghae';
 	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.2/Cafe24Dangdanghae.woff')
-		format('woff');
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.2/Cafe24Dangdanghae.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -81,6 +82,10 @@
 
 .s-coredream-medium {
 	font-family: 'S-CoreDream-5Medium';
+}
+
+.s-coredream-bold {
+	font-family: 'S-CoreDream-6Bold';
 }
 
 .Cafe24Dangdanghae {
@@ -166,8 +171,7 @@
 	background-color: #ffdfdf;
 }
 
-#index_section>div>div>section>div>div>div>div>form>div>div:nth-child(4)
-	{
+#index_section>div>div>section>div>div>div>div>form>div>div:nth-child(4) {
 	border-left: 2px solid white;
 	padding-left: 5vw;
 }
@@ -214,6 +218,10 @@
 
 .spacing_1 {
 	padding: 2rem 0;
+}
+
+.spacing_2 {
+	margin: 7rem 0;
 }
 
 .label_style_1 {
@@ -338,4 +346,42 @@
 	text-decoration: none;
 	background-color: #FA563C;
 	/* transform: scale(1.1); */
+}
+
+/* 페이징 */
+
+#pagination_style_1 {
+	
+	list-style-type: none;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.page_active { /* 클릭 활성화시 */
+	color: #FFF;
+	background-color: #0adfb3;
+}
+
+#page_item_1 { /* <li> */
+	float: left;
+	text-decoration: none;
+	margin: 0.5rem;
+}
+
+#page_link_1 { /* <a> */
+	font-family: 'S-CoreDream-6Bold';
+	font-size: 16pt;
+	display: block;
+	color: #343A40;
+	text-decoration: none;
+	padding: 0.5rem 1rem;
+	margin: 0.2rem;
+	transition: .3s;
+}
+
+#page_link_1:hover:not(.page_active) {
+	color: #FFF;
+	background-color: #343A40;
 }

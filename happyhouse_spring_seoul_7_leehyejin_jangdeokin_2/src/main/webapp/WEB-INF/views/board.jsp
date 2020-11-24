@@ -219,7 +219,8 @@
 				</table>
 			</c:if>
 		</div>
-	</div>
+		<div class="spacing_2"></div>
+	</div> <!-- container -->
 	
 	<!-- Edit Modal HTML -->
 	<div id="editNoticeModal" class="modal fade">

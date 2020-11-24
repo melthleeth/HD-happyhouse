@@ -87,23 +87,24 @@ public class PageNavigation {
 			endPage = totalPageCount;
 		
 		StringBuilder buffer = new StringBuilder();
-		buffer.append("		<ul class=\"pagination\"> \n");
-		buffer.append("			<li class=\"page-item\" data-pg=\"1\"> \n");
-		buffer.append("				<a href=\"#\" class=\"page-link\">최신</a> \n");
+		buffer.append("		<div class=\"container\"><ul id=\"pagination_style_1\"> \n");
+		buffer.append("			<li id=\"page_item_1\" data-pg=\"1\"> \n");
+		buffer.append("				<a href=\"#\" id=\"page_link_1\"> << </a> \n");
 		buffer.append("			</li> \n");
-		buffer.append("			<li class=\"page-item\" data-pg=\"" + (this.startRange ? 1 : (startPage - 1)) + "\"> \n");
-		buffer.append("				<a href=\"#\" class=\"page-link\">이전</a> \n");
+		buffer.append("			<li id=\"page_item_1\" data-pg=\"" + (this.startRange ? 1 : (startPage - 1)) + "\"> \n");
+		buffer.append("				<a href=\"#\" id=\"page_link_1\"> < </a> \n");
 		buffer.append("			</li> \n");
 		for(int i=startPage;i<=endPage;i++) {
-			buffer.append("			<li class=\"" + (currentPage == i ? "page-item active" : "page-item") + "\" data-pg=\"" + i + "\"><a href=\"#\" class=\"page-link\">" + i + "</a></li> \n");
+			buffer.append("			<li id=\"page_item_1\" data-pg=\"" + i + "\">\n");
+			buffer.append("				<a href=\"#\" id=\"page_link_1\" class=\"" + (currentPage == i ? "page_active" : "") + "\">" + i + "</a></li> \n");
 		}
-		buffer.append("			<li class=\"page-item\" data-pg=\"" + (this.endRange ? endPage : (endPage + 1)) + "\"> \n");
-		buffer.append("				<a href=\"#\" class=\"page-link\">다음</a> \n");
+		buffer.append("			<li id=\"page_item_1\" data-pg=\"" + (this.endRange ? endPage : (endPage + 1)) + "\"> \n");
+		buffer.append("				<a href=\"#\" id=\"page_link_1\"> > </a> \n");
 		buffer.append("			</li> \n");
-		buffer.append("			<li class=\"page-item\" data-pg=\"" + totalPageCount + "\"> \n");
-		buffer.append("				<a href=\"#\" class=\"page-link\">마지막</a> \n");
+		buffer.append("			<li id=\"page_item_1\" data-pg=\"" + totalPageCount + "\"> \n");
+		buffer.append("				<a href=\"#\" id=\"page_link_1\"> >> </a> \n");
 		buffer.append("			</li> \n");
-		buffer.append("		</ul> \n");
+		buffer.append("		</ul></div> \n");
 		this.navigator = buffer.toString();
 	}
 
