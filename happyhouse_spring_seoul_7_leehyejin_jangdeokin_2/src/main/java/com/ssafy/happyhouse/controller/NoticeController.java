@@ -22,6 +22,20 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	@GetMapping(value = "/qnadetail")
+	public String qnadetail(@RequestParam("no") int noticeno, Model model) {
+		try {
+			System.out.println(noticeno);
+			NoticeDto noticeDto = noticeService.getNotice(noticeno);
+			model.addAttribute("notice", noticeDto);
+			return "/qnadetail";
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("msg", "글 정보를 얻어오는 중 문제가 발생했습니다.");
+			return "/error/error";
+		}
+	}
+	
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	@ResponseBody public String write(@RequestBody NoticeDto noticeDto, Model model) {
 		try {
@@ -51,6 +65,23 @@ public class NoticeController {
 		}
 	}
 	
+	@RequestMapping(value = "/qna", method = RequestMethod.GET)
+	public String qna(@RequestParam Map<String, String> map, Model model) {
+		String spp = map.get("spp");
+		map.put("spp", spp != null ? spp : "5");//sizePerPage
+		try {
+			List<NoticeDto> list = noticeService.listNotice(map);
+			PageNavigation pageNavigation = noticeService.makePageNavigation(map);
+			model.addAttribute("notices", list);
+			model.addAttribute("navigation", pageNavigation);
+			return "/qna";
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("msg", "글목록을 얻어오는 중 문제가 발생했습니다.");
+			return "error/error";
+		}
+	}
+	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	@ResponseBody public String modify(@RequestBody NoticeDto noticeDto,  Model model) {
 		try {
@@ -63,8 +94,8 @@ public class NoticeController {
 		}
 	}
 	
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String delete(@RequestParam("deletenoticeno") int noticeno, Model model) {
+	@DeleteMapping(value = "/delete/{delno}")
+	@ResponseBody public String delete(@PathVariable("delno") int noticeno, Model model) {
 		try {
 			noticeService.deleteNotice(noticeno);
 			return "";

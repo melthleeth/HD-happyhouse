@@ -2,12 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
-<c:if test="${userinfo.username != 'admin'}">
-	<c:redirect url="/" />
-</c:if>
-<c:if test="${userinfo.username == 'admin'}">
-	<!DOCTYPE html>
-	<html>
+<!DOCTYPE html>
+<html>
 <head>
 <title>HappyHouse_Front_End_서울_7_이혜진_장덕인</title>
 <meta charset="utf-8">
@@ -56,38 +52,8 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#writeBtn").click(function() {
-			if ($("#subject").val() == "") {
-				alert("제목 입력!!!");
-				return;
-			} else if ($("#content").val() == "") {
-				alert("내용 입력!!!");
-				return;
-			} else {
-				let data = JSON.stringify({
-					'userid' : $('#userid').val(),
-					'subject' : $('#subject').val(),
-					'content' : $('#content').val(),
-				});
-				console.log(data);
-
-				$.ajax({
-					url : '${root}/notice/write',
-					type : 'post',
-					data : data,
-					contentType : 'application/json;charset=utf-8',
-					success : function() {
-						location.href = "${root}/notice/list?pg=1&key=noticeno&word=";
-					},
-					error : function(xhr, status, msg) {
-						console.log();
-						console.log("상태값 : " + status + " Http에러메시지 : " + msg);
-					}
-				});
-			}
-		});
 		$("#goHome").click(function() {
-			location.href = "${root}/notice/list?pg=1&key=noticeno&word=";
+			location.href = "${root}/notice/qna?pg=1&key=noticeno&word=";
 		})
 	});
 </script>
@@ -97,64 +63,36 @@
 	<jsp:include page="./nav.jsp"></jsp:include>
 
 	<div class="container col-lg-6" align="center">
-		<h1 class="page_header">새로운 공지사항 작성</h1>
+		<h1 class="page_header">${notice.subject}</h1>
 		<table class="table_board">
-			<form id="writeform" method="post" action="">
-				<input type="hidden" id="userid" name="userid" value="admin">
-				<tr class="spacing_1" align="center">
-					<td><label class="label_style_1" for="subject">제목:</label></td>
-					<td><input type="text" class="input_style_2" id="subject"
-						name="subject"></td>
-				</tr>
-				<tr class="spacing_1" align="center">
-					<td><label class="label_style_1" for="content">내용:</label>
-					</td>
-					<td><textarea class="input_style_2" rows="15" id="content"
-							name="content"></textarea></td>
-				</tr>
-				<tr>
-				<td colspan="2">
-				<button type="reset" class="btn_font btn_spacing btn_default">초기화</button>
-				<button type="button" id="writeBtn"
-					class="btn_font btn_register btn_spacing">글작성</button>
-				<button type="button" class="btn_font btn_default btn_spacing"
-					id="goHome">글목록</button>
+			<tr class="spacing_1" align="center">
+				<td><label class="label_style_1" for="subject">작성자:</label></td>
+				<td>${ notice.userid }</td>
+			</tr>
+			<tr class="spacing_1" align="center">
+				<td><label class="label_style_1" for="content">내용:</label>
 				</td>
-				</tr>
-			</form>
+				<td> ${ notice.content } </td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<button type="button" class="btn_font btn_default btn_spacing"
+						id="goHome">글목록</button>
+				</td>
+			</tr>
 		</table>
+		<!-- 댓글 작성 부분 -->
+		<%-- <div id="comment">
+			<table border="1">
+				<c:if test = "${commentList != null}">
+					<c:forEach var="comment" items = "${ commentList }">
+						
+					</c:forEach>
+				</c:if>
+			</table>
+		</div> --%>
+	
 	</div>
-
-	<!-- 비밀번호 modal -->
-	<div class="modal" id="hi" data-keyboard="false" data-backdrop="static">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">게시글이 등록되었습니다 !!</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-
-				<!-- Modal body -->
-				<div class="modal-body">
-					<table class="table table-bordered">
-						<tbody>
-							<tr>
-								<td class="text-center">글 목록을 확인해주세요.</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal"
-						onclick='location.href = "${root}/notice/list?pg=1&key=noticeno&word="'>Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- modal 끝 -->
 </body>
 <script src="${root}/js/jquery.min.js"></script>
 <script src="${root}/js/jquery-migrate-3.0.1.min.js"></script>
@@ -172,4 +110,3 @@
 <%-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="${root}/js/google-map.js"></script> --%>
 	</html>
-</c:if>

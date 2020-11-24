@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssafy.happyhouse.model.MemberDto;
 import com.ssafy.happyhouse.model.service.MemberService;
+import com.ssafy.happyhouse.model.service.NoticeService;
 
 @Controller
 @RequestMapping("/")
@@ -29,21 +30,17 @@ public class PageController {
 	public String index() {
 		return "index";
 	}
-	@GetMapping(value = "/board")
-	public String board() {
-		return "board";
-	}
 	
-	@GetMapping(value = "/write")
-	public String write() {
+	@GetMapping(value = "/bwrite")
+	public String bwrite() {
 		return "bwrite";
 	}
 	
-	
-	@GetMapping(value = "/qna")
-	public String about() {
-		return "redirect:/";
+	@GetMapping(value = "/qwrite")
+	public String qwrite() {
+		return "qwrite";
 	}
+
 	@GetMapping(value = "/management")
 	public String management(Model model, HttpSession session, HttpServletResponse response) {
 		try {

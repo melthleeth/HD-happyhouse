@@ -2,12 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
-<c:if test="${userinfo.username != 'admin'}">
-	<c:redirect url="/" />
+<c:if test="${userinfo == null}">
+	<c:redirect url="/"/>
 </c:if>
-<c:if test="${userinfo.username == 'admin'}">
-	<!DOCTYPE html>
-	<html>
+<c:if test="${userinfo != null}">
+<!DOCTYPE html>
+<html>
 <head>
 <title>HappyHouse_Front_End_서울_7_이혜진_장덕인</title>
 <meta charset="utf-8">
@@ -23,24 +23,24 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 
-<link rel="stylesheet" href="${root}/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="${root}/css/animate.css">
+<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="css/animate.css">
 
-<link rel="stylesheet" href="${root}/css/owl.carousel.min.css">
-<link rel="stylesheet" href="${root}/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="${root}/css/magnific-popup.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
 
-<link rel="stylesheet" href="${root}/css/aos.css">
+<link rel="stylesheet" href="css/aos.css">
 
-<link rel="stylesheet" href="${root}/css/ionicons.min.css">
+<link rel="stylesheet" href="css/ionicons.min.css">
 
-<link rel="stylesheet" href="${root}/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="${root}/css/jquery.timepicker.css">
+<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="${root}/css/flaticon.css">
-<link rel="stylesheet" href="${root}/css/icomoon.css">
-<link rel="stylesheet" href="${root}/css/style.css">
+<link rel="stylesheet" href="css/flaticon.css">
+<link rel="stylesheet" href="css/icomoon.css">
+<link rel="stylesheet" href="css/style.css">
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -77,7 +77,7 @@
 					data : data,
 					contentType : 'application/json;charset=utf-8',
 					success : function() {
-						location.href = "${root}/notice/list?pg=1&key=noticeno&word=";
+						location.href = "${root}/notice/qna?pg=1&key=noticeno&word=";
 					},
 					error : function(xhr, status, msg) {
 						console.log();
@@ -87,7 +87,7 @@
 			}
 		});
 		$("#goHome").click(function() {
-			location.href = "${root}/notice/list?pg=1&key=noticeno&word=";
+			location.href = "${root}/notice/qna?pg=1&key=noticeno&word=";
 		})
 	});
 </script>
@@ -97,10 +97,10 @@
 	<jsp:include page="./nav.jsp"></jsp:include>
 
 	<div class="container col-lg-6" align="center">
-		<h1 class="page_header">새로운 공지사항 작성</h1>
+		<h1 class="page_header">새로운 Q&A 작성</h1>
 		<table class="table_board">
 			<form id="writeform" method="post" action="">
-				<input type="hidden" id="userid" name="userid" value="admin">
+				<input type="hidden" id="userid" name="userid" value="${userinfo.username}">
 				<tr class="spacing_1" align="center">
 					<td><label class="label_style_1" for="subject">제목:</label></td>
 					<td><input type="text" class="input_style_2" id="subject"
@@ -113,13 +113,13 @@
 							name="content"></textarea></td>
 				</tr>
 				<tr>
-				<td colspan="2">
-				<button type="reset" class="btn_font btn_spacing btn_default">초기화</button>
-				<button type="button" id="writeBtn"
-					class="btn_font btn_register btn_spacing">글작성</button>
-				<button type="button" class="btn_font btn_default btn_spacing"
-					id="goHome">글목록</button>
-				</td>
+					<td colspan="2">
+						<button type="reset" class="btn_font btn_spacing btn_default">초기화</button>
+						<button type="button" id="writeBtn"
+							class="btn_font btn_register btn_spacing">글작성</button>
+						<button type="button" class="btn_font btn_default btn_spacing"
+							id="goHome">글목록</button>
+					</td>
 				</tr>
 			</form>
 		</table>
@@ -149,7 +149,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal"
-						onclick='location.href = "${root}/notice/list?pg=1&key=noticeno&word="'>Close</button>
+						onclick='location.href = "${root}/notice/qna?pg=1&key=noticeno&word="'>Close</button>
 				</div>
 			</div>
 		</div>
@@ -172,4 +172,4 @@
 <%-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="${root}/js/google-map.js"></script> --%>
 	</html>
-</c:if>
+	</c:if>

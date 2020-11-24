@@ -44,7 +44,7 @@
 	$(document).ready(function() {
 		
 		$('#mvWriteBtn').focusin(function() {
-			$(location).attr("href", "${root}/write");
+			$(location).attr("href", "${root}/bwrite");
 		});
 		
 		$("#searchBtn").click(function() {
@@ -63,8 +63,8 @@
 		$("#delete").click(function() {
 			let delno = $("#deletenoticeno").val();
 			$.ajax({
-				url:'${root}/notice/delete?deletenoticeno=' + delno,  
-				type:'GET',
+				url:'${root}/notice/delete/' + delno,  
+				type:'delete',
 				contentType:'application/json;charset=utf-8',
 				success:function() {
 					location.href = "${root}/notice/list?pg=1&key=noticeno&word=";
@@ -154,7 +154,6 @@
 					<tr>
 						<td align="right"><select class="select_style_1" name="key"
 							id="skey">
-								<option value="noticeno">글번호</option>
 								<option value="subject">제목</option>
 						</select> <input type="text" class="input_style_1" placeholder="검색어를 입력하세요"
 							name="word" id="sword">
@@ -176,6 +175,7 @@
 	  </table> -->
 			<c:if test="${notices.size() != 0}">
 				<c:forEach var="notice" items="${notices}">
+				<c:if test="${notice.userid == 'admin' }">
 					<table class="table table_style_1">
 						<tbody class="detailNo" nod="${notice.noticeno}">
 							<tr class="table_border_top">
@@ -189,6 +189,7 @@
 									<span class="board_regtime">${notice.regtime}</span>
 								</td>
 							</tr>
+							<tbody>
 							<c:if test="${userinfo.username == 'admin'}">
 								<tr>
 									<td colspan="2" align="center">
@@ -197,8 +198,10 @@
 									</td>
 								</tr>
 							</c:if>
+							</tbody>
 						</tbody>
 					</table>
+					</c:if>
 				</c:forEach>
 				<table>
 					<tr>
