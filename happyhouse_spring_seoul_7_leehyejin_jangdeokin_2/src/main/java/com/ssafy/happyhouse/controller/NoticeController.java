@@ -36,6 +36,18 @@ public class NoticeController {
 		}
 	}
 	
+	@RequestMapping(value = "/comment", method = RequestMethod.POST)
+	@ResponseBody public String writeComment(@RequestBody NoticeDto noticeDto, Model model) {
+		try {
+			noticeService.writeNotice(noticeDto);
+			return "";
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("msg", "글작성중 문제가 발생했습니다.");
+			return "error/error";
+		}
+	}
+	
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	@ResponseBody public String write(@RequestBody NoticeDto noticeDto, Model model) {
 		try {

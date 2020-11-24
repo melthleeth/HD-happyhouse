@@ -61,8 +61,7 @@
 		});
 		
 		$("#delete").click(function() {
-			/* let delno = $("#deletenoticeno").val(); */
-			let delno = $(this).attr("nod");
+			let delno = $("#deletenoticeno").val();
 			$.ajax({
 				url:'${root}/notice/delete/' + delno,  
 				type:'delete',
@@ -101,6 +100,8 @@
 		
 		$("tbody.detailNo").on("click", function() {
             let no = $(this).attr("nod");
+            setDeleteNo(no);
+            setUpdateNo(no);
             $.ajax({
                 url : '${root}/notice/modal/' + no,
                 type : 'GET',
@@ -120,13 +121,15 @@
 	});
 	
 	function setDeleteNo(num) {
-		$("#detailModal").modal('hide');
 		$("#deletenoticeno").val(num);
 	};
 	
 	function setUpdateNo(num) {
-		$("#detailModal").modal('hide');
 		$("#updatenoticeno").val(num);
+	}
+	
+	function hide() {
+		$("#detailModal").modal('hide');
 	}
 	
 </script>
@@ -229,11 +232,11 @@
 						<input type="hidden" id="updatenoticeno" name="updatenoticeno">
 						<div class="form-group">
 							<label>제목</label>
-							<input type="text" class="form-control" id="updateSubject" required placeholder="${notice.subject}">
+							<input type="text" class="form-control" id="updateSubject" required placeholder="">
 						</div>
 						<div class="form-group">
 							<label>내용</label>
-							<input type="text" class="form-control" id="updateContext" required placeholder="${notice.context}">
+							<input type="text" class="form-control" id="updateContext" required placeholder="">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -281,8 +284,8 @@
                     <h4 class="modal-title s-coredream-bold" id="modal_subject"></h4>
                     <div class="spacing_3"></div>
                     <c:if test="${userinfo.username == 'admin'}">
-	                    <a href="#editNoticeModal" class="btn_font_small btn_spacing_3 btn_default_small" data-toggle="modal" onclick="setUpdateNo(${notice.noticeno})">수정</a>
-						<a href="#deleteNoticeModal" class="btn_font_small btn_spacing_3 btn_default_small" data-toggle="modal" onclick="setDeleteNo(${notice.noticeno})">삭제</a>								
+	                    <a href="#editNoticeModal" class="btn_font_small btn_spacing_3 btn_default_small" data-toggle="modal" onclick="hide()">수정</a>
+						<a href="#deleteNoticeModal" class="btn_font_small btn_spacing_3 btn_default_small" data-toggle="modal" onclick="hide()">삭제</a>								
 					</c:if>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
