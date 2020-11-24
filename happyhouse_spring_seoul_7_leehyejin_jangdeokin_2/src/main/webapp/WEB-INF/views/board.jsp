@@ -61,7 +61,8 @@
 		});
 		
 		$("#delete").click(function() {
-			let delno = $("#deletenoticeno").val();
+			/* let delno = $("#deletenoticeno").val(); */
+			let delno = $(this).attr("nod");
 			$.ajax({
 				url:'${root}/notice/delete/' + delno,  
 				type:'delete',
@@ -119,10 +120,12 @@
 	});
 	
 	function setDeleteNo(num) {
+		$("#detailModal").modal('hide');
 		$("#deletenoticeno").val(num);
 	};
 	
 	function setUpdateNo(num) {
+		$("#detailModal").modal('hide');
 		$("#updatenoticeno").val(num);
 	}
 	
@@ -177,28 +180,19 @@
 				<c:forEach var="notice" items="${notices}">
 				<c:if test="${notice.userid == 'admin' }">
 					<table class="table table_style_1">
+						<colgroup>
+                            <col width="70%">
+                            <col width="30%">
+                        </colgroup>
 						<tbody class="detailNo" nod="${notice.noticeno}">
 							<tr class="table_border_top">
-								<td colspan="2" class="">
+								<td>
 								<span class="board_title">${notice.subject}</span>
 								</td>
-							</tr>
-							<tr class="table_border_bottom">
-								<td colspan="2">
-									<span class="board_writer">${notice.userid}</span>
-									<span class="board_regtime">${notice.regtime}</span>
+								<td>
+								<span class="board_regtime">${notice.regtime}</span>
 								</td>
 							</tr>
-							<tbody>
-							<c:if test="${userinfo.username == 'admin'}">
-								<tr>
-									<td colspan="2" align="center">
-										<a href="#editNoticeModal" class="btn_font_small btn_spacing_3 btn_default_small" data-toggle="modal" onclick="setUpdateNo(${notice.noticeno})">수정</a>
-										<a href="#deleteNoticeModal" class="btn_font_small btn_spacing_3 btn_default_small" data-toggle="modal" onclick="setDeleteNo(${notice.noticeno})">삭제</a>
-									</td>
-								</tr>
-							</c:if>
-							</tbody>
 						</tbody>
 					</table>
 					</c:if>
@@ -223,28 +217,28 @@
 	</div> <!-- container -->
 	
 	<!-- Edit Modal HTML -->
-	<div id="editNoticeModal" class="modal fade">
+	<div id="editNoticeModal" class="modal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form id="updateForm" name="updateForm">
 					<div class="modal-header">
-						<h4 class="modal-title">Edit Notice</h4>
+						<h4 class="modal-title">공지사항 수정하기</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
 						<input type="hidden" id="updatenoticeno" name="updatenoticeno">
 						<div class="form-group">
-							<label>Subject</label>
+							<label>제목</label>
 							<input type="text" class="form-control" id="updateSubject" required placeholder="${notice.subject}">
 						</div>
 						<div class="form-group">
-							<label>Context</label>
+							<label>내용</label>
 							<input type="text" class="form-control" id="updateContext" required placeholder="${notice.context}">
 						</div>
 					</div>
 					<div class="modal-footer">
-						<input type="button" class="btn_font btn_spacing_2 btn_confirm" data-dismiss="modal" value="Save" id="update" name="update">
-						<input type="button" class="btn_font btn_spacing_2 btn_default" data-dismiss="modal" value="Cancel">
+						<input type="button" class="btn_font btn_spacing_2 btn_confirm" data-dismiss="modal" value="저장" id="update" name="update">
+						<input type="button" class="btn_font btn_spacing_2 btn_default" data-dismiss="modal" value="취소">
 					</div>
 				</form>
 			</div>
@@ -252,24 +246,24 @@
 	</div>
 	
 	<!-- Delete Modal HTML -->
-	<div id="deleteNoticeModal" class="modal fade">
+	<div id="deleteNoticeModal" class="modal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form id="deleteForm" name="deleteForm" method="get">
 					<input type="hidden" name="deletenoticeno" id="deletenoticeno">
 					<div class="modal-header">
-						<h4 class="modal-title">Delete Notice</h4>
+						<h4 class="modal-title">공지사항 삭제하기</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-						<p>Are you sure you want to delete these Records?</p>
+						<p>해당 공지사항을 삭제하시겠습니까?</p>
 						<p class="text-warning">
-							<small>This action cannot be undone.</small>
+							<small>되돌리기 불가능</small>
 						</p>
 					</div>
 					<div class="modal-footer">
-						<input type="button" class="btn_font btn_spacing_2 btn_confirm" data-dismiss="modal" id="delete" value="Delete">
-						<input type="button" class="btn_font btn_spacing_2 btn_default" data-dismiss="modal" value="Cancel">
+						<input type="button" class="btn_font btn_spacing_2 btn_confirm" data-dismiss="modal" id="delete" value="삭제">
+						<input type="button" class="btn_font btn_spacing_2 btn_default" data-dismiss="modal" value="취소">
 						
 					</div>
 				</form>
@@ -284,7 +278,12 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">[공지 사항]</h4>
+                    <h4 class="modal-title s-coredream-bold" id="modal_subject"></h4>
+                    <div class="spacing_3"></div>
+                    <c:if test="${userinfo.username == 'admin'}">
+	                    <a href="#editNoticeModal" class="btn_font_small btn_spacing_3 btn_default_small" data-toggle="modal" onclick="setUpdateNo(${notice.noticeno})">수정</a>
+						<a href="#deleteNoticeModal" class="btn_font_small btn_spacing_3 btn_default_small" data-toggle="modal" onclick="setDeleteNo(${notice.noticeno})">삭제</a>								
+					</c:if>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -299,10 +298,6 @@
                         </colgroup>
                         <tbody>
                             <tr>
-                                <th class="text-center">제목</th>
-                                <td class="text-left" colspan="3" id="modal_subject"></td>
-                            </tr>
-                            <tr>
                                 <th class="text-center">작성자</th>
                                 <td class="text-left" colspan="3" id="modal_userid"></td>
                             </tr>
@@ -311,9 +306,9 @@
                                 <td class="text-left" colspan="3" id="modal_regtime"></td>
                             </tr>
                             <tr>
-                                <th class="text-center">내용</th>
-                                <td class="text-left" colspan="3" id="modal_content"></td>
+                                <td class="text-left" colspan="4" id="modal_content"></td>
                             </tr>
+                            
                         </tbody>
                     </table>
                 </div>
