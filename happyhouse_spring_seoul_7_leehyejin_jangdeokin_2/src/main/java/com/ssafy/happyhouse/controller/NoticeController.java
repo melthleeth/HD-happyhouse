@@ -28,11 +28,11 @@ public class NoticeController {
 			System.out.println(noticeno);
 			NoticeDto noticeDto = noticeService.getNotice(noticeno);
 			model.addAttribute("notice", noticeDto);
-			return "/qnadetail";
+			return "qna/qnadetail";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("msg", "글 정보를 얻어오는 중 문제가 발생했습니다.");
-			return "/error/error";
+			return "error/error";
 		}
 	}
 	
@@ -69,7 +69,7 @@ public class NoticeController {
 			PageNavigation pageNavigation = noticeService.makePageNavigation(map);
 			model.addAttribute("notices", list);
 			model.addAttribute("navigation", pageNavigation);
-			return "/board";
+			return "board/board";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("msg", "글목록을 얻어오는 중 문제가 발생했습니다.");
@@ -86,7 +86,7 @@ public class NoticeController {
 			PageNavigation pageNavigation = noticeService.makePageNavigation(map);
 			model.addAttribute("notices", list);
 			model.addAttribute("navigation", pageNavigation);
-			return "/qna";
+			return "qna/qna";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("msg", "글목록을 얻어오는 중 문제가 발생했습니다.");

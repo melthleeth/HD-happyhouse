@@ -33,12 +33,12 @@ public class PageController {
 	
 	@GetMapping(value = "/bwrite")
 	public String bwrite() {
-		return "bwrite";
+		return "board/bwrite";
 	}
 	
 	@GetMapping(value = "/qwrite")
 	public String qwrite() {
-		return "qwrite";
+		return "qna/qwrite";
 	}
 
 	@GetMapping(value = "/management")
@@ -50,7 +50,7 @@ public class PageController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("msg", "회원 목록을 얻어오는 중 문제가 발생했습니다.");
-			return "/error/error";
+			return "error/error";
 		}
 	}
 	@GetMapping(value = "/signup")

@@ -136,7 +136,7 @@
 </head>
 <body>
 
-	<jsp:include page="./nav.jsp"></jsp:include>
+	<jsp:include page="../nav.jsp"></jsp:include>
 
 	<form name="pageform" id="pageform" method="GET" action="">
 		<input type="hidden" name="pg" id="pg" value=""> <input

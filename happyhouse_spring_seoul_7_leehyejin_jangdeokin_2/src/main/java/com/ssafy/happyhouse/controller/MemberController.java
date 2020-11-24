@@ -40,7 +40,7 @@ public class MemberController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("msg", "회원 가입 중 문제가 발생했습니다.");
-			return "/error/error";
+			return "error/error";
 		}
 
 	}

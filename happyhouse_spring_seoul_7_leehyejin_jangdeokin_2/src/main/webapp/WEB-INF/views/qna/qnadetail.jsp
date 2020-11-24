@@ -92,7 +92,7 @@
 </head>
 <body>
 
-	<jsp:include page="./nav.jsp"></jsp:include>
+	<jsp:include page="../nav.jsp"></jsp:include>
 
 	<div class="container col-lg-6" align="center">
 		<h1 class="page_header">${notice.subject}</h1>
