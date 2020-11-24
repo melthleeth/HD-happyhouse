@@ -265,9 +265,8 @@
 						</p>
 					</div>
 					<div class="modal-footer">
-						<input type="button" class="btn_font btn_spacing_2 btn_confirm" data-dismiss="modal" id="delete" value="삭제">
 						<input type="button" class="btn_font btn_spacing_2 btn_default" data-dismiss="modal" value="취소">
-						
+						<input type="button" class="btn_font btn_spacing_2 btn_confirm" data-dismiss="modal" id="delete" value="삭제">
 					</div>
 				</form>
 			</div>

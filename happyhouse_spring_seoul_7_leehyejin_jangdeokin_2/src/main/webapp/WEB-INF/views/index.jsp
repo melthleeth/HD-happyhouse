@@ -615,7 +615,7 @@
 	</section>
 
 
-	<section class="ftco-section ftco-no-pb">
+	<%-- <section class="ftco-section ftco-no-pb">
 		<div class="container">
 			<div class="row justify-content-start mb-5">
 				<div class="col-md-8 heading-section ftco-animate">
@@ -740,9 +740,9 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --%>
 
-	<section
+	<!-- <section
 		class="ftco-section ftco-no-pb ftco-no-pt ftco-counter img ftco-animate"
 		id="section-counter">
 		<div class="container">
@@ -777,20 +777,20 @@
 									</div>
 								</div>
 							</div>
-							<!-- <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+							<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
 								<div class="block-18">
 									<div class="text">
 										<strong class="number" data-number="300">0</strong>
 										<span>Working Days</span>
 									</div>
 								</div>
-							</div> -->
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 	<jsp:include page="./footer.jsp"></jsp:include>
 
