@@ -100,9 +100,7 @@
 		
 		$("tbody.detailNo").on("click", function() {
 			let no = $(this).attr("nod");
-			console.log(no);
-			location.href = '${root}/notice/qnadetail?no=' + no;  
-				
+			location.href = '${root}/notice/qnadetail?no=' + no;
         });
 	});
 	
