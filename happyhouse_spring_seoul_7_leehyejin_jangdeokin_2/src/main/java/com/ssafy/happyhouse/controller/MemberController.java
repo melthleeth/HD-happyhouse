@@ -36,7 +36,7 @@ public class MemberController {
 	public String createMember(MemberDto member, Model model, HttpSession session) throws Exception {
 		try {
 			memberService.createMember(member);
-			model.addAttribute("msg", "회원 가입이 완료되었습니다.");
+			model.addAttribute("msg", "1");
 			return "signup";
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -109,7 +109,11 @@ $(document).ready(function() {
 	var me = '${msg}';
 	if(me != '') {
 		$("#hi").modal('hide');
-		$("#hi2").modal();
+		if(me != "1") {
+			$("#hi2").modal();	
+		} else {
+			$("#hi3").modal();	
+		}
 	}
 });
 </script>
@@ -208,6 +212,35 @@ $(document).ready(function() {
 						<tbody>
 							<tr>
 								<td class="text-center">회원가입을 다시 시도해주세요.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal 끝 -->
+	
+	<!-- 회원가입 성공 modal -->
+	<div class="modal" id="hi3" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">회원가입 성공!</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<table class="table table-bordered">
+						<tbody>
+							<tr>
+								<td class="text-center">로그인을 시도해주세요.</td>
 							</tr>
 						</tbody>
 					</table>
