@@ -147,54 +147,55 @@
 			<input type="hidden" name="bcontent" id="bcontent" value="${notice.content}" />
 			<tr class="spacing_1" align="center">
 				<td><label class="label_style_1" for="subject">작성자:</label></td>
-				<td>${ notice.userid }</td>
+				<td class="td_style_1 text-left">${ notice.userid }</td>
+			</tr>
+			<tr class="spacing_1" align="center">
+				<td colspan="2" class="text_hidden">-</td>
 			</tr>
 			<tr class="spacing_1" align="center">
 				<td><label class="label_style_1" for="content">내용:</label>
 				</td>
-				<td> ${ notice.content } </td>
+				<td class="td_style_2 text-left"> ${ notice.content } </td>
 			</tr>
-			<tr>
+			<tr align="center">
 				<td colspan="2">
+					<c:if
+						test="${userinfo.username == notice.userid || userinfo.username == 'admin'}">
+						<a href="#editNoticeModal"
+							class="btn_font btn_spacing btn_register" data-toggle="modal">수정</a>
+					</c:if>
 					<button type="button" class="btn_font btn_default btn_spacing"
 						id="goHome">글목록</button>
+					<c:if
+						test="${userinfo.username == notice.userid || userinfo.username == 'admin'}">
+						<a href="#deleteNoticeModal"
+							class="btn_font btn_spacing btn_confirm" data-toggle="modal">삭제</a>
+					</c:if>
 				</td>
 			</tr>
-			<c:if
-				test="${userinfo.username == notice.userid || userinfo.username == 'admin'}">
-				<tr>
-					<td colspan="2" align="center"><a href="#editNoticeModal"
-						class="btn_font_small btn_spacing_3 btn_default_small"
-						data-toggle="modal">수정</a>
-						<a href="#deleteNoticeModal"
-						class="btn_font_small btn_spacing_3 btn_default_small"
-						data-toggle="modal">삭제</a>
-					</td>
-				</tr>
-			</c:if>
 		</table>
 		<!-- 댓글 작성 부분 -->
 		<hr>
 		<c:if test="${userinfo != null }">
 			<div class="container">
-				<label for="content">comment</label>
 				<form name="commentInsertForm">
-					<div class="input-group">
+					<div class="comment_write">
 						<input type="hidden" name="no" id="no" value="${notice.noticeno}" />
 						<input type="hidden" name="id" id="id" value="${userinfo.username}" />
 						 <input
-							type="text" class="form-control" id="comment_content" name="comment_content"
+							type="text" class="input_style_3" id="comment_content" name="comment_content"
 							placeholder="내용을 입력하세요."> <span class="input-group-btn">
-							<button class="btn btn-default" type="button"
+							<button class="btn_font btn_spacing_4 btn_default" type="button"
 								name="commentInsertBtn">등록</button>
 						</span>
 					</div>
 				</form>
 			</div>
 		</c:if>
-			<div class="container">
-				<div class="commentList"></div>
-			</div>
+		<div class="container">
+			<div class="commentList"></div>
+			<div class="spacing_2"></div>
+		</div>
 		
 	
 	<%@ include file="commentS.jsp" %>
@@ -205,18 +206,18 @@
 			<div class="modal-content">
 				<form id="updateForm" name="updateForm">
 					<div class="modal-header">
-						<h4 class="modal-title">Edit Notice</h4>
+						<h4 class="modal-title board_title">Q&A 수정하기</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
 						<input type="hidden" id="updatenoticeno" name="updatenoticeno" value="${notice.noticeno}">
-						<div class="form-group">
-							<label>Subject</label>
-							<input type="text" class="form-control" id="updateSubject" required placeholder="${notice.subject}">
+						<div class="text-left">
+							<label class="label_style_1">제목</label>
+							<input type="text" class="input_style_2" id="updateSubject" required placeholder="${notice.subject}">
 						</div>
-						<div class="form-group">
-							<label>Context</label>
-							<input type="text" class="form-control" id="updateContent" required placeholder="${notice.content}">
+						<div class="text-left">
+							<label class="label_style_1">내용</label>
+							<input type="text" class="input_style_2" id="updateContent" required placeholder="${notice.content}">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -235,13 +236,13 @@
 				<form id="deleteForm" name="deleteForm" method="get">
 					<input type="hidden" name="deletenoticeno" id="deletenoticeno" value="${notice.noticeno}">
 					<div class="modal-header">
-						<h4 class="modal-title">Delete Notice</h4>
+						<h4 class="modal-title board_title">Q&A 삭제하기</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">
-						<p>Are you sure you want to delete these Records?</p>
+					<div class="modal-body text-left">
+						<p>해당 Q&A를 삭제하시겠습니까?</p>
 						<p class="text-warning">
-							<small>This action cannot be undone.</small>
+							<small>되돌리기 불가능</small>
 						</p>
 					</div>
 					<div class="modal-footer">

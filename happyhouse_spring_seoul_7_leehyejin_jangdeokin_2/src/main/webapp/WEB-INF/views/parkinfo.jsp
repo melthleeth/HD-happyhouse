@@ -133,7 +133,7 @@
 												"<td>" + park.P_ADDR + "</td>" + 
 												"<td>" + park.P_ADMINTEL + "</td>";
 								if (park.TEMPLATE_URL.length > 0)
-									str += "<td><a href=\"" + park.TEMPLATE_URL + "\">" + 
+									str += "<td><a href=\"" + park.TEMPLATE_URL + "\" target=\"_blank\">" +
 											"<img src=\"${root}/images/website.png\" width=\"32\">" +
 											"</a></td>";
 								else str += "<td></td>"
