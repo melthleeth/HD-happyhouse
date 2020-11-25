@@ -60,7 +60,7 @@
 			$("#pageform").attr("action", "${root}/notice/qna").submit();
 		});
 		
-		$("#delete").click(function() {
+		/* $("#delete").click(function() {
 			let delno = $("#deletenoticeno").val();
 			$.ajax({
 				url:'${root}/notice/delete?deletenoticeno=' + delno,  
@@ -95,8 +95,8 @@
 					console.log();
 					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
 				}
-			});
-		});
+			}); 
+		}); */
 		
 		$("tbody.detailNo").on("click", function() {
 			let no = $(this).attr("nod");
@@ -104,13 +104,13 @@
         });
 	});
 	
-	function setDeleteNo(num) {
+/* 	function setDeleteNo(num) {
 		$("#deletenoticeno").val(num);
 	};
 	
 	function setUpdateNo(num) {
 		$("#updatenoticeno").val(num);
-	}
+	} */
 	
 </script>
 </head>
@@ -167,14 +167,14 @@
 								</td>
 							</tr>
 							<tbody>
-							<c:if test="${userinfo.username == notice.userid || userinfo.username == 'admin'}">
+							<%-- <c:if test="${userinfo.username == notice.userid || userinfo.username == 'admin'}">
 								<tr>
 									<td colspan="2" align="center">
 										<a href="#editNoticeModal" class="btn_font_small btn_spacing_3 btn_default_small" data-toggle="modal" onclick="setUpdateNo(${notice.noticeno})">수정</a>
 										<a href="#deleteNoticeModal" class="btn_font_small btn_spacing_3 btn_default_small" data-toggle="modal" onclick="setDeleteNo(${notice.noticeno})">삭제</a>
 									</td>
 								</tr>
-							</c:if>
+							</c:if> --%>
 							</tbody>
 						</tbody>
 					</table>

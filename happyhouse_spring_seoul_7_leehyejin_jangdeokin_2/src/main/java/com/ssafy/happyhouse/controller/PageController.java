@@ -58,32 +58,36 @@ public class PageController {
 		return "signup";
 	}
 	
-	@GetMapping(value = "/login")
-	public String login() {
-		return "user/login";
-	}
+//	@GetMapping(value = "/login")
+//	public String login() {
+//		return "user/login";
+//	}
 	
 	@GetMapping(value = "/mypage")
 	public String mypage() {
 		return "mypage";
 	}
 	
+	@GetMapping(value = "/login")
+	public String login() {
+		return "index";
+	}
+	
 	@PostMapping(value = "/login")
 	public String login(@RequestParam Map<String, String> map, Model model, HttpSession session, HttpServletResponse response) {
 		try {
 			MemberDto memberDto = userService.login(map);
-			if(memberDto != null) {
+			if(memberDto != null) { // 로그인이 성공하면 메인 페이지로 
 				session.setAttribute("userinfo", memberDto);
-				
-			} else {
+			} else { // 로그인 정보가 없다면 알림창
 				model.addAttribute("msg", "아이디 또는 비밀번호 확인 후 로그인해 주세요.");
 			}
+			return "index";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("msg", "로그인 중 문제가 발생했습니다.");
 			return "error/error";
 		}
-		return "index";
 	}
 	
 	@GetMapping(value = "/logout")

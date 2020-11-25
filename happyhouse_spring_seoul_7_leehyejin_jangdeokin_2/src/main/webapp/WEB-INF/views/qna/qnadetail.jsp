@@ -55,6 +55,52 @@
 		$("#goHome").click(function() {
 			location.href = "${root}/notice/qna?pg=1&key=noticeno&word=";
 		})
+		
+		$("#delete").click(function() {
+			let delno = $("#deletenoticeno").val();
+			$.ajax({
+				url:'${root}/notice/delete?deletenoticeno=' + delno,  
+				type:'GET',
+				contentType:'application/json;charset=utf-8',
+				success:function() {
+					location.href = "${root}/notice/qna?pg=1&key=noticeno&word=";
+				},
+				error:function(xhr,status,msg){
+					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+				}
+			})
+		})
+		
+		$("#update").click(function() {
+			if($('#updateSubject').val() == '') {
+				$('#updateSubject').val($("#bsubject").val());
+			}
+			
+			if($('#updateContent').val() == '') {
+				$('#updateContent').val($("#bcontent").val());	
+			}
+			
+			let data = JSON.stringify({
+					'noticeno': $('#updatenoticeno').val(),			
+					'subject' : $('#updateSubject').val(), 	
+					'content' : $('#updateContent').val(), 
+				});
+			console.log(data);
+			
+			$.ajax({
+				url:'${root}/notice/modify',  
+				type:'post',
+				data : data,
+				contentType:'application/json;charset=utf-8',
+				success:function() {
+					location.href = "${root}/notice/qna?pg=1&key=noticeno&word=";
+				},
+				error:function(xhr,status,msg){
+					console.log();
+					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+				}
+			});
+		});
 	});
 	
 	 function writeCmt() {
@@ -97,6 +143,8 @@
 	<div class="container col-lg-6" align="center">
 		<h1 class="page_header">${notice.subject}</h1>
 		<table class="table_board">
+			<input type="hidden" name="bsubject" id="bsubject" value="${notice.subject}" />
+			<input type="hidden" name="bcontent" id="bcontent" value="${notice.content}" />
 			<tr class="spacing_1" align="center">
 				<td><label class="label_style_1" for="subject">작성자:</label></td>
 				<td>${ notice.userid }</td>
@@ -112,9 +160,21 @@
 						id="goHome">글목록</button>
 				</td>
 			</tr>
+			<c:if
+				test="${userinfo.username == notice.userid || userinfo.username == 'admin'}">
+				<tr>
+					<td colspan="2" align="center"><a href="#editNoticeModal"
+						class="btn_font_small btn_spacing_3 btn_default_small"
+						data-toggle="modal">수정</a>
+						<a href="#deleteNoticeModal"
+						class="btn_font_small btn_spacing_3 btn_default_small"
+						data-toggle="modal">삭제</a>
+					</td>
+				</tr>
+			</c:if>
 		</table>
 		<!-- 댓글 작성 부분 -->
-		
+		<hr>
 		<c:if test="${userinfo != null }">
 			<div class="container">
 				<label for="content">comment</label>
@@ -138,6 +198,61 @@
 		
 	
 	<%@ include file="commentS.jsp" %>
+	
+	<!-- Edit Modal HTML -->
+	<div id="editNoticeModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="updateForm" name="updateForm">
+					<div class="modal-header">
+						<h4 class="modal-title">Edit Notice</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" id="updatenoticeno" name="updatenoticeno" value="${notice.noticeno}">
+						<div class="form-group">
+							<label>Subject</label>
+							<input type="text" class="form-control" id="updateSubject" required placeholder="${notice.subject}">
+						</div>
+						<div class="form-group">
+							<label>Context</label>
+							<input type="text" class="form-control" id="updateContent" required placeholder="${notice.content}">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn_font btn_spacing_2 btn_confirm" data-dismiss="modal" value="Save" id="update" name="update">
+						<input type="button" class="btn_font btn_spacing_2 btn_default" data-dismiss="modal" value="Cancel">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Delete Modal HTML -->
+	<div id="deleteNoticeModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="deleteForm" name="deleteForm" method="get">
+					<input type="hidden" name="deletenoticeno" id="deletenoticeno" value="${notice.noticeno}">
+					<div class="modal-header">
+						<h4 class="modal-title">Delete Notice</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Are you sure you want to delete these Records?</p>
+						<p class="text-warning">
+							<small>This action cannot be undone.</small>
+						</p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn_font btn_spacing_2 btn_confirm" data-dismiss="modal" id="delete" value="Delete">
+						<input type="button" class="btn_font btn_spacing_2 btn_default" data-dismiss="modal" value="Cancel">
+						
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 <script src="${root}/js/jquery.min.js"></script>
 <script src="${root}/js/jquery-migrate-3.0.1.min.js"></script>

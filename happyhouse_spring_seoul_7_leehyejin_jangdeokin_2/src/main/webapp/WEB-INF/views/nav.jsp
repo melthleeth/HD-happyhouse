@@ -62,12 +62,25 @@
 			alert("비밀번호를 입력하세요");
 			return;
 		} else {
-			document.getElementById("loginForm").action = "${root}/login";
-			document.getElementById("loginForm").submit();
+			/* document.getElementById("loginForm").action = "${root}/login";
+			document.getElementById("loginForm").submit(); */
+			$.ajax({
+				url: "${root}/login",
+				type:'POST',
+				success:function() {
+				},
+				error:function(xhr,status,msg){
+					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+				}
+			})
 		}
 	};
 	
 	$(document).ready(function() {
+		var me = '${msg}';
+		if(me != '') {
+			$("#hi").modal();
+		}
 		$("#findpw").on('click', function() {
 			let username = $('#fpusername').val();
 			console.log("username => ", username);
@@ -78,6 +91,7 @@
 				success:function(pw) {
 					console.log("data return => ", pw);
 					$("#modal_password").text(pw);
+					$("#pwModal").modal('hide');
 					$("#passwordModal").modal();
 				},
 				error:function(xhr,status,msg){
@@ -229,6 +243,7 @@
 						<tbody>
 							<tr>
 								<th class="text-center">비밀번호</th>
+								<td id="modal_password"></td>
 							</tr>
 						</tbody>
 					</table>
@@ -236,6 +251,35 @@
 				<div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="#myModal">Close</button>
 		      </div>
+			</div>
+		</div>
+	</div>
+	<!-- modal 끝 -->
+	
+	<!-- 비밀번호 modal -->
+	<div class="modal" id="hi" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">아이디나 비밀번호를 확인해주세요.</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<table class="table table-bordered">
+						<tbody>
+							<tr>
+								<td class="text-center">일치하는 계정이 없습니다.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
 			</div>
 		</div>
 	</div>

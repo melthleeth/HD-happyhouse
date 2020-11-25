@@ -26,7 +26,7 @@
 	            	console.log(value);
 	                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
 	                a += '<div class="commentInfo'+value.commentno+'">'+'작성자 : '+value.comment_id;
-	                if(id == value.comment_id) {
+	                if(id == value.comment_id || id == "admin") {
 	                	a += '<a onclick="commentUpdate('+value.commentno+',\''+value.comment_content+'\');"> 수정 </a>';
 		                a += '<a onclick="commentDelete('+value.commentno+');"> 삭제 </a>';	
 	                }
