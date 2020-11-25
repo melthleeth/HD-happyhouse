@@ -542,15 +542,15 @@ table.table .avatar {
 						<input type="hidden" id="updatememberno" name="updatememberno">
 						<div class="form-group">
 							<label>Email</label>
-							<input type="email" class="form-control" id="updateEmail" required placeholder="${userinfo.email}">
+							<input type="email" class="form-control" id="updateEmail" required placeholder="">
 						</div>
 						<div class="form-group">
 							<label>Address</label>
-							<textarea class="form-control" id="updateAddress" required placeholder="${userinfo.address}"></textarea>
+							<textarea class="form-control" id="updateAddress" required placeholder=""></textarea>
 						</div>
 						<div class="form-group">
 							<label>Phone</label>
-							<input type="text" class="form-control" id="updatePhone" required placeholder="${userinfo.phone}">
+							<input type="text" class="form-control" id="updatePhone" required placeholder="">
 						</div>
 					</div>
 					<div class="modal-footer">

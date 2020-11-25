@@ -467,7 +467,7 @@
 	background-color: #0adfb3;
 }
 
-#page_item_1 { /* <li> */
+.page_item_1 { /* <li> */
 	float: left;
 	text-decoration: none;
 	margin: 0.5rem;

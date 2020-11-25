@@ -55,7 +55,8 @@
 			$("#searchform").attr("action", "${root}/notice/list").submit();
 		});
 		
-		$(".page-item").click(function() {
+		$(".page_item_1").click(function() {
+			console.log("?");
 			$("#pg").val(($(this).attr("data-pg")));
 			$("#pageform").attr("action", "${root}/notice/list").submit();
 		});

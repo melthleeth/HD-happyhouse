@@ -59,8 +59,8 @@
 		$("#delete").click(function() {
 			let delno = $("#deletenoticeno").val();
 			$.ajax({
-				url:'${root}/notice/delete?deletenoticeno=' + delno,  
-				type:'GET',
+				url:'${root}/notice/delete/' + delno,  
+				type:'delete',
 				contentType:'application/json;charset=utf-8',
 				success:function() {
 					location.href = "${root}/notice/qna?pg=1&key=noticeno&word=";
