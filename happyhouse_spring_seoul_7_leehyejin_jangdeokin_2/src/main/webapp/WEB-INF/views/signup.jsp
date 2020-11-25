@@ -119,10 +119,11 @@ $(document).ready(function() {
 </script>
 <body>
 <jsp:include page="./nav.jsp"></jsp:include>
+<div class="spacing_7"></div>
 <div class="signup-form">
     <form action="${root }/member/create" method="post">
-		<h2>Sign Up</h2>
-		<p>Please fill in this form to create an account!</p>
+		<h1 class="page_header">회원가입</h1>
+		<p>아래 항목을 작성하여 회원가입을 완료하세요.</p>
 		<hr>
         <div class="form-group">
 			<div class="input-group">

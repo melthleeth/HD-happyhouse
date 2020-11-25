@@ -122,6 +122,7 @@
 						console.log("P_ZONE: " + P_ZONE);
 						$("#park_info").text(P_ZONE + " 공원 정보");
 						//hideMarker();
+						$("#result_park").empty();
 						$.each(parks, function(index, park) {
 							if (park.P_ZONE === P_ZONE)  {
 								//console.log((index + 1) + ": " + park.P_PARK + ", 주소: " + park.P_ADDR);
@@ -139,9 +140,9 @@
 								else str += "<td></td>"
 								str += "</tr>";
 								$("#result_park").append(str);
+								let coords = new kakao.maps.LatLng(park.LATITUDE, park.LONGITUDE);
+						        displayMarker(coords, park.P_PARK, 2); // 결과값으로 받은 위치를 마커로 표시합니다
 							} // if P_ZONE
-							let coords = new kakao.maps.LatLng(park.LATITUDE, park.LONGITUDE);
-					        displayMarker(coords, park.P_PARK, 2); // 결과값으로 받은 위치를 마커로 표시합니다
 						}); // each
 					} // success
 				})

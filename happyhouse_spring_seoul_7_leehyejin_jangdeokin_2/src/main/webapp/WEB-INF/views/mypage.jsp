@@ -328,7 +328,7 @@ table.table .avatar {
 	<jsp:include page="./nav.jsp"></jsp:include>
 	<!-- END nav -->
 
-	<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_4.jpg');" data-stellar-background-ratio="0.5">
+	<%-- <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_4.jpg');" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -340,8 +340,8 @@ table.table .avatar {
 				</div>
 			</div>
 		</div>
-	</section>
-
+	</section> --%>
+	<div class="spacing_2"></div>
 	<div class="container-xl">
 		<div class="table-responsive">
 			<div class="table-wrapper">
@@ -433,9 +433,9 @@ table.table .avatar {
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-						<p>Are you sure you want to delete these Records?</p>
+						<p>정말 회원정보를 삭제하시겠습니까?</p>
 						<p class="text-warning">
-							<small>This action cannot be undone.</small>
+							<small>이 작업은 되돌릴 수 없습니다.</small>
 						</p>
 					</div>
 					<div class="modal-footer">
@@ -476,7 +476,7 @@ table.table .avatar {
 	</div>
 	<!-- modal 끝 -->
 
-	<jsp:include page="./footer.jsp"></jsp:include>
+	<jsp:include page="./footer2.jsp"></jsp:include>
 
 
 

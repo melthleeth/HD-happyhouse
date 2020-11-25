@@ -213,11 +213,11 @@
 						<input type="hidden" id="updatenoticeno" name="updatenoticeno" value="${notice.noticeno}">
 						<div class="text-left">
 							<label class="label_style_1">제목</label>
-							<input type="text" class="input_style_2" id="updateSubject" required placeholder="${notice.subject}">
+							<input type="text" class="input_style_2" id="updateSubject" required value="${notice.subject}">
 						</div>
 						<div class="text-left">
 							<label class="label_style_1">내용</label>
-							<input type="text" class="input_style_2" id="updateContent" required placeholder="${notice.content}">
+							<input type="text" class="input_style_2" id="updateContent" required value="${notice.content}">
 						</div>
 					</div>
 					<div class="modal-footer">
