@@ -24,14 +24,14 @@
 	            var a =''; 
 	            $.each(data, function(key, value){ 
 	            	console.log(value);
-	                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-	                a += '<div class="commentInfo'+value.commentno+'">'+'작성자 : '+value.comment_id;
+	                a += '<div class="commentArea">';
+	                a += '<div class="text-left comment_style_1 commentInfo'+value.commentno+'">'+''+value.comment_id;
 	                if(id == value.comment_id || id == "admin") {
-	                	a += '<a onclick="commentUpdate('+value.commentno+',\''+value.comment_content+'\');"> 수정 </a>';
-		                a += '<a onclick="commentDelete('+value.commentno+');"> 삭제 </a>';	
+	                	a += '<div class="btn_spacing_5"><a class="btn_font_small btn_spacing_3 btn_default_small_2" onclick="commentUpdate('+value.commentno+',\''+value.comment_content+'\');"> 수정 </a>';
+		                a += '<a class="btn_font_small btn_spacing_3 btn_default_small_2" onclick="commentDelete('+value.commentno+');"> 삭제 </a></div>';	
 	                }
 	                a += '</div>';
-	                a += '<div class="commentContent'+value.commentno+'"> <p> 내용 : '+value.comment_content +'</p>';
+	                a += '<div class="text-left comment_style_2 commentContent'+value.commentno+'"> <span>'+value.comment_content +'</span>';
 	                a += '</div></div>';
 
 	            });
@@ -64,8 +64,8 @@ function commentUpdate(commentno, comment_content){
     var a ='';
     
     a += '<div class="input-group">';
-    a += '<input type="text" class="form-control" name="content_'+commentno+'" value="'+comment_content+'"/>';
-    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+commentno+');">수정</button> </span>';
+    a += '<input type="text" class="input_style_3" name="content_'+commentno+'" value="'+comment_content+'"/>';
+    a += '<span class="input-group-btn"><button class="btn_font btn_spacing_4 btn_confirm" type="button" onclick="commentUpdateProc('+commentno+');">수정</button> </span>';
     a += '</div>';
     
     $('.commentContent'+commentno).html(a);

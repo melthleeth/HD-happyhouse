@@ -154,18 +154,22 @@
 				<c:forEach var="notice" items="${notices}">
 					<c:if test="${notice.userid  != 'admin'}">
 					<table class="table table_style_1">
+						<colgroup>
+		                    <col width="60%">
+		                    <col width="15%">
+		                    <col width="25%">
+		                </colgroup>
 						<tbody class="detailNo" nod="${notice.noticeno}">
 							<tr class="table_border_top">
-								<td colspan="2" class="">
+								<td>
 								<span class="board_title">${notice.subject}</span>
 								</td>
-							</tr>
-							<tr class="table_border_bottom">
-								<td colspan="2">
-									<span class="board_writer">${notice.userid}</span>
-									<span class="board_regtime">${notice.regtime}</span>
+								<td>
+								<span class="board_writer">${notice.userid}</span>
 								</td>
-							</tr>
+								<td>
+								<span class="board_regtime">${notice.regtime}</span>
+								</td>
 							<tbody>
 							<%-- <c:if test="${userinfo.username == notice.userid || userinfo.username == 'admin'}">
 								<tr>
