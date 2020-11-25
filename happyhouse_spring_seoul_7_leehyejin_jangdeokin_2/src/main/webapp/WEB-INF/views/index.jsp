@@ -47,8 +47,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=833a1d00eb0a2b88924bcd6ff33b7e2a&libraries=services,clusterer,drawing"></script>
 </head>
@@ -130,6 +128,7 @@
 											console.log(data);
 											$("#searchResult").empty();
 											hideMarker();
+											
 											$.each(data, function(index, item) {
 												let str = "<tr house_no=\"" + item.no + "\" class=\"view\">" +
 												//"<td>" + item.no + "</td>" + 
@@ -146,6 +145,8 @@
 																item.area + "㎡";
 												setMarker(item.dong + " " + item.jibun + " " + item.aptName, message);
 											}); //each
+											console.log("마커 개수: " + markers.length);
+											
 											//geocode(data);
 											
 										} // success
@@ -184,6 +185,7 @@
 												
 												setMarker(item.dong + " " + item.jibun + " " + item.aptName, message);
 											}); //each
+											console.log("마커 개수: " + markers.length);
 											//geocode(data);
 										} //function
 									}) // ajax
@@ -456,7 +458,7 @@
 							
 							// -- 주소로 좌표 검색하며 마커찍기 -- //
 							function setMarker(address, message) {
-								console.log("address: " + address + ", message: " + message);
+								//console.log("address: " + address + ", message: " + message);
 								// 주소-좌표 변환 객체를 생성합니다
 								var geocoder = new kakao.maps.services.Geocoder();
 
@@ -482,6 +484,8 @@
 
 							var markers = [];
                             var customOverlays = [];
+                            var lastPosition;
+                            var flag_marker = false;
 							// 지도에 마커와 인포윈도우를 표시하는 함수입니다
 							function displayMarker(locPosition, message) {
 								var imageSrc = '${root}/images/heart.png', // 마커이미지의 주소입니다    
@@ -501,6 +505,7 @@
 
 								markers.push(marker); //
 								marker.setMap(map);
+								lastPosition = locPosition;
 								
 								let content = "<div class=\"marker_message\">" + message  + "</div>";
 								
@@ -527,11 +532,15 @@
 								infowindow.open(map, marker); */
 
 								// 지도 중심좌표를 접속위치로 변경합니다
-								map.setCenter(locPosition);
+								if (!flag_marker) {
+									flag_marker = true;
+									map.setCenter(locPosition);
+								}
 							}
 							
 							// 중첩된 마커를 제거합니다.
 							function hideMarker() {
+								flag_marker = false;
 								for (var i = 0; i < markers.length; i++) {
 									markers[i].setMap(null);
 								}
@@ -792,7 +801,8 @@
 		</div>
 	</section> -->
 
-	<jsp:include page="./footer.jsp"></jsp:include>
+	<jsp:include page="./parkinfo.jsp"></jsp:include>
+	<jsp:include page="./footer2.jsp"></jsp:include>
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
@@ -816,11 +826,5 @@
 	<script src="${root}/js/aos.js"></script>
 	<script src="${root}/js/jquery.animateNumber.min.js"></script>
 	<script src="${root}/js/scrollax.min.js"></script>
-	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-	<script src="${root}/js/google-map.js"></script>
 	<script src="${root}/js/main.js"></script>
-	<script
-		src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
-	<!-- <script defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ-UitoKEtkU-eHluv1CbD2lLkuxMuYXs&callback=initMap"></script> -->
 </html>

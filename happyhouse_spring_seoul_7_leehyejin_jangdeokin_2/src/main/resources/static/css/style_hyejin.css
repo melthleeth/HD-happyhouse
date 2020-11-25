@@ -230,6 +230,10 @@
 	margin: 1rem 9rem 1rem 0;
 }
 
+.spacing_4 {
+	margin: 3rem;
+}
+
 .label_style_1 {
 	font-family: 'S-CoreDream-5Medium';
 	font-size: 14pt;
@@ -266,6 +270,27 @@
 	/* background-color: #f2f2f2; */
 	border: 4px solid #343A40;
 	border-radius: 20px;
+}
+
+.table_style_2>tbody {
+	background-color: #FFF;
+	border: 4px solid none;
+	transition: 0.3s;
+	align-content: center;
+}
+
+.table_style_2>th {
+	font-family: 'S-CoreDream-5Medium';
+	font-size: 16pt;
+}
+
+.view_park:hover {
+	/* background-color: #f2f2f2; */
+	/* border: 2px solid #343A40; */
+	/* border-radius: 20px; */
+	border-color: #FA563C;
+	border-style: solid;
+	border-width: 0 0 0 5px;
 }
 
 .btn_font {
@@ -405,4 +430,36 @@
 	top:15%;
 }
 
+/* parkinfo.jsp */
+.park_bg {
+	background-color: #00a86b;
+	border-radius: 20px;
+	padding: 2rem 1.5rem 3rem 1.5rem;
+}
+
+.park_title {
+	font-family: 'S-CoreDream-6Bold';
+	padding: 3rem 0 2rem 0;
+}
+
+
+/* footer */
+.align_center {
+	text-align: center;
+	align-content: center;
+}
+
+.footer_spacing {
+	margin: 0;
+	padding: 0;
+	height: 20vh;
+	line-height: 20vh;
+	color: #FFF;
+	background-color: #343A40;
+}
+
+/* CSS 영역차지 테스트 */
+.test_area_1 {
+	background-color: #56C6A9;
+}
 

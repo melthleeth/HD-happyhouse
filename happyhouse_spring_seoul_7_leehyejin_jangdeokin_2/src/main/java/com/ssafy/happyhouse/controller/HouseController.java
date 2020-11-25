@@ -12,6 +12,7 @@ import javax.servlet.http.*;
 import org.json.simple.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.ssafy.happyhouse.model.*;
 import com.ssafy.happyhouse.model.service.*;
