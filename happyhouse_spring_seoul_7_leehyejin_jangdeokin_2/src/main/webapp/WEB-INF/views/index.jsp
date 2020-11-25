@@ -58,6 +58,7 @@
 		<div class="container">
 
 			<section id="index_section">
+				<div class="spacing_6"></div>
 				<div class="card col-sm-12 mt-1" style="min-height: 850px;">
 					<div class="card-body">
 						<script>
@@ -488,7 +489,7 @@
                             var flag_marker = false;
 							// 지도에 마커와 인포윈도우를 표시하는 함수입니다
 							function displayMarker(locPosition, message) {
-								var imageSrc = '${root}/images/heart.png', // 마커이미지의 주소입니다    
+								var imageSrc = '${root}/images/heart2.png', // 마커이미지의 주소입니다    
 							    imageSize = new kakao.maps.Size(43, 40), // 마커이미지의 크기입니다
 							    imageOption = {offset: new kakao.maps.Point(20, 40)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 

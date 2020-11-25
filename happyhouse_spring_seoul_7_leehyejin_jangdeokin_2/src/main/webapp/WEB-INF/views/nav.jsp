@@ -131,16 +131,16 @@
 					<c:choose>
 						<c:when test='${empty userinfo}'>
 							<li class="nav-item cta"><a data-toggle="modal"
-								href="#myModal" class="nav-link nav-login"><span class="tmoney-round-wind-extrabold">Sign Up</span></a></li>
+								href="#myModal" class="nav-link nav-login"><span class="text_signup tmoney-round-wind-extrabold">Sign Up</span></a></li>
 						</c:when>
 						<c:otherwise>
 							<c:if test='${userinfo.username == "admin" }'>
 							<li class="nav-item"><a href="${root}/management" class="nav-link">Manage</a></li>
 							</c:if>
 							<li class="nav-item cta"><a href="${root}/mypage"
-								class="nav-link nav-userinfo"><span> ${userinfo.username}님 로그인중</span></a></li>
+								class="nav-link nav-userinfo"><span class="text_signup"> ${userinfo.username}님 로그인중</span></a></li>
 							<li class="nav-item cta"><a href="${root}/logout"
-								class="nav-link nav-login"><span class="tmoney-round-wind-extrabold"> Logout</span></a></li>
+								class="nav-link nav-login"><span class="text_logout tmoney-round-wind-extrabold"> Logout</span></a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>

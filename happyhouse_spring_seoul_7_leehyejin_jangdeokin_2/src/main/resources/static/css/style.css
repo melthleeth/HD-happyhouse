@@ -8109,10 +8109,10 @@ a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
-  color: #ffdfdf; }
+  color: #343A40; }
   a:hover, a:focus {
     text-decoration: none;
-    color: #ffdfdf;
+    color: #343A40;
     outline: none !important; }
 
 h1, h2, h3, h4, h5,
@@ -8200,9 +8200,9 @@ h1, h2, h3, h4, h5,
         .ftco-navbar-light .navbar-nav > .nav-item.ftco-seperator:before {
           display: none; } }
   .ftco-navbar-light .navbar-nav > .nav-item.cta > a {
-    color: ##343A40;
+   /*  color: #343A40;
     background: #ffdfdf;
-    border-radius: 15px;
+    border-radius: 15px; */
     }
     @media (max-width: 767.98px) {
       .ftco-navbar-light .navbar-nav > .nav-item.cta > a {
@@ -8210,8 +8210,8 @@ h1, h2, h3, h4, h5,
         padding-right: 15px; } }
     @media (max-width: 991.98px) {
       .ftco-navbar-light .navbar-nav > .nav-item.cta > a {
-        color: #343A40;
-        background: #ffdfdf;
+        /* color: #343A40;
+        background: #ffdfdf; */
         -webkit-border-radius: 30px;
         -moz-border-radius: 30px;
         -ms-border-radius: 30px;
@@ -8244,8 +8244,8 @@ h1, h2, h3, h4, h5,
     .ftco-navbar-light.scrolled .nav-item.active > a {
       color: #000000 !important; }
     .ftco-navbar-light.scrolled .nav-item.cta > a {
-      color: #000000 !important;
-      background: #ffdfdf;
+      /* color: #000000 !important;
+      background: #ffdfdf; */
       border: none !important;
       -webkit-border-radius: 30px;
       -moz-border-radius: 30px;

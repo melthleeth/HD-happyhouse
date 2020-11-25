@@ -21,7 +21,7 @@
 </head>
 <body>
 	<div class="align_center">
-		<div class="footer_spacing">H A P P Y  H O U S E - M e r e d i t h X D U C K P A L</div>
+		<div class="footer_spacing Cafe24Dangdanghae">H A P P Y  H O U S E - M e r e d i t h X D U C K P A L</div>
 	</div>
 </body>
 </html>
