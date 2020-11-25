@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.ssafy.happyhouse.model.CommentDto;
 import com.ssafy.happyhouse.model.MemberDto;
 import com.ssafy.happyhouse.model.NoticeDto;
+import com.ssafy.happyhouse.model.service.CommentService;
 import com.ssafy.happyhouse.model.service.NoticeService;
 import com.ssafy.happyhouse.util.PageNavigation;
 
@@ -31,18 +33,6 @@ public class NoticeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("msg", "글 정보를 얻어오는 중 문제가 발생했습니다.");
-			return "error/error";
-		}
-	}
-	
-	@RequestMapping(value = "/comment", method = RequestMethod.POST)
-	@ResponseBody public String writeComment(@RequestBody NoticeDto noticeDto, Model model) {
-		try {
-			noticeService.writeNotice(noticeDto);
-			return "";
-		} catch (Exception e) {
-			e.printStackTrace();
-			model.addAttribute("msg", "글작성중 문제가 발생했습니다.");
 			return "error/error";
 		}
 	}
