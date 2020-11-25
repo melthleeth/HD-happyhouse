@@ -104,6 +104,15 @@ body {
 }
 </style>
 </head>
+<script type="text/javascript">
+$(document).ready(function() {
+	var me = '${msg}';
+	if(me != '') {
+		$("#hi").modal('hide');
+		$("#hi2").modal();
+	}
+});
+</script>
 <body>
 <jsp:include page="./nav.jsp"></jsp:include>
 <div class="signup-form">
@@ -181,6 +190,35 @@ body {
         </div>
     </form>
 	<div class="text-center">Already have an account? <a href="${root}/page/index">Login here</a></div>
+	
+	<!-- 회원가입 실패 modal -->
+	<div class="modal" id="hi2" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">아이디가 이미 존재합니다.</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<table class="table table-bordered">
+						<tbody>
+							<tr>
+								<td class="text-center">회원가입을 다시 시도해주세요.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal 끝 -->
 	
 </div>
 <jsp:include page="./footer.jsp"></jsp:include>

@@ -256,7 +256,7 @@
 	</div>
 	<!-- modal 끝 -->
 	
-	<!-- 비밀번호 modal -->
+	<!-- 로그인 실패 modal -->
 	<div class="modal" id="hi" data-keyboard="false" data-backdrop="static">
 		<div class="modal-dialog">
 			<div class="modal-content">

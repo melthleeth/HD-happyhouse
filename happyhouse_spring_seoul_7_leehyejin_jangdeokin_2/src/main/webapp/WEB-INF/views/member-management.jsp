@@ -343,37 +343,32 @@ table.table .avatar {
 		}); */
 
 		$("#update").click(function() {
-			if($("#updatePassword").val() == $("#updatePasswordConfirm").val()) {
-				let modifyinfo = JSON.stringify({
-					"memberno" : $('#updatememberno').val(),
-					"password" : $('#updatePassword').val(), 
-					"email" : $('#updateEmail').val(), 
-					"address" : $('#updateAddress').val(), 
-					"phone" : $('#updatePhone').val()
-				   });
-				console.log($('#updatememberno').val());
-				$.ajax({
-					url:'${root}/member/update',  
-					type:'PUT',
-					contentType:'application/json;charset=utf-8',
-					dataType:'json',
-					data: modifyinfo,
-					success:function(users) {
-						$("#hi").modal();
-						console.log(users);
-						$.each(users, function(index, item) {
-							if(item.memberno == $("#updatememberno").val()) {
-								$("#sss").append(item.username + "을 확인하세요.");		
-							}
-						})
-					},
-					error:function(xhr,status,msg){
-						console.log("상태값 : " + status + " Http에러메시지 : "+msg);
-					}
-				});
-			} else {
-				alert("비밀번호가 일치하지 않습니다.");
-			}
+			let modifyinfo = JSON.stringify({
+				"memberno" : $('#updatememberno').val(),
+				"email" : $('#updateEmail').val(), 
+				"address" : $('#updateAddress').val(), 
+				"phone" : $('#updatePhone').val()
+			   });
+			console.log($('#updatememberno').val());
+			$.ajax({
+				url:'${root}/member/update',  
+				type:'PUT',
+				contentType:'application/json;charset=utf-8',
+				dataType:'json',
+				data: modifyinfo,
+				success:function(users) {
+					$("#hi").modal();
+					console.log(users);
+					$.each(users, function(index, item) {
+						if(item.memberno == $("#updatememberno").val()) {
+							$("#sss").append(item.username + "을 확인하세요.");		
+						}
+					})
+				},
+				error:function(xhr,status,msg){
+					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+				}
+			});
 		});
 		
 		$("#delete").click(function() {
@@ -545,14 +540,6 @@ table.table .avatar {
 					</div>
 					<div class="modal-body">
 						<input type="hidden" id="updatememberno" name="updatememberno">
-						<div class="form-group">
-							<label>Password</label>
-							<input type="password" class="form-control" id="updatePassword" required placeholder="New Your Password">
-						</div>
-						<div class="form-group">
-							<label>Confirm Password</label>
-							<input type="password" class="form-control" id="updatePasswordConfirm" required required placeholder="New Your Password Confirm">
-						</div>
 						<div class="form-group">
 							<label>Email</label>
 							<input type="email" class="form-control" id="updateEmail" required placeholder="${userinfo.email}">
