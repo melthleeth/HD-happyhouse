@@ -146,14 +146,14 @@
 			<input type="hidden" name="bsubject" id="bsubject" value="${notice.subject}" />
 			<input type="hidden" name="bcontent" id="bcontent" value="${notice.content}" />
 			<tr class="spacing_1" align="center">
-				<td><label class="label_style_1" for="subject">작성자:</label></td>
+				<td><label class="label_style_1" for="subject">작성자: </label></td>
 				<td class="td_style_1 text-left">${ notice.userid }</td>
 			</tr>
 			<tr class="spacing_1" align="center">
 				<td colspan="2" class="text_hidden">-</td>
 			</tr>
 			<tr class="spacing_1" align="center">
-				<td><label class="label_style_1" for="content">내용:</label>
+				<td><label class="label_style_1" for="content">내용: </label>
 				</td>
 				<td class="td_style_2 text-left"> ${ notice.content } </td>
 			</tr>

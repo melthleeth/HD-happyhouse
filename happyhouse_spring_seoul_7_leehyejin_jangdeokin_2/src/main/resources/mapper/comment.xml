@@ -12,7 +12,7 @@
 	
 	<!-- 댓글 목록 -->
 	<select id="listComment" parameterType="int" resultType="CommentDto">
-		select commentno, comment_commentno, comment_id, comment_content, comment_regtime
+		select commentno, comment_commentno, comment_id, comment_content, DATE_FORMAT(comment_regtime, '%Y-%m-%d %H:%i') as comment_regtime
 		from comment
 		<if test="comment_commentno != -1"> <!-- 전체검색이 아닐경우 -->
 			where comment_commentno = #{comment_commentno}
