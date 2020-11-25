@@ -105,7 +105,7 @@
 	
 	<script>
 		$(document).ready(function() {
-			$("#gugun").change(function() {
+			$("#dong").change(function() {
 				$.ajax({
 					url: 'http://openapi.seoul.go.kr:8088/77504243576d656c393548576b476d/json/SearchParkInfoService/1/132/',
 					type : 'GET',
@@ -121,6 +121,7 @@
 						let P_ZONE = $("#gugun option:selected").text();
 						console.log("P_ZONE: " + P_ZONE);
 						$("#park_info").text(P_ZONE + " 공원 정보");
+						//hideMarker();
 						$.each(parks, function(index, park) {
 							if (park.P_ZONE === P_ZONE)  {
 								//console.log((index + 1) + ": " + park.P_PARK + ", 주소: " + park.P_ADDR);
@@ -139,6 +140,8 @@
 								str += "</tr>";
 								$("#result_park").append(str);
 							} // if P_ZONE
+							let coords = new kakao.maps.LatLng(park.LATITUDE, park.LONGITUDE);
+					        displayMarker(coords, park.P_PARK, 2); // 결과값으로 받은 위치를 마커로 표시합니다
 						}); // each
 					} // success
 				})
