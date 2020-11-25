@@ -93,39 +93,40 @@
 }
 
 /* nav.jsp */
+/* .text_signup {
+	color: #343A40;
+} */
+
+
 .nav-link {
 	margin: 5px;
 }
 
-#ftco-nav>ul>li:nth-child(5)>a {
-	color: #dbdcff;
-	background-color: #343A40;
-	border: 3px solid #343A40;
+.text_signup {
+	color: #0adfb3;
+	padding: 0.5rem 1rem;
 	transition: .5s;
 }
 
-#ftco-nav>ul>li:nth-child(5)>a:hover {
+.text_signup:hover {
 	color: #343A40;
-	background-color: #dbdcff;
-	border: 3px solid #dbdcff;
+	background-color: #0adfb3;
 }
 
-#ftco-nav>ul>li:nth-child(6)>a {
-	color: #ffdfdf;
-	background-color: #343A40;
-	border: 3px solid #343A40;
-	transition: .5s;
-}
-
-#ftco-nav>ul>li:nth-child(6)>a:hover {
-	color: #343A40;
-	background-color: #ffdfdf;
-	border: 3px solid #ffdfdf;
-}
-
-.ftco-navbar-light.scrolled .nav_userinfo {
+.text_logout {
 	color: #FFF;
+	padding: 0.5rem 1rem;
+	transition: .5s;
 }
+
+.text_logout:hover {
+	color: #343A40;
+	background-color: #FFF;
+}
+
+/* .ftco-navbar-light.scrolled .nav_userinfo {
+	color: #FFF;
+} */
 
 /* index.jsp */
 .marker_message {
@@ -146,29 +147,31 @@
 	float: left;
 	padding: 5px 16px;
 	width: 7vw;
-	border-radius: 50px;
+	border: 3px solid #0adfb3;
+	/* border-radius: 50px; */
 	margin-top: 5px;
 	font-size: 17px;
+	color: #FFF;
+	background-color: #2f3035;
 }
 
 #btn_detailedSearch {
 	position: relative;
-	bottom: 20px;
+	bottom: 7px;
 	font-family: 'TmoneyRoundWindExtraBold';
 	width: 8vw;
 	height: 10vh;
 	line-height: 8vh;
 	font-size: 20pt;
-	color: #ffdfdf;
-	border: 3px solid #ffdfdf;
-	border-radius: 20px;
-	padding: 2rem 1rem;
+	color: #0adfb3;
+	border: 3px solid #0adfb3;
+	padding: 1.5rem 0.7rem;
 	transition: .3s;
 }
 
 #btn_detailedSearch:hover {
 	color: #2f3035;
-	background-color: #ffdfdf;
+	background-color: #0adfb3;
 }
 
 #index_section>div>div>section>div>div>div>div>form>div>div:nth-child(4) {
@@ -231,7 +234,15 @@
 }
 
 .spacing_4 {
-	margin: 3rem;
+	margin: 3rem 0 4rem 0;
+}
+
+.spacing_5 {
+	margin: 0.2rem 0 0 2rem;
+}
+
+.spacing_6 {
+	padding: 2rem 0 0 0;
 }
 
 .label_style_1 {
@@ -282,6 +293,11 @@
 .table_style_2>th {
 	font-family: 'S-CoreDream-5Medium';
 	font-size: 16pt;
+}
+
+#table_width_1 {
+	margin: auto;
+	width: 90%;
 }
 
 .view_park:hover {
@@ -435,6 +451,8 @@
 	background-color: #00a86b;
 	border-radius: 20px;
 	padding: 2rem 1.5rem 3rem 1.5rem;
+	width: 95%;
+	margin: 2rem auto 3rem auto;
 }
 
 .park_title {
@@ -442,6 +460,22 @@
 	padding: 3rem 0 2rem 0;
 }
 
+.park_text_1 {
+	font-family: 'S-CoreDream-6Bold';
+	font-size: 18pt;
+}
+
+.park_text_2 {
+	font-family: 'S-CoreDream-5Medium';
+	color: #FA563C;
+	padding: 0.1rem 0.2rem;
+	transition: .3s;
+	text-decoration: none;
+}
+
+.park_text_2:hover {
+	color: #FA563C;
+}
 
 /* footer */
 .align_center {
