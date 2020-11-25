@@ -62,7 +62,7 @@
          var board = $("#comment_commentno").val(); // 게시글 번호 
          var id = $("#comment_id").val(); // 작성자 id
          var content = $("#comment_content").val(); // 댓글 내용 
- 
+        console.log(board);
          if(!content) {
          	alert("내용을 입력하세요.");
             return false;
@@ -70,19 +70,19 @@
         	 let data = JSON.stringify({
 					'comment_commentno': board,
 					'comment_id' : id,
-					'coment_content' : content, 
+					'comment_content' : content, 
 				});
 				
 				$.ajax({
-					url:'${root}/notice/comment',  
+					url:'${root}/comment/write',  
 					type:'post',
 					data : data,
 					contentType:'application/json;charset=utf-8',
-					success:function() {
-						console.log("도착해라!");
+					success:function(data) {
+						console.log(data);
+						location.href="${root}/notice/qnadetail?no=" + board;
 					},
 					error:function(xhr,status,msg){
-						console.log();
 						console.log("상태값 : " + status + " Http에러메시지 : "+msg);
 					}
 				});
@@ -114,64 +114,30 @@
 			</tr>
 		</table>
 		<!-- 댓글 작성 부분 -->
-		<div id="comment">
-			<table border="1">
-				<c:if test = "${commentList != null}">
-					<c:forEach var="comment" items = "${ commentList }">
-						<tr>
-							<td width="150">
-								<div>
-									${comment.comment_id}<br> <font size="2" color="lightgray">${comment.regtime}</font>
-								</div>
-							</td>
-							<!-- 본문내용 -->
-							<td width="550">
-								<div class="text_wrapper">${comment.content}</div>
-							</td>
-							<!-- 버튼 -->
-							<td width="100">
-								<div id="btn" style="text-align: center;">
-									<!-- 댓글 작성자만 수정, 삭제 가능하도록 -->
-									<c:if test="${comment.comment_id == userinfo.userid}">
-										<a href="#">[수정]</a>
-										<br>
-										<a href="#">[삭제]</a>
-									</c:if>
-								</div>
-							</td>
-						</tr>
-					</c:forEach>
-				</c:if>
-
-				<c:if test="${userinfo != null }">
-					<tr bgcolor="#F5F5F5">
-						<form>
-							<input type="hidden" name="comment_commentno" id = "comment_commentno" value="${board.board_num}"/> 
-							<input type="hidden" name="comment_id" id = "comment_id" value="${userinfo.username}"/>
-							<!-- 아이디-->
-							<td width="150">
-								<div>${userinfo.username}</div>
-							</td>
-							<!-- 본문 작성-->
-							<td width="550">
-								<div>
-									<textarea name="comment_content" id = "comment_content" rows="4" cols="70"></textarea>
-								</div>
-							</td>
-							<!-- 댓글 등록 버튼 -->
-							<td width="100">
-								<div id="btn" style="text-align: center;">
-									<p>
-										<a href="#" onclick="writeCmt()">[댓글등록]</a>
-									</p>
-								</div>
-							</td>
-						</form>
-					</tr>
-				</c:if>
-			</table>
-		</div> 
-	</div>
+		
+		<c:if test="${userinfo != null }">
+			<div class="container">
+				<label for="content">comment</label>
+				<form name="commentInsertForm">
+					<div class="input-group">
+						<input type="hidden" name="no" id="no" value="${notice.noticeno}" />
+						<input type="hidden" name="id" id="id" value="${userinfo.username}" />
+						 <input
+							type="text" class="form-control" id="comment_content" name="comment_content"
+							placeholder="내용을 입력하세요."> <span class="input-group-btn">
+							<button class="btn btn-default" type="button"
+								name="commentInsertBtn">등록</button>
+						</span>
+					</div>
+				</form>
+			</div>
+		</c:if>
+			<div class="container">
+				<div class="commentList"></div>
+			</div>
+		
+	
+	<%@ include file="commentS.jsp" %>
 </body>
 <script src="${root}/js/jquery.min.js"></script>
 <script src="${root}/js/jquery-migrate-3.0.1.min.js"></script>
