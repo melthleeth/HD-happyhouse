@@ -153,7 +153,7 @@
 		<div class="modal-dialog modal-login">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Sign In</h4>
+					<h4 class="modal-title board_title">로그인</h4>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">&times;</button>
 				</div>
@@ -163,28 +163,27 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user"></i></span>
 								<input type="text" class="form-control" id="username"
-									name="username" placeholder="Username" required="required">
+									name="username" placeholder="id" required="required">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
 								<input type="password" class="form-control" id="password"
-									name="password" placeholder="Password" required="required">
+									name="password" placeholder="비밀번호" required="required">
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group" align="center">
 							<button onclick="login()"
-								class="btn btn-primary btn-block btn-lg">Sign In</button>
+								class="btn_font btn_spacing btn_register">로그인</button>
 						</div>
 						<p class="hint-text">
-							<a data-toggle="modal" href="#pwModal" class="nav-link">Forgot
-								Password?</a>
+							<a data-toggle="modal" href="#pwModal" class="nav-link">비밀번호 찾기</a>
 						</p>
 					</form>
 				</div>
 				<div class="modal-footer">
-					Don't have an account? <a href="${root}/signup">Create one</a>
+					아직 계정이 없으신가요?<a href="${root}/signup">회원가입</a>
 				</div>
 			</div>
 		</div>
@@ -195,7 +194,7 @@
 		<div class="modal-dialog modal-login">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Find My Password</h4>
+					<h4 class="modal-title board_title">비밀번호 찾기</h4>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">&times;</button>
 				</div>
@@ -205,13 +204,13 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user"></i></span>
 								<input type="text" class="form-control" id="fpusername"
-									name="fpusername" placeholder="Input Your Username."
+									name="fpusername" placeholder="ID를 입력하세요."
 									required="required">
 							</div>
 						</div>
-						<div>
-							<button id = "findpw" name = "findpw" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">
-							Find P/W
+						<div align="center">
+							<button id = "findpw" name = "findpw" class="btn_font btn_spacing btn_register" data-dismiss="modal">
+							찾기
 							</button>
 						</div>
 					</form>
@@ -227,7 +226,7 @@
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">비밀 번호</h4>
+					<h4 class="modal-title board_titme">비밀번호 찾기 결과</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 
@@ -249,7 +248,7 @@
 					</table>
 				</div>
 				<div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="#myModal">Close</button>
+			        <button type="button" class="btn_font btn_spacing_2 btn_default" data-dismiss="modal" onclick="#myModal">닫기</button>
 		      </div>
 			</div>
 		</div>

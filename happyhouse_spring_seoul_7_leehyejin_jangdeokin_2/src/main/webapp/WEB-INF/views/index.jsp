@@ -142,8 +142,8 @@
 												$("#searchResult").append(str);
 												//$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
 												let message =	item.aptName + "<br>" + 
-																item.dealAmount + "만원<br>" +
-																item.area + "㎡";
+																item.dealAmount + "만원<br>";
+												if (item.area !== null) message += item.area + "㎡";
 												setMarker(item.dong + " " + item.jibun + " " + item.aptName, message);
 											}); //each
 											console.log("마커 개수: " + markers.length);
@@ -182,8 +182,8 @@
 												$("#searchResult").append(str);
 												//$("#searchResult").append(vo.dong + " " + vo.aptName + " " + vo.jibun + "<br>");
 												let message =	item.aptName + "<br>" + 
-																item.dealAmount + "만원<br>" +
-																item.area + "㎡";
+																item.dealAmount + "만원<br>";
+												if (item.area !== null) message += item.area + "㎡";
 												
 												setMarker(item.dong + " " + item.jibun + " " + item.aptName, message);
 											}); //each
@@ -388,9 +388,9 @@
 													<td colspan="4" class="text-center"><img
 														id="modal_img"></td>
 												</tr> -->
-												<tr>
+												<!-- <tr>
 													<td colspan="4"><div id="roadview" style="height:300px"></div></td>
-												</tr>
+												</tr> -->
 											</tbody>
 										</table>
 									</div>
@@ -539,7 +539,7 @@
 								infowindow.open(map, marker); */
 
 								// 지도 중심좌표를 접속위치로 변경합니다
-								if (!flag_marker) {
+								if (type == 1 && !flag_marker) {
 									flag_marker = true;
 									map.setCenter(locPosition);
 								}
