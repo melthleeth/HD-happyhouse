@@ -93,10 +93,15 @@
 }
 
 /* nav.jsp */
-/* .text_signup {
-	color: #343A40;
-} */
+.img_logo {
+	width: 220px;
+	margin: 0.5rem 0;
+}
 
+.img_logo:hover {
+	animation: rubberBand;
+  	animation-duration: 1.2s; 
+}
 
 .nav-link {
 	margin: 5px;
@@ -254,6 +259,7 @@
 	font-family: 'S-CoreDream-5Medium';
 	font-size: 14pt;
 	line-height: 14pt;
+	padding: 0 1rem 0 0;
 }
 
 .input_style_1 {
@@ -316,14 +322,14 @@
 	margin: 2rem 0.5rem;
 	padding: 0.5rem 1rem;
 	border: 4px solid #343A40;
-	width: 85%;
+	width: 87%;
 }
 
 .td_style_2 {
 	margin: 2rem 0.5rem;
 	padding: 2rem 1rem;
 	border: 4px solid #343A40;
-	width: 75%;
+	width: 87%;
 }
 
 .view_park:hover {

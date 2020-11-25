@@ -25,7 +25,7 @@
 	            $.each(data, function(key, value){ 
 	            	console.log(value);
 	                a += '<div class="commentArea">';
-	                a += '<div class="text-left comment_style_1 commentInfo'+value.commentno+'">'+''+value.comment_id;
+	                a += '<div class="text-left comment_style_1 commentInfo'+value.commentno+'">'+''+value.comment_id + '<span class="btn_spacing_5 board_regtime">' + value.comment_regtime + '</span>';
 	                if(id == value.comment_id || id == "admin") {
 	                	a += '<div class="btn_spacing_5"><a class="btn_font_small btn_spacing_3 btn_default_small_2" onclick="commentUpdate('+value.commentno+',\''+value.comment_content+'\');"> 수정 </a>';
 		                a += '<a class="btn_font_small btn_spacing_3 btn_default_small_2" onclick="commentDelete('+value.commentno+');"> 삭제 </a></div>';	
