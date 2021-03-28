@@ -19,6 +19,40 @@
 - Q&A 게시판에서 웹사이트 이용 및 개인적인 궁금함을 해소할 수 있어요
 - 관리자는 어드민 페이지에서 회원들을 관리할 수 있어요
 
+### 영상
+
+[![HD Happy House](/uploads/17d2229ab8306f8fb1d58c0fe0b07142/HD_Happy_House.png)](https://youtu.be/yw9RER6foV0)
+
+## 설계
+
+### ERD
+
+![ERD](/uploads/22a1e7e61bac0e0a930b9e0ef51d04a1/image.png)
+
+### Use Case Diagram
+
+![Use Case Diagram](/uploads/70fb146a88bd6099659fcd235c305f22/image.png)
+
+### 와이어 프레임
+
+#### 메인 화면
+
+![메인 화면](/uploads/81a0f0dddd87f9ef61e72475350d51ca/image.png)
+
+#### 공지사항
+
+![공지사항](/uploads/e3bd5a59c0f3fcd8928e0b93284cbdb6/image.png)
+
+#### Q&A
+
+![Q&A](/uploads/451fb3d733686573c7e9c4faa1208c54/image.png)
+
+#### 회원관리
+
+![회원관리](/uploads/e5d55b4f04e18a52b095c72118a9b722/image.png)
+
+---
+
 ### 💪팀원
 
 - 이혜진 ([@melthleeth](https://lab.ssafy.com/melthleeth))
