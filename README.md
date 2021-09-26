@@ -21,35 +21,36 @@
 
 ### 영상
 
-[![HD Happy House](/uploads/17d2229ab8306f8fb1d58c0fe0b07142/HD_Happy_House.png)](https://youtu.be/yw9RER6foV0)
+
+[![HD Happy House](https://user-images.githubusercontent.com/22411481/134806514-fb496103-af92-4cca-90eb-fdd49e3d0991.png)](https://youtu.be/yw9RER6foV0)
 
 ## 설계
 
 ### ERD
 
-![ERD](/uploads/22a1e7e61bac0e0a930b9e0ef51d04a1/image.png)
+![ERD](https://user-images.githubusercontent.com/22411481/134806684-d8fb8013-d8c4-4d59-a51b-46f301cf49f3.png)
 
 ### Use Case Diagram
 
-![Use Case Diagram](/uploads/70fb146a88bd6099659fcd235c305f22/image.png)
+![Use Case Diagram](https://user-images.githubusercontent.com/22411481/134806912-78abd679-c639-4973-9fd1-af2c6d79cf36.png)
 
 ### 와이어 프레임
 
 #### 메인 화면
 
-![메인 화면](/uploads/81a0f0dddd87f9ef61e72475350d51ca/image.png)
+![메인 화면](https://user-images.githubusercontent.com/22411481/134806919-d032dad5-8c95-41cc-a674-fa140b59c57e.png)
 
 #### 공지사항
 
-![공지사항](/uploads/e3bd5a59c0f3fcd8928e0b93284cbdb6/image.png)
+![공지사항](https://user-images.githubusercontent.com/22411481/134806926-0d48478c-fd51-447d-b2d1-47b4c77c7564.png)
 
 #### Q&A
 
-![Q&A](/uploads/451fb3d733686573c7e9c4faa1208c54/image.png)
+![Q&A](https://user-images.githubusercontent.com/22411481/134806938-a31dc136-6625-4172-8d1d-eaf72ea2946d.png)
 
 #### 회원관리
 
-![회원관리](/uploads/e5d55b4f04e18a52b095c72118a9b722/image.png)
+![회원관리](https://user-images.githubusercontent.com/22411481/134806946-7f135482-3d60-43c2-a7cc-09a142cd6823.png)
 
 ---
 
